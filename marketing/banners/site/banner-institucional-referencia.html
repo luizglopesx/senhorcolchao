@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=2560">
+<title>Banner Institucional — Senhor Colchão</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 2560px;
+    height: 800px;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .banner {
+    width: 2560px;
+    height: 800px;
+    background-color: #001DA4;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Diagonal amarela à direita */
+  .banner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 900px;
+    height: 100%;
+    background: #F7CF00;
+    clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Faixa azul claro decorativa */
+  .banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 860px;
+    width: 6px;
+    height: 100%;
+    background: #9EEBFF;
+    opacity: 0.4;
+    transform: skewX(-6deg);
+    z-index: 1;
+  }
+
+  /* Lado esquerdo — conteúdo principal */
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .marca {
+    font-size: 38px;
+    font-weight: 700;
+    font-style: italic;
+    color: #F7CF00;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  .headline {
+    font-size: 112px;
+    font-weight: 800;
+    font-style: italic;
+    color: #FFFFFF;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    margin-bottom: 48px;
+    max-width: 1100px;
+  }
+
+  .headline span {
+    color: #F7CF00;
+  }
+
+  .diferenciais {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .diferencial {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .diferencial-icone {
+    width: 52px;
+    height: 52px;
+    background: #F7CF00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .diferencial-icone svg {
+    width: 26px;
+    height: 26px;
+    fill: #001DA4;
+  }
+
+  .diferencial-texto {
+    color: #FFFFFF;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .separador {
+    width: 2px;
+    height: 48px;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* Lado direito — bloco amarelo */
+  .right {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    padding-left: 140px;
+    padding-right: 80px;
+    gap: 32px;
+  }
+
+  .logo-placeholder {
+    width: 340px;
+    height: 340px;
+    background: #001DA4;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .logo-placeholder .sr {
+    font-size: 58px;
+    font-weight: 800;
+    font-style: italic;
+    color: #F7CF00;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .logo-placeholder .colchao {
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .logo-placeholder .sleep {
+    font-size: 13px;
+    font-weight: 600;
+    color: #9EEBFF;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+
+  .endereco {
+    text-align: center;
+  }
+
+  .endereco p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #001DA4;
+    line-height: 1.8;
+  }
+
+  .endereco .telefone {
+    font-size: 30px;
+    font-weight: 800;
+    color: #001DA4;
+    margin-top: 8px;
+  }
+
+  /* Decoração: círculos sutis no azul */
+  .circle-deco {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(158, 235, 255, 0.08);
+  }
+  .circle-deco.c1 { width: 600px; height: 600px; top: -200px; left: -200px; }
+  .circle-deco.c2 { width: 400px; height: 400px; bottom: -150px; left: 400px; }
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="circle-deco c1"></div>
+  <div class="circle-deco c2"></div>
+
+  <!-- Esquerda -->
+  <div class="left">
+    <div class="marca">Senhor Colchão Sleep Store</div>
+    <h1 class="headline">
+      Barretos dorme<br><span>bem aqui.</span>
+    </h1>
+    <div class="diferenciais">
+      <div class="diferencial">
+        <div class="diferencial-icone">
+          <svg viewBox="0 0 24 24"><path d="M20 7H4V5h16v2zm0 10H4v-2h16v2zm0-5H4v-2h16v2z"/></svg>
+        </div>
+        <div class="diferencial-texto">Entrega e<br>montagem grátis</div>
+      </div>
+      <div class="separador"></div>
+      <div class="diferencial">
+        <div class="diferencial-icone">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+        </div>
+        <div class="diferencial-texto">Parcelamos<br>em até 12x</div>
+      </div>
+      <div class="separador"></div>
+      <div class="diferencial">
+        <div class="diferencial-icone">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="diferencial-texto">2 lojas em<br>Barretos-SP</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Direita -->
+  <div class="right">
+    <div class="logo-placeholder">
+      <div class="sr">Sr.</div>
+      <div class="colchao">Colchão</div>
+      <div class="sleep">Sleep Store</div>
+    </div>
+    <div class="endereco">
+      <p>Rua 20, 1050 &nbsp;·&nbsp; Rua 22, 1274</p>
+      <div class="telefone">(17) 3323-3694</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

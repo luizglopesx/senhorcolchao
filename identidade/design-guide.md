@@ -55,13 +55,27 @@ Marca com personalidade forte e simpática — o mascote (Sr. Colchão, homem de
 
 ## Logo
 
-- **Arquivo:** identidade/logo.png (a ser adicionado)
-- **Versão pra fundo escuro:** logo com texto em amarelo e branco
-- **Onde usar:** slide final do carrossel (CTA), header de propostas, materiais de venda
-- **Tamanho sugerido:** largura entre 120-200px nos HTMLs
+- **Arquivo:** `identidade/logo/logo-principal.jpg`
+- **Manual:** `identidade/manual/MANUAL DE IDENTIDADE VISUAL SR COLCHAO NOVO.pdf`
+- **Agência criadora:** Get Up! Comunicação — atendimento@getupcomunicacao.com.br / (17) 98140-7757
 
----
+### Composição da logo
+- **Mascote:** Sr. Colchão — homem careca, bigode preto, óculos redondos, colete azul marinho, camisa azul claro — dentro de círculo amarelo (#F7CF00)
+- **Tipografia:** "Sr. Colchão" em Imaki Oblique, bold, azul marinho (#001DA4), espaçamento entre palavras aumentado
+- **Subtítulo:** "Sleep Store" em Imaki Oblique, itálico, amarelo (#F7CF00)
 
-## Observações adicionais
+### Aplicação em fundos (conforme manual)
+| Fundo | Versão da logo |
+|---|---|
+| Branco | Versão padrão (azul + amarelo) |
+| Amarelo (#F7CF00) | Mascote em círculo branco, texto azul |
+| Azul marinho (#001DA4) | Mascote em círculo branco, texto amarelo |
+| Cinza escuro (#263636) | Mascote em círculo branco, texto amarelo |
+| Azul claro (#9EEBFF) | Versão padrão (azul + amarelo) |
 
-Manual de identidade visual completo em: `MANUAL DE IDENTIDADE VISUAL SR COLCHAO NOVO.pdf`
+### Restrições
+- Não distorcer o mascote ou a logo
+- Não usar sobre fundos não listados acima
+- Não trocar cores fora das versões aprovadas
+- Não usar fontes cursivas no lugar da Imaki Oblique
+- Redução máxima: manter legibilidade do mascote e texto

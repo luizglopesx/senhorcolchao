@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; flex-direction: column; gap: 0; font-family: 'Inter', sans-serif; }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── UTILITÁRIOS ── */
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #F7CF00;
+  }
+  .regua {
+    width: 64px;
+    height: 3px;
+    background: #F7CF00;
+    margin: 18px 0;
+  }
+
+  /* ── LOGO — fundos claros (cream, amarelo) ── PNG transparente, direto */
+  .logo-claro {
+    height: 72px;
+    width: auto;
+  }
+
+  /* ── LOGO — fundos escuros (azul marinho, preto, foto overlay)
+     Drop-shadow branco duplo faz o texto azul da marca aparecer sobre escuro */
+  .logo-escuro {
+    height: 72px;
+    width: auto;
+    filter:
+      drop-shadow(0 0 6px rgba(255,255,255,0.9))
+      drop-shadow(0 0 2px rgba(255,255,255,1));
+  }
+  .logo-escuro-grande {
+    height: 160px;
+    width: auto;
+    filter:
+      drop-shadow(0 0 8px rgba(255,255,255,0.9))
+      drop-shadow(0 0 3px rgba(255,255,255,1));
+    margin-bottom: 48px;
+  }
+
+  /* ── TOPO (logo + counter) ── */
+  .topo {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 44px 64px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .counter {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 1 — CAPA
+  ───────────────────────────────────────── */
+  .s1 {
+    background: url('foto-capa.png') center center / cover no-repeat;
+  }
+  .s1 .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0,10,40,0.45) 0%,
+      rgba(0,10,40,0.65) 40%,
+      rgba(0,10,40,0.92) 100%
+    );
+  }
+  .s1 .conteudo {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 72px 80px;
+  }
+  .s1 .conteudo .eyebrow { margin-bottom: 20px; }
+  .s1 .conteudo h1 {
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 28px;
+  }
+  .s1 .conteudo h1 span { color: #F7CF00; }
+  .s1 .conteudo .sub {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+  }
+  .s1 .conteudo .arraste {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+  }
+  .s1 .conteudo .arraste::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 2 — O CORPO DÁ SINAL (fundo claro)
+  ───────────────────────────────────────── */
+  .s2 { background: #F5ECD7; }
+  .s2 .counter { color: rgba(0,29,164,0.35); }
+  .s2 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+  }
+  .s2 .eyebrow { color: #001DA4; }
+  .s2 .regua { background: #001DA4; }
+  .s2 h2 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    color: #1A1A1A;
+    margin-bottom: 36px;
+  }
+  .s2 h2 em { font-style: normal; color: #001DA4; }
+  .s2 p {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: #444;
+  }
+  .s2 .destaque-box {
+    margin-top: 56px;
+    padding: 36px 40px;
+    background: #001DA4;
+    border-radius: 12px;
+  }
+  .s2 .destaque-box p {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .s2 .destaque-box p span { color: #F7CF00; }
+
+  /* ─────────────────────────────────────────
+     SLIDE 3 — NÚMERO (fundo azul marinho)
+  ───────────────────────────────────────── */
+  .s3 { background: #001DA4; }
+  .s3 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+    position: relative;
+  }
+  .s3 .numero {
+    font-size: 260px;
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: #F7CF00;
+    position: relative;
+    z-index: 2;
+    margin: 8px 0 0;
+  }
+  .s3 .numero sup {
+    font-size: 80px;
+    vertical-align: super;
+    letter-spacing: -0.02em;
+  }
+  .s3 h2 {
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    margin-top: 16px;
+    max-width: 700px;
+  }
+  .s3 p {
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    margin-top: 24px;
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 4 — O QUE ACONTECE (fundo escuro)
+  ───────────────────────────────────────── */
+  .s4 { background: #0E1116; }
+  .s4 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+  }
+  .s4 h2 {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+  .s4 h2 em { font-style: normal; color: #F7CF00; }
+  .s4 p {
+    font-size: 26px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+  .s4 .analogia {
+    margin-top: 56px;
+    padding: 32px 36px;
+    border-left: 4px solid #F7CF00;
+    background: rgba(247,207,0,0.07);
+    border-radius: 0 10px 10px 0;
+  }
+  .s4 .analogia p {
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.8);
+    font-style: italic;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 5 — CHECKLIST (fundo amarelo)
+  ───────────────────────────────────────── */
+  .s5 { background: #F7CF00; }
+  .s5 .counter { color: rgba(0,29,164,0.4); }
+  .s5 .logo-img { background: #001DA4; }
+  .s5 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+  }
+  .s5 .eyebrow { color: #001DA4; margin-bottom: 16px; }
+  .s5 h2 {
+    font-size: 70px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    color: #001DA4;
+    margin-bottom: 52px;
+  }
+  .s5 .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1.5px solid rgba(0,29,164,0.15);
+  }
+  .s5 .item:last-child { border-bottom: none; }
+  .s5 .item .icone {
+    width: 36px;
+    height: 36px;
+    background: #001DA4;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F7CF00;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .s5 .item p {
+    font-size: 26px;
+    font-weight: 600;
+    color: #001DA4;
+    line-height: 1.35;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 6 — CITAÇÃO (fundo escuro)
+  ───────────────────────────────────────── */
+  .s6 { background: #0E1116; }
+  .s6 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+    position: relative;
+  }
+  .s6 .aspas {
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    font-size: 280px;
+    font-weight: 900;
+    line-height: 1;
+    color: rgba(247,207,0,0.07);
+    font-family: Georgia, serif;
+    user-select: none;
+  }
+  .s6 h2 {
+    font-size: 68px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+  .s6 h2 em { font-style: normal; color: #F7CF00; }
+  .s6 p {
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    max-width: 780px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ─────────────────────────────────────────
+     SLIDE 7 — CTA FINAL (azul marinho)
+  ───────────────────────────────────────── */
+  .s7 { background: #001DA4; }
+  .s7 .conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 80px 80px;
+    text-align: center;
+  }
+  .s7 h2 {
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .s7 h2 em { font-style: normal; color: #F7CF00; }
+  .s7 .sub {
+    font-size: 24px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 56px;
+    line-height: 1.5;
+  }
+  .s7 .diferenciais {
+    display: flex;
+    margin-bottom: 56px;
+  }
+  .s7 .dif {
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #001DA4;
+    background: #F7CF00;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .s7 .dif:first-child { border-radius: 8px 0 0 8px; }
+  .s7 .dif:last-child { border-radius: 0 8px 8px 0; border-left: 2px solid rgba(0,29,164,0.2); }
+  .s7 .contato {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .s7 .endereco {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════ SLIDE 1 — CAPA ═══ -->
+<!-- fundo: foto escura → logo-escuro com drop-shadow branco -->
+<div class="slide s1">
+  <div class="overlay"></div>
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">01 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="eyebrow">Qualidade do sono</div>
+    <h1>Dormiu 8 horas<br>e ainda tá<br><span>destruído?</span></h1>
+    <p class="sub">O problema pode não ser sua rotina.</p>
+    <div class="arraste">Arraste e descobre o motivo</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 2 — CORPO DÁ SINAL ═══ -->
+<!-- fundo: cream claro → logo-claro (PNG transparente direto) -->
+<div class="slide s2">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-claro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">02 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="eyebrow">O sinal</div>
+    <div class="regua"></div>
+    <h2>O corpo<br><em>dá sinal.</em></h2>
+    <p>Dor nas costas ao levantar. Pescoço travado. Cansaço que não passa nem depois de dormir.</p>
+    <div class="destaque-box">
+      <p>Esses sinais não são da idade —<br><span>são do colchão.</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 3 — NÚMERO ═══ -->
+<!-- fundo: azul marinho → logo-escuro com drop-shadow branco -->
+<div class="slide s3">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">03 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="eyebrow">O número</div>
+    <div class="numero">8<sup>anos</sup></div>
+    <h2>É o tempo médio de vida de um colchão.</h2>
+    <p>Depois disso, ele perde o suporte e começa a trabalhar <strong style="color:#F7CF00">contra você</strong> — mesmo que pareça inteiro por fora.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 4 — O QUE ACONTECE ═══ -->
+<!-- fundo: preto escuro → logo-escuro com drop-shadow branco -->
+<div class="slide s4">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">04 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="eyebrow">O que acontece</div>
+    <div class="regua"></div>
+    <h2>Sua coluna fica<br><em>fora do lugar</em><br>a noite toda.</h2>
+    <p>Um colchão velho desalinha sua coluna enquanto você dorme. Seu corpo passa horas tentando se ajustar em vez de descansar.</p>
+    <div class="analogia">
+      <p>É como passar 8 horas sentado numa cadeira quebrada — e achar que o cansaço é normal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 5 — CHECKLIST ═══ -->
+<!-- fundo: amarelo → logo-slide5 com Sleep Store em branco -->
+<div class="slide s5">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-slide5.png" class="logo-claro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">05 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="eyebrow">Hora de checar</div>
+    <h2>Seu colchão<br>está te roubando<br>o sono?</h2>
+    <div class="item"><div class="icone">→</div><p>Tem mais de 8 anos</p></div>
+    <div class="item"><div class="icone">→</div><p>Dá pra sentir onde afundou</p></div>
+    <div class="item"><div class="icone">→</div><p>Acorda com dor que some ao longo do dia</p></div>
+    <div class="item"><div class="icone">→</div><p>Dorme melhor no hotel do que em casa</p></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 6 — CITAÇÃO ═══ -->
+<!-- fundo: preto escuro → logo-escuro com drop-shadow branco -->
+<div class="slide s6">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">06 / 07</span>
+  </div>
+  <div class="conteudo">
+    <div class="aspas">"</div>
+    <div class="eyebrow">A virada</div>
+    <div class="regua"></div>
+    <h2>A diferença aparece<br><em>na primeira noite.</em></h2>
+    <div class="regua" style="margin-top:32px"></div>
+    <p>Não é exagero. A maioria das pessoas sente a diferença já na primeira noite com o colchão certo. Sono mais fundo, menos dor, mais energia de manhã.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ SLIDE 7 — CTA FINAL ═══ -->
+<!-- fundo: azul marinho → logo-escuro com drop-shadow branco -->
+<div class="slide s7">
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão Sleep Store">
+    <span class="counter">07 / 07</span>
+  </div>
+  <div class="conteudo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo-escuro-grande" alt="Sr. Colchão Sleep Store">
+    <h2>Venha escolher<br>o <em>seu.</em></h2>
+    <p class="sub">A gente te ajuda a encontrar<br>o colchão certo pra você.</p>
+    <div class="diferenciais">
+      <div class="dif">Entrega +<br>montagem grátis</div>
+      <div class="dif">12x<br>sem juros</div>
+    </div>
+    <div class="contato">(17) 3323-3694</div>
+    <div class="endereco">Rua 20, 1050 · Rua 22, 1274 — Barretos</div>
+  </div>
+</div>
+
+</body>
+</html>
