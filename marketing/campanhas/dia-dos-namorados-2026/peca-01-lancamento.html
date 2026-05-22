@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; }
+
+  /* ── BASE ── */
+  .slide {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── FEED 1080×1350 ── */
+  .feed {
+    width: 1080px;
+    height: 1350px;
+  }
+
+  /* ── STORY 1080×1920 ── */
+  .story {
+    width: 1080px;
+    height: 1920px;
+  }
+
+  /* Foto de fundo */
+  .bg {
+    position: absolute;
+    inset: 0;
+    background: url('fotos/foto-ambiente.png') center center / cover no-repeat;
+  }
+
+  /* Overlay gradiente */
+  .feed .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 10, 30, 0.25) 0%,
+      rgba(5, 10, 30, 0.10) 30%,
+      rgba(5, 10, 30, 0.55) 60%,
+      rgba(5, 10, 30, 0.93) 100%
+    );
+  }
+  .story .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 10, 30, 0.35) 0%,
+      rgba(5, 10, 30, 0.10) 25%,
+      rgba(5, 10, 30, 0.60) 65%,
+      rgba(5, 10, 30, 0.95) 100%
+    );
+  }
+
+  /* ── TOPO ── */
+  .topo {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 52px 68px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .logo {
+    height: 96px;
+    width: auto;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6)) drop-shadow(0 0 4px rgba(0,0,0,0.8));
+  }
+  .tag-campanha {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    border-radius: 100px;
+    background: #F7CF00;
+    color: #001DA4;
+  }
+
+  /* ── CONTEÚDO FEED ── */
+  .feed .conteudo {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 72px 80px;
+    z-index: 10;
+  }
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #F7CF00;
+    margin-bottom: 20px;
+  }
+  .titulo-feed {
+    font-size: 90px;
+    font-weight: 900;
+    line-height: 0.93;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 36px;
+  }
+  .titulo-feed em { font-style: normal; color: #F7CF00; }
+
+  .divider {
+    width: 64px;
+    height: 3px;
+    background: #F7CF00;
+    margin-bottom: 36px;
+  }
+
+  /* Linha produto + preço */
+  .produto-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .produto-info .nome {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .produto-info .desc {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+  }
+  .preco-box {
+    text-align: right;
+  }
+  .preco-box .parcelas {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .preco-box .valor {
+    font-size: 68px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #F7CF00;
+    line-height: 1;
+  }
+  .preco-box .valor span {
+    font-size: 32px;
+    font-weight: 700;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+
+  /* CTA bar */
+  .cta-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .cta-btn {
+    flex: 1;
+    background: #F7CF00;
+    color: #001DA4;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 22px 36px;
+    border-radius: 100px;
+    text-align: center;
+  }
+  .cta-info {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+  }
+  .cta-info strong {
+    color: rgba(255,255,255,0.8);
+    display: block;
+  }
+
+  /* ── CONTEÚDO STORY ── */
+  .story .conteudo {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 0 72px 120px;
+    z-index: 10;
+  }
+  .titulo-story {
+    font-size: 96px;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+  .titulo-story em { font-style: normal; color: #F7CF00; }
+
+  /* Preço destaque story */
+  .preco-story {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .preco-story .valor-story {
+    font-size: 76px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: #F7CF00;
+    line-height: 1;
+  }
+  .preco-story .valor-story span {
+    font-size: 36px;
+    vertical-align: super;
+    font-weight: 700;
+  }
+  .preco-story .cond {
+    font-size: 22px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.35;
+  }
+  .preco-story .cond strong {
+    color: #fff;
+    font-size: 24px;
+    display: block;
+  }
+
+  /* CTA story */
+  .cta-story {
+    background: #F7CF00;
+    color: #001DA4;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 26px 48px;
+    border-radius: 100px;
+    text-align: center;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ FEED 1080×1350 ═══════════════ -->
+<div class="slide feed">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo" alt="Sr. Colchão Sleep Store">
+    <span class="tag-campanha">Noites de Dois</span>
+  </div>
+
+  <div class="conteudo">
+    <div class="eyebrow">12 de junho · Dia dos Namorados</div>
+    <h1 class="titulo-feed">O presente<br>que começa<br>toda <em>noite.</em></h1>
+    <div class="divider"></div>
+
+    <div class="produto-row">
+      <div class="produto-info">
+        <div class="nome">Cama Box Prime</div>
+        <div class="desc">Casal · Molas Ensacadas · Entrega + Montagem grátis</div>
+      </div>
+      <div class="preco-box">
+        <div class="parcelas">12x sem juros</div>
+        <div class="valor"><span>R$</span> 1.590</div>
+      </div>
+    </div>
+
+    <div class="cta-bar">
+      <div class="cta-btn">Vem na loja</div>
+      <div class="cta-info">
+        <strong>Ou chama no WhatsApp</strong>
+        Rua 20, 1050 · Rua 22, 1274 — Barretos
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ STORY 1080×1920 ═══════════════ -->
+<div class="slide story">
+  <div class="bg"></div>
+  <div class="overlay"></div>
+
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo" alt="Sr. Colchão Sleep Store">
+    <span class="tag-campanha">Noites de Dois</span>
+  </div>
+
+  <div class="conteudo">
+    <div class="eyebrow">12 de junho · Dia dos Namorados</div>
+    <h1 class="titulo-story">O presente<br>que começa<br>toda <em>noite.</em></h1>
+    <div class="divider"></div>
+
+    <div class="preco-story">
+      <div class="valor-story"><span>R$</span> 1.590</div>
+      <div class="cond">
+        <strong>12x sem juros</strong>
+        Cama Box Prime Casal<br>Entrega + montagem grátis
+      </div>
+    </div>
+
+    <span class="cta-story">Chama no WhatsApp 👇</span>
+  </div>
+</div>
+
+</body>
+</html>
