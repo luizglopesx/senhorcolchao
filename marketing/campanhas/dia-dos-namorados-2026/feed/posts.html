@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; flex-direction: column; gap: 0; font-family: 'Inter', sans-serif; }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOPO ── */
+  .topo {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    padding: 44px 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+  }
+  .logo-escuro {
+    height: 60px; width: auto;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 2px rgba(255,255,255,1));
+  }
+  .logo-claro { height: 60px; width: auto; }
+  .tag {
+    font-size: 13px; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 12px 24px; border-radius: 100px;
+  }
+  .tag-amarelo { background: #F7CF00; color: #001DA4; }
+  .tag-branco  { background: rgba(255,255,255,0.18); color: #fff; border: 1.5px solid rgba(255,255,255,0.25); }
+  .tag-azul    { background: #001DA4; color: #F7CF00; }
+
+
+  /* ══════════════════════════════════════════════
+     POST 1 — CAMA BOX PRIME · PRODUTO CHAMARIZ
+     Fundo: azul marinho | Layout: produto em card
+  ══════════════════════════════════════════════ */
+  .p1 { background: #001DA4; }
+  .p1 .deco-circulo {
+    position: absolute; top: -100px; right: -100px;
+    width: 480px; height: 480px;
+    border: 70px solid rgba(247,207,0,0.08); border-radius: 50%;
+    pointer-events: none;
+  }
+  .p1 .deco-circulo2 {
+    position: absolute; bottom: 180px; left: -80px;
+    width: 300px; height: 300px;
+    border: 50px solid rgba(247,207,0,0.05); border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* Card branco com o produto */
+  .p1 .card-produto {
+    position: absolute;
+    top: 120px; left: 60px; right: 60px;
+    height: 680px;
+    background: #fff;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .p1 .card-produto img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 40px;
+  }
+  /* Badge de destaque flutuante */
+  .p1 .badge-preco {
+    position: absolute;
+    top: 116px; right: 56px;
+    background: #F7CF00;
+    border-radius: 16px 16px 16px 0;
+    padding: 18px 24px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    z-index: 15;
+  }
+  .p1 .badge-preco .label {
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: #001DA4; display: block; margin-bottom: 4px;
+  }
+  .p1 .badge-preco .preco {
+    font-size: 36px; font-weight: 900;
+    letter-spacing: -0.03em; color: #001DA4;
+    line-height: 1;
+  }
+  .p1 .badge-preco .parcelas {
+    font-size: 13px; font-weight: 700;
+    color: rgba(0,29,164,0.7); display: block;
+    margin-top: 4px;
+  }
+
+  /* Bloco de texto abaixo do card */
+  .p1 .info {
+    position: absolute;
+    top: 820px; left: 60px; right: 60px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 60px;
+  }
+  .p1 .nome-produto {
+    font-size: 52px; font-weight: 900;
+    letter-spacing: -0.03em; color: #fff;
+    line-height: 1.0; margin-bottom: 16px;
+  }
+  .p1 .features {
+    display: flex; gap: 12px;
+    margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .p1 .feature {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 10px 20px; border-radius: 100px;
+    border: 1.5px solid rgba(247,207,0,0.45);
+    color: rgba(255,255,255,0.85);
+  }
+  .p1 .oferta-row {
+    display: flex; align-items: center; gap: 24px;
+  }
+  .p1 .oferta-row .parcelas-big {
+    font-size: 56px; font-weight: 900;
+    letter-spacing: -0.04em; color: #F7CF00;
+    line-height: 1;
+  }
+  .p1 .oferta-row .oferta-texto {
+    font-size: 20px; font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+  .p1 .oferta-row .oferta-texto strong {
+    color: #fff; display: block;
+    font-size: 22px;
+  }
+
+
+  /* ══════════════════════════════════════════════
+     POST 2 — DAKOTA · INSTITUCIONAL
+     Fundo: split (branco cima / azul baixo)
+  ══════════════════════════════════════════════ */
+  .p2 { background: #fff; }
+  .p2 .faixa-bot {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 480px; background: #001DA4;
+  }
+  .p2 .faixa-amarela-top {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 6px; background: #F7CF00;
+  }
+  .p2 .produto-area {
+    position: absolute;
+    top: 80px; left: 0; right: 0;
+    height: 760px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+  }
+  .p2 .produto-area img {
+    width: 88%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .p2 .info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 480px;
+    padding: 40px 64px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+    z-index: 10;
+  }
+  .p2 .nome {
+    font-size: 54px; font-weight: 900;
+    letter-spacing: -0.03em; color: #fff;
+    margin-bottom: 10px;
+  }
+  .p2 .marca {
+    font-size: 16px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 28px;
+  }
+  .p2 .divider { width: 60px; height: 3px; background: #F7CF00; margin-bottom: 28px; }
+  .p2 .oferta {
+    font-size: 44px; font-weight: 900;
+    letter-spacing: -0.03em; color: #F7CF00;
+    margin-bottom: 8px;
+  }
+  .p2 .sub {
+    font-size: 20px; font-weight: 600;
+    color: rgba(255,255,255,0.65);
+  }
+
+
+  /* ══════════════════════════════════════════════
+     POST 3 — LANCASTER · INSTITUCIONAL
+     Fundo: amarelo cima / azul baixo
+  ══════════════════════════════════════════════ */
+  .p3 { background: #F7CF00; }
+  .p3 .faixa-bot {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 480px; background: #001DA4;
+  }
+  .p3 .produto-area {
+    position: absolute;
+    top: 80px; left: 0; right: 0;
+    height: 760px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+  }
+  .p3 .produto-area img {
+    width: 88%; height: 100%;
+    object-fit: contain;
+  }
+  .p3 .info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 480px;
+    padding: 40px 64px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+    z-index: 10;
+  }
+  .p3 .nome {
+    font-size: 54px; font-weight: 900;
+    letter-spacing: -0.03em; color: #fff;
+    margin-bottom: 10px;
+  }
+  .p3 .marca {
+    font-size: 16px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); margin-bottom: 28px;
+  }
+  .p3 .divider { width: 60px; height: 3px; background: #F7CF00; margin-bottom: 28px; }
+  .p3 .oferta {
+    font-size: 44px; font-weight: 900;
+    letter-spacing: -0.03em; color: #F7CF00;
+    margin-bottom: 8px;
+  }
+  .p3 .sub {
+    font-size: 20px; font-weight: 600;
+    color: rgba(255,255,255,0.65);
+  }
+
+
+  /* ══════════════════════════════════════════════
+     POST 4 — URGÊNCIA · CAMA BOX PRIME
+     Fundo: amarelo | produto pequeno + preço grande
+  ══════════════════════════════════════════════ */
+  .p4 { background: #F7CF00; }
+  .p4 .faixa-top {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 8px; background: #001DA4;
+  }
+  .p4 .faixa-bot {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 8px; background: #001DA4;
+  }
+  .p4 .produto-area {
+    position: absolute;
+    top: 100px; left: 0; right: 0;
+    height: 580px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+  }
+  .p4 .produto-area img {
+    width: 80%; height: 100%;
+    object-fit: contain;
+  }
+  .p4 .info {
+    position: absolute;
+    bottom: 20px; left: 60px; right: 60px;
+    height: 600px;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 56px;
+  }
+  .p4 .urgencia-badge {
+    display: inline-flex; align-items: center;
+    background: #001DA4; border-radius: 100px;
+    padding: 14px 28px; margin-bottom: 24px;
+    width: fit-content;
+  }
+  .p4 .urgencia-badge span {
+    font-size: 16px; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #F7CF00;
+  }
+  .p4 h1 {
+    font-size: 84px; font-weight: 900;
+    letter-spacing: -0.045em; color: #001DA4;
+    line-height: 0.93; margin-bottom: 20px;
+  }
+  .p4 .preco-block {
+    display: flex; align-items: baseline; gap: 12px;
+    margin-bottom: 16px;
+  }
+  .p4 .de {
+    font-size: 20px; font-weight: 600;
+    color: rgba(0,29,164,0.5);
+    text-decoration: line-through;
+  }
+  .p4 .preco-big {
+    font-size: 72px; font-weight: 900;
+    letter-spacing: -0.04em; color: #001DA4;
+    line-height: 1;
+  }
+  .p4 .parcelas {
+    font-size: 24px; font-weight: 700;
+    color: rgba(0,29,164,0.7);
+  }
+  .p4 .cta {
+    display: inline-flex; align-items: center;
+    gap: 12px; margin-top: 8px;
+    font-size: 20px; font-weight: 700;
+    color: rgba(0,29,164,0.65);
+    letter-spacing: 0.04em;
+  }
+  .p4 .cta::after { content: '→'; color: #001DA4; font-size: 24px; }
+
+
+  /* ══════════════════════════════════════════════
+     POST 5 — INSTITUCIONAL · DIA DOS NAMORADOS
+     Fundo: azul claro | sem produto
+  ══════════════════════════════════════════════ */
+  .p5 { background: #9EEBFF; }
+  .p5 .conteudo {
+    flex: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 80px;
+    text-align: center;
+    position: relative;
+  }
+  .p5 .data {
+    font-size: 14px; font-weight: 800;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(0,29,164,0.5); margin-bottom: 28px;
+  }
+  .p5 .coracao {
+    font-size: 110px; line-height: 1;
+    margin-bottom: 36px;
+  }
+  .p5 h1 {
+    font-size: 68px; font-weight: 900;
+    line-height: 1.02; letter-spacing: -0.04em;
+    color: #001DA4; margin-bottom: 28px;
+  }
+  .p5 p {
+    font-size: 28px; font-weight: 500;
+    color: rgba(0,29,164,0.7); line-height: 1.5;
+    max-width: 740px; margin-bottom: 52px;
+  }
+  .p5 .divider {
+    width: 80px; height: 3px;
+    background: rgba(0,29,164,0.2); margin-bottom: 40px;
+  }
+  .p5 .assinatura {
+    font-size: 22px; font-weight: 700;
+    color: rgba(0,29,164,0.55); letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     POST 1 — CAMA BOX PRIME · PRODUTO CHAMARIZ
+══════════════════════════════════════════════ -->
+<div class="slide p1">
+  <div class="deco-circulo"></div>
+  <div class="deco-circulo2"></div>
+
+  <div class="topo">
+    <img src="../../../../../identidade/logo/logo-completa-trim.png" class="logo-escuro" alt="Sr. Colchão">
+    <span class="tag tag-amarelo">Dia dos Namorados</span>
+  </div>
+
+  <!-- Badge de preço flutuante -->
+  <div class="badge-preco">
+    <span class="label">Por apenas</span>
+    <span class="preco">R$1.590</span>
+    <span class="parcelas">ou 12x sem juros</span>
+  </div>
+
+  <!-- Card branco com produto -->
+  <div class="card-produto">
+    <img src="../fotos/chamariz/cama-box-prime.png" alt="Cama Box Prime">
+  </div>
+
+  <!-- Info abaixo -->
+  <div class="info">
+    <div class="nome-produto">Cama Box Prime Casal</div>
+    <div class="features">
+      <span class="feature">Molas Ensacadas</span>
+      <span class="feature">Tecido em Malha</span>
+      <span class="feature">Entrega + Montagem</span>
+    </div>
+    <div class="oferta-row">
+      <span class="parcelas-big">12x</span>
+      <div class="oferta-texto">
+        <strong>sem juros</strong>
+        ou R$1.590 à vista
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     POST 2 — DAKOTA · INSTITUCIONAL
+══════════════════════════════════════════════ -->
+<div class="slide p2">
+  <div class="faixa-amarela-top"></div>
+  <div class="faixa-bot"></div>
+
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo-claro" alt="Sr. Colchão">
+    <span class="tag tag-azul">Cama Box Casal</span>
+  </div>
+
+  <div class="produto-area">
+    <img src="../fotos/catalogo/dakota.jpg" alt="Dakota">
+  </div>
+
+  <div class="info">
+    <div class="marca">F.A. Colchões</div>
+    <div class="nome">Dakota</div>
+    <div class="divider"></div>
+    <div class="oferta">12x sem juros</div>
+    <div class="sub">Entrega e montagem incluídos · Barretos</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     POST 3 — LANCASTER · INSTITUCIONAL
+══════════════════════════════════════════════ -->
+<div class="slide p3">
+  <div class="faixa-bot"></div>
+
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo-claro" alt="Sr. Colchão">
+    <span class="tag tag-branco">Cama Box Casal</span>
+  </div>
+
+  <div class="produto-area">
+    <img src="../fotos/catalogo/lancaster.jpg" alt="Lancaster">
+  </div>
+
+  <div class="info">
+    <div class="marca">F.A. Colchões</div>
+    <div class="nome">Lancaster</div>
+    <div class="divider"></div>
+    <div class="oferta">12x sem juros</div>
+    <div class="sub">Entrega e montagem incluídos · Barretos</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     POST 4 — URGÊNCIA · CAMA BOX PRIME
+══════════════════════════════════════════════ -->
+<div class="slide p4">
+  <div class="faixa-top"></div>
+  <div class="faixa-bot"></div>
+
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo-claro" alt="Sr. Colchão">
+    <span class="tag tag-azul">Último dia</span>
+  </div>
+
+  <div class="produto-area">
+    <img src="../fotos/chamariz/cama-box-prime.png" alt="Cama Box Prime">
+  </div>
+
+  <div class="info">
+    <div class="urgencia-badge"><span>⏰ Entregamos antes do dia 12</span></div>
+    <h1>Ainda dá tempo.</h1>
+    <div class="preco-block">
+      <span class="preco-big">R$ 1.590</span>
+    </div>
+    <div class="parcelas">ou 12x sem juros · entrega + montagem</div>
+    <div class="cta">Chama no WhatsApp agora</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     POST 5 — INSTITUCIONAL · 12 DE JUNHO
+══════════════════════════════════════════════ -->
+<div class="slide p5">
+  <div class="topo">
+    <img src="../../../../identidade/logo/logo-completa-trim.png" class="logo-claro" alt="Sr. Colchão">
+    <span class="tag tag-azul">12 de Junho</span>
+  </div>
+
+  <div class="conteudo">
+    <div class="data">Feliz Dia dos Namorados</div>
+    <div class="coracao">💙</div>
+    <h1>Que o quarto de vocês seja sempre um lugar gostoso de voltar.</h1>
+    <div class="divider"></div>
+    <span class="assinatura">Senhor Colchão Sleep Store · Barretos</span>
+  </div>
+</div>
+
+</body>
+</html>
