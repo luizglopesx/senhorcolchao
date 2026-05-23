@@ -303,6 +303,100 @@ def get_ad_insights(ads_account: dict, campaign_id: str) -> dict:
     }
 
 
+def get_adsets(ads_account: dict, campaign_id: str, active_only: bool = True) -> dict:
+    token = _get_token()
+    if not campaign_id or not token:
+        return {"error": "No campaign_id or token configured"}
+
+    params = {
+        "fields": "id,name,status,effective_status,daily_budget,lifetime_budget,start_time,end_time,optimization_goal,billing_event",
+        "access_token": token,
+    }
+    if active_only:
+        params["effective_status"] = '["ACTIVE"]'
+
+    data = _api_get(f"{campaign_id}/adsets", params)
+    if "error" in data:
+        return data
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "campaign_id": campaign_id,
+        "adsets": data.get("data", []),
+        "total": len(data.get("data", [])),
+    }
+
+
+def get_adset_insights(ads_account: dict, adset_id: str, date_preset: str = "this_week_mon_today") -> dict:
+    token = _get_token()
+    if not adset_id or not token:
+        return {"error": "No adset_id or token configured"}
+
+    data = _api_get(f"{adset_id}/insights", {
+        "fields": "adset_id,adset_name,impressions,reach,clicks,spend,cpc,cpm,ctr,actions",
+        "date_preset": date_preset,
+        "access_token": token,
+    })
+    if "error" in data:
+        return data
+
+    insights = data.get("data", [])
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "adset_id": adset_id,
+        "date_preset": date_preset,
+        "insights": insights,
+        "total_records": len(insights),
+    }
+
+
+def update_adset_status(ads_account: dict, adset_id: str, status: str) -> dict:
+    token = _get_token()
+    status = status.upper()
+    if not adset_id or not token:
+        return {"error": "No adset_id or token configured"}
+    if status not in {"ACTIVE", "PAUSED"}:
+        return {"error": "Invalid status. Valid: ACTIVE | PAUSED"}
+
+    result = _api_post(adset_id, {
+        "status": status,
+        "access_token": token,
+    })
+    if "error" in result:
+        return result
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "adset_id": adset_id,
+        "status": status,
+        "success": result.get("success"),
+    }
+
+
+def get_campaign_adsets_weekly_performance(ads_account: dict, campaign_id: str) -> dict:
+    adsets_result = get_adsets(ads_account, campaign_id, active_only=True)
+    if "error" in adsets_result:
+        return adsets_result
+
+    rows = []
+    for adset in adsets_result.get("adsets", []):
+        insight_result = get_adset_insights(ads_account, adset.get("id", ""))
+        insight_rows = insight_result.get("insights", [])
+        insight = insight_rows[0] if insight_rows else {}
+        rows.append({
+            "adset": adset,
+            "insight": insight,
+        })
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "campaign_id": campaign_id,
+        "date_preset": "this_week_mon_today",
+        "adsets": rows,
+        "total": len(rows),
+    }
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: meta_ads_client.py <command> [args]")
@@ -316,6 +410,11 @@ if __name__ == "__main__":
         print("  create_creative <page_id> <name> <message> <image_url> <link_url> [account]")
         print("  create_ad <name> <ad_set_id> <creative_id> [account]           # Create ad (starts PAUSED)")
         print("  insights <campaign_id> [account]                                # Campaign metrics (30d)")
+        print("  adsets <campaign_id> [active|all] [account]                     # List ad sets")
+        print("  adset_insights <adset_id> [date_preset] [account]               # Ad set metrics")
+        print("  pause_adset <adset_id> [account]                                # Pause an ad set")
+        print("  activate_adset <adset_id> [account]                             # Activate an ad set")
+        print("  campaign_adsets_week <campaign_id> [account]                    # Active ad sets + this week metrics")
         sys.exit(1)
 
     cmd = sys.argv[1]
@@ -363,6 +462,29 @@ if __name__ == "__main__":
             campaign_id = args[0] if args else ""
             acc = _get_ads_account(args[1] if len(args) > 1 else None)
             result = get_ad_insights(acc, campaign_id)
+        elif cmd == "adsets":
+            campaign_id = args[0] if args else ""
+            active_only = (args[1].lower() if len(args) > 1 else "active") != "all"
+            account_arg_index = 2 if len(args) > 1 else 1
+            acc = _get_ads_account(args[account_arg_index] if len(args) > account_arg_index else None)
+            result = get_adsets(acc, campaign_id, active_only=active_only)
+        elif cmd == "adset_insights":
+            adset_id = args[0] if args else ""
+            date_preset = args[1] if len(args) > 1 else "this_week_mon_today"
+            acc = _get_ads_account(args[2] if len(args) > 2 else None)
+            result = get_adset_insights(acc, adset_id, date_preset=date_preset)
+        elif cmd == "pause_adset":
+            adset_id = args[0] if args else ""
+            acc = _get_ads_account(args[1] if len(args) > 1 else None)
+            result = update_adset_status(acc, adset_id, "PAUSED")
+        elif cmd == "activate_adset":
+            adset_id = args[0] if args else ""
+            acc = _get_ads_account(args[1] if len(args) > 1 else None)
+            result = update_adset_status(acc, adset_id, "ACTIVE")
+        elif cmd == "campaign_adsets_week":
+            campaign_id = args[0] if args else ""
+            acc = _get_ads_account(args[1] if len(args) > 1 else None)
+            result = get_campaign_adsets_weekly_performance(acc, campaign_id)
         else:
             print(f"Unknown command: {cmd}")
             sys.exit(1)
