@@ -1,0 +1,4 @@
+interface:
+  display_name: "Peças Comerciais"
+  short_description: "Cria peças de oferta com estética comercial de varejo."
+  default_prompt: "Crie uma peça comercial de oferta para a campanha, com produto recortado, headline forte, preço em destaque, parcelamento e CTA de WhatsApp."

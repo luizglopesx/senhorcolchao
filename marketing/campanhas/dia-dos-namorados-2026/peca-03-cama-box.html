@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; display: flex; flex-direction: column; font-family: "Inter", sans-serif; }
+
+  .slide {
+    background: #06113a;
+    overflow: hidden;
+    position: relative;
+  }
+  .feed { height: 1350px; width: 1080px; }
+  .story { height: 1920px; width: 1080px; }
+
+  .wall {
+    background:
+      linear-gradient(110deg, rgba(248, 209, 102, 0.22) 0%, rgba(248, 209, 102, 0) 26%),
+      linear-gradient(160deg, #f4ead7 0%, #d7c2a8 48%, #7b6c78 100%);
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .feed .wall { height: 740px; }
+  .story .wall { height: 1090px; }
+  .wall::before {
+    background:
+      linear-gradient(90deg, rgba(1, 12, 50, 0.18), rgba(1, 12, 50, 0) 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+    content: "";
+    inset: 0;
+    position: absolute;
+  }
+  .wall::after {
+    background: #f7cf00;
+    bottom: -22px;
+    content: "";
+    height: 42px;
+    left: -90px;
+    position: absolute;
+    right: -90px;
+    transform: rotate(-4.5deg);
+  }
+
+  .night {
+    background:
+      linear-gradient(126deg, rgba(30, 47, 105, 0.92) 0%, rgba(6, 17, 58, 0) 42%),
+      linear-gradient(180deg, #071643 0%, #02081e 100%);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+  .feed .night { top: 676px; }
+  .story .night { top: 1030px; }
+
+  .floor {
+    background: linear-gradient(180deg, rgba(10, 25, 73, 0.2), rgba(10, 25, 73, 0.66));
+    position: absolute;
+    transform: skewY(-4.5deg);
+    z-index: 1;
+  }
+  .feed .floor {
+    height: 240px;
+    left: -40px;
+    right: -40px;
+    top: 552px;
+  }
+  .story .floor {
+    height: 330px;
+    left: -50px;
+    right: -50px;
+    top: 824px;
+  }
+
+  .topo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    padding: 52px 68px 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+  }
+  .story .topo { padding-top: 70px; }
+  .logo {
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.48));
+    height: 96px;
+    width: auto;
+  }
+  .tag-campanha {
+    background: #f7cf00;
+    border-radius: 100px;
+    color: #001da4;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    padding: 16px 32px;
+    text-transform: uppercase;
+  }
+
+  .produto {
+    position: absolute;
+    z-index: 5;
+  }
+  .feed .produto {
+    height: 660px;
+    right: -22px;
+    top: 160px;
+    width: 1040px;
+  }
+  .story .produto {
+    height: 980px;
+    right: -38px;
+    top: 194px;
+    width: 1180px;
+  }
+  .produto .sombra {
+    background: linear-gradient(90deg, rgba(0, 7, 34, 0), rgba(0, 7, 34, 0.56), rgba(0, 7, 34, 0));
+    border-radius: 50%;
+    bottom: 52px;
+    filter: blur(24px);
+    height: 84px;
+    left: 76px;
+    position: absolute;
+    right: 42px;
+    transform: rotate(-4deg);
+  }
+  .story .produto .sombra {
+    bottom: 98px;
+    height: 116px;
+    left: 110px;
+  }
+  .produto img {
+    filter: drop-shadow(0 34px 28px rgba(0, 4, 24, 0.28));
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    position: relative;
+    width: 100%;
+  }
+  .produto-badge {
+    background: #001da4;
+    border-radius: 100px;
+    bottom: 88px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    left: 72px;
+    letter-spacing: 0.1em;
+    padding: 18px 30px;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 6;
+  }
+  .story .produto-badge {
+    bottom: 146px;
+    font-size: 20px;
+    left: 74px;
+    padding: 20px 34px;
+  }
+
+  .conteudo {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+  }
+  .feed .conteudo { padding: 0 72px 78px; }
+  .story .conteudo { padding: 0 72px 122px; }
+  .eyebrow {
+    color: #f7cf00;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .titulo {
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.94;
+  }
+  .feed .titulo {
+    font-size: 84px;
+    margin-bottom: 28px;
+    max-width: 820px;
+  }
+  .story .titulo {
+    font-size: 98px;
+    margin-bottom: 34px;
+    max-width: 920px;
+  }
+  .titulo em {
+    color: #f7cf00;
+    font-style: normal;
+  }
+  .divider {
+    background: #f7cf00;
+    height: 3px;
+    margin-bottom: 30px;
+    width: 64px;
+  }
+
+  .produto-row {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+  .nome {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+  .desc {
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .selo {
+    align-items: center;
+    color: #f7cf00;
+    display: flex;
+    gap: 14px;
+    line-height: 1;
+  }
+  .selo .num {
+    font-size: 76px;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+  }
+  .selo .txt {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.18;
+    text-transform: uppercase;
+  }
+
+  .cta-bar {
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: grid;
+    gap: 20px;
+    grid-template-columns: minmax(360px, 1fr) 318px;
+    padding-top: 28px;
+  }
+  .cta-btn {
+    background: #f7cf00;
+    border-radius: 100px;
+    color: #001da4;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 23px 36px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .cta-info {
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.42;
+  }
+  .cta-info strong {
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+  }
+
+  .story .produto-row {
+    align-items: center;
+    gap: 32px;
+    justify-content: flex-start;
+    margin-bottom: 42px;
+  }
+  .story .nome { font-size: 26px; }
+  .story .desc { font-size: 21px; }
+  .story .selo .num { font-size: 104px; }
+  .story .selo .txt { font-size: 23px; }
+  .story .cta-bar {
+    grid-template-columns: 1fr;
+    padding-top: 34px;
+  }
+  .story .cta-info { font-size: 21px; }
+  .story .cta-btn {
+    font-size: 22px;
+    padding: 29px 42px;
+  }
+</style>
+</head>
+<body>
+
+<!-- FEED 1080x1350 -->
+<div class="slide feed">
+  <div class="wall"></div>
+  <div class="night"></div>
+  <div class="floor"></div>
+
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo" alt="Sr. Colchão Sleep Store">
+    <span class="tag-campanha">Noites de Dois</span>
+  </div>
+
+  <div class="produto">
+    <div class="sombra"></div>
+    <img src="fotos/dakota-cutout.png" alt="Cama Box Dakota Queen">
+    <div class="produto-badge">Dakota Queen</div>
+  </div>
+
+  <div class="conteudo">
+    <div class="eyebrow">09 de junho · Dia dos Namorados</div>
+    <h1 class="titulo">Quarto novo<br>começa com a<br><em>cama certa.</em></h1>
+    <div class="divider"></div>
+
+    <div class="produto-row">
+      <div>
+        <div class="nome">Cama Box Queen</div>
+        <div class="desc">Altura certa · Entrega + Montagem grátis</div>
+      </div>
+      <div class="selo">
+        <span class="num">12x</span>
+        <span class="txt">sem<br>juros</span>
+      </div>
+    </div>
+
+    <div class="cta-bar">
+      <div class="cta-btn">Vem na loja</div>
+      <div class="cta-info">
+        <strong>Ou chama no WhatsApp</strong>
+        Rua 20, 1050 · Rua 22, 1274 — Barretos
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY 1080x1920 -->
+<div class="slide story">
+  <div class="wall"></div>
+  <div class="night"></div>
+  <div class="floor"></div>
+
+  <div class="topo">
+    <img src="../../../identidade/logo/logo-completa-trim.png" class="logo" alt="Sr. Colchão Sleep Store">
+    <span class="tag-campanha">Noites de Dois</span>
+  </div>
+
+  <div class="produto">
+    <div class="sombra"></div>
+    <img src="fotos/dakota-cutout.png" alt="Cama Box Dakota Queen">
+    <div class="produto-badge">Dakota Queen</div>
+  </div>
+
+  <div class="conteudo">
+    <div class="eyebrow">09 de junho · Dia dos Namorados</div>
+    <h1 class="titulo">Quarto novo<br>começa com a<br><em>cama certa.</em></h1>
+    <div class="divider"></div>
+
+    <div class="produto-row">
+      <div class="selo">
+        <span class="num">12x</span>
+        <span class="txt">sem<br>juros</span>
+      </div>
+      <div>
+        <div class="nome">Cama Box Queen</div>
+        <div class="desc">Entrega + montagem grátis</div>
+      </div>
+    </div>
+
+    <div class="cta-bar">
+      <div class="cta-info">
+        <strong>Dakota Queen em destaque</strong>
+        Escolha na loja ou chama no WhatsApp.
+      </div>
+      <div class="cta-btn">Chama no WhatsApp</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
