@@ -1,0 +1,36 @@
+name: Instagram Stories — Noite a Dois (Dia dos Namorados 2026)
+
+on:
+  schedule:
+    - cron: '30 12 1 6 *'    # 01/06 às 09h30 BRT (12h30 UTC)
+    - cron: '30 13 3 6 *'    # 03/06 às 10h30 BRT (13h30 UTC)
+    - cron: '30 13 5 6 *'    # 05/06 às 10h30 BRT (13h30 UTC)
+    - cron: '30 13 7 6 *'    # 07/06 às 10h30 BRT (13h30 UTC)
+    - cron: '30 12 9 6 *'    # 09/06 às 09h30 BRT (12h30 UTC)
+    - cron: '30 12 11 6 *'   # 11/06 às 09h30 BRT (12h30 UTC)
+    - cron: '30 12 12 6 *'   # 12/06 às 09h30 BRT (12h30 UTC)
+    - cron: '30 12 13 6 *'   # 13/06 às 09h30 BRT (12h30 UTC)
+  workflow_dispatch:
+    inputs:
+      date_override:
+        description: 'Forçar data (DD/MM, ex: 01/06) — deixe vazio para usar hoje'
+        required: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publicar Story no Instagram
+        env:
+          INSTAGRAM_PAGE_TOKEN: ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+        run: |
+          DATE_ARG="${{ github.event.inputs.date_override }}"
+          if [ -n "$DATE_ARG" ]; then
+            python3 .github/scripts/post_instagram_story.py "$DATE_ARG"
+          else
+            python3 .github/scripts/post_instagram_story.py
+          fi
