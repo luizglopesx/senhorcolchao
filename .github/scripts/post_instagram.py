@@ -154,34 +154,25 @@ def api_post(path: str, data: dict) -> dict:
         sys.exit(1)
 
 
-def _create_and_publish(data: dict, label: str) -> str:
-    container = api_post(f"{ACCOUNT_ID}/media", data)
+def publish(image_url: str, caption: str) -> str:
+    # Step 1 — criar container
+    container = api_post(f"{ACCOUNT_ID}/media", {
+        "image_url": image_url,
+        "caption": caption,
+        "access_token": ACCESS_TOKEN,
+    })
     creation_id = container.get("id")
     if not creation_id:
-        print(f"Erro ao criar container ({label}): {container}")
+        print(f"Erro ao criar container: {container}")
         sys.exit(1)
-    print(f"Container {label} criado: {creation_id}")
+    print(f"Container criado: {creation_id}")
+
+    # Step 2 — publicar
     result = api_post(f"{ACCOUNT_ID}/media_publish", {
         "creation_id": creation_id,
         "access_token": ACCESS_TOKEN,
     })
     return result.get("id", "")
-
-
-def publish_feed(image_url: str, caption: str) -> str:
-    return _create_and_publish({
-        "image_url": image_url,
-        "caption": caption,
-        "access_token": ACCESS_TOKEN,
-    }, "feed")
-
-
-def publish_story(image_url: str) -> str:
-    return _create_and_publish({
-        "image_url": image_url,
-        "media_type": "STORIES",
-        "access_token": ACCESS_TOKEN,
-    }, "story")
 
 
 def main():
@@ -198,14 +189,8 @@ def main():
         sys.exit(0)
 
     print(f"Publicando post de {today}...")
-
-    feed_id = publish_feed(post["image"], post["caption"])
-    print(f"✅ Feed publicado! ID: {feed_id}")
-
-    # Story: usa imagem específica se disponível, senão reutiliza a do feed
-    story_image = post.get("story_image", post["image"])
-    story_id = publish_story(story_image)
-    print(f"✅ Story publicado! ID: {story_id}")
+    post_id = publish(post["image"], post["caption"])
+    print(f"✅ Publicado com sucesso! ID: {post_id}")
 
 
 if __name__ == "__main__":
