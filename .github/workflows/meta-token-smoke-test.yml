@@ -1,0 +1,28 @@
+name: Meta Token Smoke Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Instagram Graph token
+        env:
+          INSTAGRAM_PAGE_TOKEN: ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+
+          response="$(curl -fsS "https://graph.facebook.com/v25.0/${INSTAGRAM_ACCOUNT_ID}?fields=id,username&access_token=${INSTAGRAM_PAGE_TOKEN}")"
+          RESPONSE="$response" python3 - <<'PY'
+          import json
+          import os
+          import sys
+
+          payload = json.loads(os.environ["RESPONSE"])
+          if not payload.get("id"):
+              raise SystemExit("Graph API response did not include an id")
+
+          print(f"Token OK for Instagram account {payload.get('username', '<no username>')} ({payload['id']})")
+          PY
