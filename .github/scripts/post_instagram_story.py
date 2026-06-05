@@ -4,6 +4,7 @@
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -26,6 +27,18 @@ STORIES = {
 }
 
 
+def api_get(path: str, params: dict) -> dict:
+    qs = urllib.parse.urlencode(params)
+    url = f"{BASE_URL}/{path}?{qs}"
+    try:
+        with urllib.request.urlopen(url, timeout=30) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"HTTP {e.code}: {body[:500]}")
+        sys.exit(1)
+
+
 def api_post(path: str, data: dict) -> dict:
     url = f"{BASE_URL}/{path}"
     payload = urllib.parse.urlencode(data).encode("utf-8")
@@ -40,6 +53,23 @@ def api_post(path: str, data: dict) -> dict:
         sys.exit(1)
 
 
+def wait_until_ready(creation_id: str, max_attempts: int = 10) -> bool:
+    for attempt in range(1, max_attempts + 1):
+        status = api_get(creation_id, {
+            "fields": "status_code",
+            "access_token": ACCESS_TOKEN,
+        })
+        code = status.get("status_code", "")
+        print(f"  Status ({attempt}/{max_attempts}): {code}")
+        if code == "FINISHED":
+            return True
+        if code == "ERROR":
+            print(f"Erro no processamento da mídia: {status}")
+            return False
+        time.sleep(5)
+    return False
+
+
 def publish_story(image_url: str) -> str:
     container = api_post(f"{ACCOUNT_ID}/media", {
         "image_url": image_url,
@@ -51,6 +81,11 @@ def publish_story(image_url: str) -> str:
         print(f"Erro ao criar container: {container}")
         sys.exit(1)
     print(f"Container criado: {creation_id}")
+
+    print("Aguardando processamento da imagem...")
+    if not wait_until_ready(creation_id):
+        print("Timeout: imagem não ficou pronta a tempo.")
+        sys.exit(1)
 
     result = api_post(f"{ACCOUNT_ID}/media_publish", {
         "creation_id": creation_id,

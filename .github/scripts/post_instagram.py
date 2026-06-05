@@ -4,6 +4,7 @@
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -140,6 +141,18 @@ POSTS = {
 }
 
 
+def api_get(path: str, params: dict) -> dict:
+    qs = urllib.parse.urlencode(params)
+    url = f"{BASE_URL}/{path}?{qs}"
+    try:
+        with urllib.request.urlopen(url, timeout=30) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"HTTP {e.code}: {body[:500]}")
+        sys.exit(1)
+
+
 def api_post(path: str, data: dict) -> dict:
     url = f"{BASE_URL}/{path}"
     payload = urllib.parse.urlencode(data).encode("utf-8")
@@ -152,6 +165,24 @@ def api_post(path: str, data: dict) -> dict:
         body = e.read().decode("utf-8", errors="replace")
         print(f"HTTP {e.code}: {body[:500]}")
         sys.exit(1)
+
+
+def wait_until_ready(creation_id: str, max_attempts: int = 10) -> bool:
+    """Aguarda o Instagram processar a imagem antes de publicar."""
+    for attempt in range(1, max_attempts + 1):
+        status = api_get(creation_id, {
+            "fields": "status_code",
+            "access_token": ACCESS_TOKEN,
+        })
+        code = status.get("status_code", "")
+        print(f"  Status ({attempt}/{max_attempts}): {code}")
+        if code == "FINISHED":
+            return True
+        if code == "ERROR":
+            print(f"Erro no processamento da mídia: {status}")
+            return False
+        time.sleep(5)
+    return False
 
 
 def publish(image_url: str, caption: str) -> str:
@@ -167,7 +198,13 @@ def publish(image_url: str, caption: str) -> str:
         sys.exit(1)
     print(f"Container criado: {creation_id}")
 
-    # Step 2 — publicar
+    # Step 2 — aguardar processamento
+    print("Aguardando processamento da imagem...")
+    if not wait_until_ready(creation_id):
+        print("Timeout: imagem não ficou pronta a tempo.")
+        sys.exit(1)
+
+    # Step 3 — publicar
     result = api_post(f"{ACCOUNT_ID}/media_publish", {
         "creation_id": creation_id,
         "access_token": ACCESS_TOKEN,
