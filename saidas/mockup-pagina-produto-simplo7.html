@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup de pagina de produto - Senhor Colchao</title>
+<style>
+  body {
+    margin: 0;
+    background: #f4f7fb;
+    color: #263636;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .page-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 16px 56px;
+  }
+
+  .mockup-note {
+    margin: 0 0 18px;
+    color: #5c6b72;
+    font-size: 14px;
+  }
+
+  .s7-product-desc {
+    --s7-blue: #001da4;
+    --s7-yellow: #f7cf00;
+    --s7-sky: #9eebff;
+    --s7-ink: #263636;
+    --s7-muted: #66767a;
+    --s7-line: #dfe7ea;
+    --s7-soft: #f6fbfc;
+    color: var(--s7-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+  }
+
+  .s7-product-desc * {
+    box-sizing: border-box;
+  }
+
+  .s7-product-desc img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .s7-product-desc .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+    overflow: hidden;
+    border: 1px solid var(--s7-line);
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .s7-product-desc .hero-copy {
+    padding: 38px;
+    background: var(--s7-blue);
+    color: #ffffff;
+  }
+
+  .s7-product-desc .eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--s7-yellow);
+    color: var(--s7-blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc h2,
+  .s7-product-desc h3,
+  .s7-product-desc p {
+    margin-top: 0;
+  }
+
+  .s7-product-desc .hero h2 {
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: clamp(28px, 4vw, 48px);
+    line-height: 1.05;
+  }
+
+  .s7-product-desc .hero p {
+    max-width: 620px;
+    margin-bottom: 24px;
+    color: #e8fbff;
+    font-size: 17px;
+  }
+
+  .s7-product-desc .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .s7-product-desc .fact {
+    min-height: 78px;
+    padding: 14px;
+    border: 1px solid rgba(158, 235, 255, .32);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+  }
+
+  .s7-product-desc .fact strong {
+    display: block;
+    color: var(--s7-yellow);
+    font-size: 18px;
+    line-height: 1.15;
+  }
+
+  .s7-product-desc .fact span {
+    display: block;
+    margin-top: 4px;
+    color: #ffffff;
+    font-size: 13px;
+  }
+
+  .s7-product-desc .hero-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: 28px;
+    background: linear-gradient(145deg, #ffffff 0%, #edfaff 100%);
+  }
+
+  .s7-product-desc .hero-media img {
+    max-height: 360px;
+    object-fit: contain;
+  }
+
+  .s7-product-desc .section {
+    margin-top: 18px;
+    padding: 30px;
+    border: 1px solid var(--s7-line);
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .s7-product-desc .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .s7-product-desc .section h3 {
+    margin-bottom: 6px;
+    color: var(--s7-blue);
+    font-size: 26px;
+    line-height: 1.15;
+  }
+
+  .s7-product-desc .section-head p {
+    max-width: 680px;
+    margin-bottom: 0;
+    color: var(--s7-muted);
+  }
+
+  .s7-product-desc .pill {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--s7-yellow);
+    color: var(--s7-blue);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .s7-product-desc .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .s7-product-desc .benefit-card {
+    min-height: 178px;
+    padding: 18px;
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    background: var(--s7-soft);
+  }
+
+  .s7-product-desc .benefit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    background: var(--s7-blue);
+    color: var(--s7-yellow);
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .s7-product-desc .benefit-card h4 {
+    margin: 0 0 8px;
+    color: var(--s7-blue);
+    font-size: 16px;
+  }
+
+  .s7-product-desc .benefit-card p {
+    margin-bottom: 0;
+    color: var(--s7-muted);
+    font-size: 14px;
+  }
+
+  .s7-product-desc .split {
+    display: grid;
+    grid-template-columns: minmax(260px, .85fr) minmax(0, 1.15fr);
+    gap: 24px;
+    align-items: center;
+  }
+
+  .s7-product-desc .image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 22px;
+    border-radius: 8px;
+    background: #f8fbfd;
+  }
+
+  .s7-product-desc .text-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .s7-product-desc .text-list li {
+    position: relative;
+    padding-left: 26px;
+    color: #405054;
+  }
+
+  .s7-product-desc .text-list li::before {
+    content: "";
+    position: absolute;
+    top: .62em;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--s7-yellow);
+    box-shadow: 0 0 0 4px rgba(247, 207, 0, .2);
+  }
+
+  .s7-product-desc .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .s7-product-desc .spec {
+    min-height: 82px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--s7-line);
+    border-bottom: 1px solid var(--s7-line);
+    background: #ffffff;
+  }
+
+  .s7-product-desc .spec:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .s7-product-desc .spec:nth-last-child(-n+3) {
+    border-bottom: 0;
+  }
+
+  .s7-product-desc .spec span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--s7-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc .spec strong {
+    color: var(--s7-ink);
+    font-size: 16px;
+  }
+
+  .s7-product-desc .measure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .s7-product-desc .measure {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    background: var(--s7-soft);
+  }
+
+  .s7-product-desc .measure-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 96px;
+    padding: 8px;
+    border-radius: 6px;
+    background: #ffffff;
+  }
+
+  .s7-product-desc .measure h4 {
+    margin: 0 0 8px;
+    color: var(--s7-blue);
+    font-size: 17px;
+  }
+
+  .s7-product-desc .measure dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+  }
+
+  .s7-product-desc .measure dt {
+    color: var(--s7-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc .measure dd {
+    margin: 2px 0 0;
+    color: var(--s7-ink);
+    font-weight: 800;
+  }
+
+  .s7-product-desc .notice {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid rgba(0, 29, 164, .18);
+    border-radius: 10px;
+    background: #effbff;
+  }
+
+  .s7-product-desc .notice-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--s7-blue);
+    color: var(--s7-yellow);
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  .s7-product-desc .notice strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--s7-blue);
+    font-size: 18px;
+  }
+
+  .s7-product-desc .notice p {
+    margin-bottom: 0;
+    color: #405054;
+  }
+
+  @media (max-width: 900px) {
+    .s7-product-desc .hero,
+    .s7-product-desc .split,
+    .s7-product-desc .measure-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .s7-product-desc .benefit-grid,
+    .s7-product-desc .spec-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .s7-product-desc .spec,
+    .s7-product-desc .spec:nth-child(3n),
+    .s7-product-desc .spec:nth-last-child(-n+3) {
+      border-right: 1px solid var(--s7-line);
+      border-bottom: 1px solid var(--s7-line);
+    }
+
+    .s7-product-desc .spec:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .s7-product-desc .spec:nth-last-child(-n+2) {
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .page-shell {
+      padding: 16px 10px 36px;
+    }
+
+    .s7-product-desc .hero-copy,
+    .s7-product-desc .section {
+      padding: 22px 16px;
+    }
+
+    .s7-product-desc .hero-media {
+      min-height: 280px;
+      padding: 18px;
+    }
+
+    .s7-product-desc .quick-facts,
+    .s7-product-desc .benefit-grid,
+    .s7-product-desc .spec-grid,
+    .s7-product-desc .measure {
+      grid-template-columns: 1fr;
+    }
+
+    .s7-product-desc .section-head {
+      display: block;
+    }
+
+    .s7-product-desc .pill {
+      display: inline-block;
+      margin-top: 12px;
+    }
+
+    .s7-product-desc .spec,
+    .s7-product-desc .spec:nth-child(2n),
+    .s7-product-desc .spec:nth-last-child(-n+2) {
+      border-right: 0;
+      border-bottom: 1px solid var(--s7-line);
+    }
+
+    .s7-product-desc .spec:last-child {
+      border-bottom: 0;
+    }
+
+    .s7-product-desc .measure dl {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+<main class="page-shell">
+  <p class="mockup-note">Mockup visual do bloco que pode substituir a descricao completa do produto no Simplo 7.</p>
+
+  <div class="s7-product-desc">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Cama box + colchao</span>
+        <h2>Cama Box Casal Molas Maxspring Livorno</h2>
+        <p>Conjunto casal com conforto firme, molejo continuo Maxspring e base reforcada em madeira de eucalipto. Uma composicao pratica para renovar o quarto com apoio, durabilidade e visual sofisticado.</p>
+
+        <div class="quick-facts">
+          <div class="fact">
+            <strong>138 x 188 cm</strong>
+            <span>Tamanho casal</span>
+          </div>
+          <div class="fact">
+            <strong>Conforto firme</strong>
+            <span>Boa sustentacao ao corpo</span>
+          </div>
+          <div class="fact">
+            <strong>130 kg</strong>
+            <span>Suporte por pessoa</span>
+          </div>
+          <div class="fact">
+            <strong>67 cm</strong>
+            <span>Altura final do conjunto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img src="https://19686.cdn.simplo7.net/static/19686/sku/cama-box-molas-casal-cama-box-casal-mola-maxspring-livorno-138x188x67-p-1711559987281.png" alt="Cama Box Casal Molas Maxspring Livorno">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Por que este conjunto funciona bem</h3>
+          <p>Em vez de deixar a informacao espalhada, o cliente entende rapidamente os pontos que mais influenciam a decisao de compra.</p>
+        </div>
+        <span class="pill">Padrao Senhor Colchao</span>
+      </div>
+
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <span class="benefit-icon">1</span>
+          <h4>Molas Maxspring</h4>
+          <p>Sistema de molejo continuo que fica progressivamente mais firme conforme a compressao.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">2</span>
+          <h4>EcoSpuma Herval</h4>
+          <p>Espuma de alta densidade, com sustentacao uniforme e maior resistencia a deformacoes.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">3</span>
+          <h4>Pillow top one side</h4>
+          <p>Camada superior pensada para toque macio e conforto continuo no uso diario.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">4</span>
+          <h4>Base reforcada</h4>
+          <p>Estrutura em madeira de eucalipto, revestimento suede e pes de madeira.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="split">
+        <div class="image-panel">
+          <img src="https://19686.cdn.simplo7.net/static/19686/sku/cama-box-molas-casal-cama-box-casal-mola-maxspring-livorno-138x188x67-p-1711559997148.png" alt="Colchao Casal Molas Maxspring Livorno">
+        </div>
+        <div>
+          <h3>Colchao Casal Molas Maxspring Livorno</h3>
+          <ul class="text-list">
+            <li>Molejo continuo Maxspring, com mais de 200 molas por metro quadrado.</li>
+            <li>Revestimento em tecido malha lasse, com toque macio e acabamento bordado.</li>
+            <li>Laminas de espuma de alta performance D20 e estofamento AG65.</li>
+            <li>Tratamento que ajuda a eliminar bacterias, fungos e acaros.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="split">
+        <div class="image-panel">
+          <img src="https://19686.cdn.simplo7.net/static/19686/sku/cama-box-molas-casal-cama-box-casal-mola-maxspring-livorno-138x188x67-p-1711560002720.png" alt="Base Cama Box Casal Suede Cafe">
+        </div>
+        <div>
+          <h3>Base Cama Box Casal Suede Cafe</h3>
+          <ul class="text-list">
+            <li>Base box em madeira de reflorestamento com estrutura reforcada.</li>
+            <li>Revestimento lateral em suede cafe e tampo antiderrapante.</li>
+            <li>07 pes de madeira, sendo 05 fixos e 02 com rodizio para facilitar a movimentacao.</li>
+            <li>Tratamento anticupim e antimofo para mais durabilidade.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Ficha tecnica</h3>
+          <p>Dados organizados para leitura rapida, reduzindo duvidas antes da compra.</p>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec"><span>Tipo</span><strong>Colchao de mola casal</strong></div>
+        <div class="spec"><span>Molas</span><strong>Maxspring</strong></div>
+        <div class="spec"><span>Conforto</span><strong>Firme</strong></div>
+        <div class="spec"><span>Densidade</span><strong>Estofamento AG65</strong></div>
+        <div class="spec"><span>Suporte</span><strong>130 kg por pessoa</strong></div>
+        <div class="spec"><span>Cor</span><strong>Bege e marrom</strong></div>
+        <div class="spec"><span>Altura dos pes</span><strong>12 cm</strong></div>
+        <div class="spec"><span>Garantia</span><strong>12 meses</strong></div>
+        <div class="spec"><span>Conteudo</span><strong>01 colchao + 01 base</strong></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Medidas do conjunto</h3>
+          <p>Formato visual para o cliente conferir se o produto passa em portas, escadas, corredores e elevadores.</p>
+        </div>
+      </div>
+
+      <div class="measure-grid">
+        <article class="measure">
+          <div class="measure-img">
+            <img src="https://19686.cdn.simplo7.net/static/19686/sku/cama-box-molas-casal-cama-box-casal-mola-maxspring-livorno-138x188x67-p-1711559997148.png" alt="Medidas do colchao">
+          </div>
+          <div>
+            <h4>Colchao</h4>
+            <dl>
+              <div><dt>Altura</dt><dd>27 cm</dd></div>
+              <div><dt>Largura</dt><dd>138 cm</dd></div>
+              <div><dt>Comprimento</dt><dd>188 cm</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="measure">
+          <div class="measure-img">
+            <img src="https://19686.cdn.simplo7.net/static/19686/sku/cama-box-molas-casal-cama-box-casal-mola-maxspring-livorno-138x188x67-p-1711560002720.png" alt="Medidas da base">
+          </div>
+          <div>
+            <h4>Base box</h4>
+            <dl>
+              <div><dt>Altura</dt><dd>40 cm</dd></div>
+              <div><dt>Largura</dt><dd>138 cm</dd></div>
+              <div><dt>Comprimento</dt><dd>188 cm</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+
+      <div class="notice">
+        <div class="notice-icon">!</div>
+        <div>
+          <strong>Antes de finalizar a compra</strong>
+          <p>Confira as dimensoes do produto e verifique se ele passa normalmente por elevadores, portas, escadas e corredores. A loja nao realiza desmontagens, montagens especiais ou icamento.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

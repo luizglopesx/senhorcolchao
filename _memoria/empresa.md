@@ -12,10 +12,13 @@
 - 2 colaboradores (entregas)
 - 1 colaborador (não especificado)
 
+**Site:** www.senhorcolchao.com.br — e-commerce rodando no Simplo 7
+
 **Principais entregas:**
 - Venda presencial e via WhatsApp
 - Entrega e montagem dos produtos
 - Campanhas de marketing e promoções sazonais
+- Postagem no Instagram automatizada via GitHub Actions
 
 ## Contexto adicional
 
