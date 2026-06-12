@@ -26,7 +26,7 @@ Operação estabilizada — caixa controlado, equipe formada. Momento de atacar 
 
 ## Frentes em andamento
 
-- **Redesign de páginas de produto no Simplo 7** — layout HTML padronizado definido e aprovado; mockup de referência em `saidas/mockup-produto-livorno-v2.html`; ajustes pendentes antes de aplicar no catálogo
+- **Redesign de páginas de produto no Simplo 7** — layout HTML padronizado definido e aprovado. Páginas organizadas por produto em `saidas/produtos/<produto>/`. Primeiro produto (**Livorno**) finalizado: mockup com fotos fotorrealistas (hero/colchão/base) em `saidas/produtos/livorno/mockup-livorno.html`, código pronto pra colar no Simplo 7 em `descricao-simplo7.html` e imagens otimizadas em `web/`. Pendente: hospedar as imagens no Simplo 7 e colar o código no catálogo
 
 ## Candidata a skill
 

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup de pagina de produto - Senhor Colchao</title>
+<style>
+  body {
+    margin: 0;
+    background: #f4f7fb;
+    color: #263636;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .page-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 16px 56px;
+  }
+
+  .mockup-note {
+    margin: 0 0 18px;
+    color: #5c6b72;
+    font-size: 14px;
+  }
+
+  .s7-product-desc {
+    --s7-blue: #001da4;
+    --s7-yellow: #f7cf00;
+    --s7-sky: #9eebff;
+    --s7-ink: #263636;
+    --s7-muted: #66767a;
+    --s7-line: #dfe7ea;
+    --s7-soft: #f6fbfc;
+    color: var(--s7-ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+  }
+
+  .s7-product-desc * {
+    box-sizing: border-box;
+  }
+
+  .s7-product-desc img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ── HERO (imersivo: foto de fundo + texto sobreposto) ── */
+  .s7-product-desc .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 480px;
+    overflow: hidden;
+    border: 1px solid var(--s7-line);
+    border-radius: 10px;
+    background: var(--s7-blue);
+  }
+
+  .s7-product-desc .hero-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    padding: 46px 40px;
+    color: #ffffff;
+  }
+
+  .s7-product-desc .eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: var(--s7-yellow);
+    color: var(--s7-blue);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc h2,
+  .s7-product-desc h3,
+  .s7-product-desc p {
+    margin-top: 0;
+  }
+
+  .s7-product-desc .hero h2 {
+    margin-bottom: 14px;
+    color: #ffffff;
+    font-size: clamp(24px, 3.5vw, 42px);
+    line-height: 1.1;
+  }
+
+  .s7-product-desc .hero p {
+    max-width: 620px;
+    margin-bottom: 24px;
+    color: #e8fbff;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .s7-product-desc .quick-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .s7-product-desc .fact {
+    min-height: 78px;
+    padding: 14px;
+    border: 1px solid rgba(158, 235, 255, .32);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .08);
+  }
+
+  .s7-product-desc .fact strong {
+    display: block;
+    color: var(--s7-yellow);
+    font-size: 18px;
+    line-height: 1.15;
+  }
+
+  .s7-product-desc .fact span {
+    display: block;
+    margin-top: 4px;
+    color: #ffffff;
+    font-size: 13px;
+  }
+
+  .s7-product-desc .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .s7-product-desc .hero-media img {
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+  }
+
+  .s7-product-desc .hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg,
+      rgba(0, 16, 74, .94) 0%,
+      rgba(0, 16, 74, .80) 34%,
+      rgba(0, 16, 74, .38) 60%,
+      rgba(0, 16, 74, 0) 88%);
+  }
+
+  /* ── SECTIONS ── */
+  .s7-product-desc .section {
+    margin-top: 18px;
+    padding: 30px;
+    border: 1px solid var(--s7-line);
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .s7-product-desc .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .s7-product-desc .section h3 {
+    margin-bottom: 6px;
+    color: var(--s7-blue);
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .s7-product-desc .section-head p {
+    max-width: 680px;
+    margin-bottom: 0;
+    color: var(--s7-muted);
+  }
+
+  .s7-product-desc .pill {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--s7-yellow);
+    color: var(--s7-blue);
+    font-size: 13px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  /* ── BENEFIT GRID ── */
+  .s7-product-desc .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .s7-product-desc .benefit-card {
+    min-height: 178px;
+    padding: 18px;
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    background: var(--s7-soft);
+  }
+
+  .s7-product-desc .benefit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    background: var(--s7-blue);
+    color: var(--s7-yellow);
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .s7-product-desc .benefit-card h4 {
+    margin: 0 0 8px;
+    color: var(--s7-blue);
+    font-size: 15px;
+  }
+
+  .s7-product-desc .benefit-card p {
+    margin-bottom: 0;
+    color: var(--s7-muted);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ── SPLIT LAYOUT ── */
+  .s7-product-desc .split {
+    display: grid;
+    grid-template-columns: minmax(260px, .85fr) minmax(0, 1.15fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .s7-product-desc .image-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 22px;
+    border-radius: 8px;
+    background: #f8fbfd;
+  }
+
+  /* painel com foto de cena: preenche tudo, sem moldura */
+  .s7-product-desc .image-panel.scene {
+    padding: 0;
+    min-height: 320px;
+    background: #0a0f1e;
+    overflow: hidden;
+  }
+
+  .s7-product-desc .image-panel.scene img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ── FAIXA DE FOTO (cena larga no topo da secao) ── */
+  .s7-product-desc .section--photo {
+    overflow: hidden;
+  }
+
+  .s7-product-desc .photo-banner {
+    margin: -30px -30px 26px;
+    height: 380px;
+    overflow: hidden;
+    background: #0a0f1e;
+  }
+
+  .s7-product-desc .photo-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .s7-product-desc .text-list--cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 28px;
+  }
+
+  .s7-product-desc .text-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .s7-product-desc .text-list li {
+    position: relative;
+    padding-left: 26px;
+    color: #405054;
+    line-height: 1.6;
+  }
+
+  .s7-product-desc .text-list li::before {
+    content: "";
+    position: absolute;
+    top: .62em;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--s7-yellow);
+    box-shadow: 0 0 0 4px rgba(247, 207, 0, .2);
+  }
+
+  /* ── SPEC GRID ── */
+  .s7-product-desc .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .s7-product-desc .spec {
+    min-height: 82px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--s7-line);
+    border-bottom: 1px solid var(--s7-line);
+    background: #ffffff;
+  }
+
+  .s7-product-desc .spec:nth-child(3n) { border-right: 0; }
+  .s7-product-desc .spec:nth-last-child(-n+3) { border-bottom: 0; }
+
+  .s7-product-desc .spec span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--s7-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc .spec strong {
+    color: var(--s7-ink);
+    font-size: 16px;
+  }
+
+  /* ── MEASURE GRID ── */
+  .s7-product-desc .measure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .s7-product-desc .measure {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid var(--s7-line);
+    border-radius: 8px;
+    background: var(--s7-soft);
+  }
+
+  .s7-product-desc .measure-img {
+    min-height: 110px;
+    padding: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0a0f1e;
+  }
+
+  .s7-product-desc .measure-img img {
+    width: 100%;
+    height: 100%;
+    min-height: 110px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .s7-product-desc .measure h4 {
+    margin: 0 0 8px;
+    color: var(--s7-blue);
+    font-size: 17px;
+  }
+
+  .s7-product-desc .measure dl {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0;
+  }
+
+  .s7-product-desc .measure dt {
+    color: var(--s7-muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .s7-product-desc .measure dd {
+    margin: 2px 0 0;
+    color: var(--s7-ink);
+    font-weight: 800;
+  }
+
+  /* ── NOTICE ── */
+  .s7-product-desc .notice {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid rgba(0, 29, 164, .18);
+    border-radius: 10px;
+    background: #effbff;
+  }
+
+  .s7-product-desc .notice-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--s7-blue);
+    color: var(--s7-yellow);
+    font-size: 24px;
+    font-weight: 800;
+  }
+
+  .s7-product-desc .notice strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--s7-blue);
+    font-size: 18px;
+  }
+
+  .s7-product-desc .notice p {
+    margin-bottom: 0;
+    color: #405054;
+  }
+
+  /* ── CTA FINAL ── */
+  .s7-product-desc .cta-block {
+    margin-top: 18px;
+    padding: 36px 30px;
+    border-radius: 10px;
+    background: var(--s7-blue);
+    text-align: center;
+  }
+
+  .s7-product-desc .cta-block p {
+    color: rgba(255,255,255,.9);
+    font-size: 17px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .s7-product-desc .cta-block a {
+    display: inline-block;
+    padding: 15px 44px;
+    border-radius: 8px;
+    background: var(--s7-yellow);
+    color: var(--s7-blue);
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: .3px;
+    box-shadow: 0 4px 20px rgba(247,207,0,.35);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .s7-product-desc .split,
+    .s7-product-desc .measure-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* hero: foto no topo, texto embaixo sobre degrade vertical */
+    .s7-product-desc .hero {
+      align-items: flex-end;
+      min-height: 540px;
+    }
+
+    .s7-product-desc .hero-media::after {
+      background: linear-gradient(180deg,
+        rgba(0, 16, 74, .12) 0%,
+        rgba(0, 16, 74, .55) 48%,
+        rgba(0, 16, 74, .96) 100%);
+    }
+
+    .s7-product-desc .hero-copy {
+      max-width: 100%;
+    }
+
+    .s7-product-desc .photo-banner {
+      height: 300px;
+    }
+
+    .s7-product-desc .text-list--cols {
+      grid-template-columns: 1fr;
+    }
+
+    .s7-product-desc .benefit-grid,
+    .s7-product-desc .spec-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .s7-product-desc .spec,
+    .s7-product-desc .spec:nth-child(3n),
+    .s7-product-desc .spec:nth-last-child(-n+3) {
+      border-right: 1px solid var(--s7-line);
+      border-bottom: 1px solid var(--s7-line);
+    }
+
+    .s7-product-desc .spec:nth-child(2n) { border-right: 0; }
+    .s7-product-desc .spec:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+
+  @media (max-width: 620px) {
+    .page-shell { padding: 16px 10px 36px; }
+
+    .s7-product-desc .hero-copy,
+    .s7-product-desc .section { padding: 22px 16px; }
+
+    .s7-product-desc .photo-banner {
+      margin: -22px -16px 20px;
+      height: 220px;
+    }
+
+    .s7-product-desc .quick-facts,
+    .s7-product-desc .benefit-grid,
+    .s7-product-desc .spec-grid,
+    .s7-product-desc .measure { grid-template-columns: 1fr; }
+
+    .s7-product-desc .section-head { display: block; }
+    .s7-product-desc .pill { display: inline-block; margin-top: 12px; }
+
+    .s7-product-desc .spec,
+    .s7-product-desc .spec:nth-child(2n),
+    .s7-product-desc .spec:nth-last-child(-n+2) {
+      border-right: 0;
+      border-bottom: 1px solid var(--s7-line);
+    }
+
+    .s7-product-desc .spec:last-child { border-bottom: 0; }
+    .s7-product-desc .measure dl { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="page-shell">
+  <p class="mockup-note">
+    Mockup visual — bloco HTML para substituir a descrição completa do produto no Simplo 7.<br>
+    Produto: <strong>Livorno</strong> · Arquivo: <strong>mockup-livorno.html</strong>
+  </p>
+
+  <div class="s7-product-desc">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Cama box + colchão · Herval</span>
+        <h2>Cama Box Casal Molas Maxspring Livorno</h2>
+        <p>
+          Conjunto casal com conforto firme, sistema de molas contínuo Maxspring e base reforçada em madeira de eucalipto.
+          Entrega grátis e montagem inclusa.
+        </p>
+
+        <div class="quick-facts">
+          <div class="fact">
+            <strong>138 x 188 cm</strong>
+            <span>Tamanho casal</span>
+          </div>
+          <div class="fact">
+            <strong>Conforto firme</strong>
+            <span>Boa sustentação ao corpo</span>
+          </div>
+          <div class="fact">
+            <strong>130 kg</strong>
+            <span>Suporte por pessoa</span>
+          </div>
+          <div class="fact">
+            <strong>67 cm</strong>
+            <span>Altura final do conjunto</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img
+          src="imagens/livorno-conjunto-quarto.png"
+          alt="Cama Box Casal Molas Maxspring Livorno em quarto de casal"
+        >
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Por que este conjunto funciona bem</h3>
+          <p>Os quatro pontos que mais influenciam a decisão de compra, organizados de forma clara.</p>
+        </div>
+      </div>
+
+      <div class="benefit-grid">
+        <article class="benefit-card">
+          <span class="benefit-icon">1</span>
+          <h4>Molas Maxspring</h4>
+          <p>Sistema de molejo contínuo que fica progressivamente mais firme conforme a compressão do corpo.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">2</span>
+          <h4>Pillow In one side</h4>
+          <p>Camada superior pensada para toque macio e conforto contínuo sem abrir mão do suporte firme.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">3</span>
+          <h4>Base em eucalipto</h4>
+          <p>Estrutura reforçada em madeira de reflorestamento — mais durável e com tratamento anticupim e antimofo.</p>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon">4</span>
+          <h4>Proteção total</h4>
+          <p>Tratamento antiácaro no colchão e anticupim + antimofo na base. Mais higiene, menos manutenção.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- COLCHAO -->
+    <section class="section section--photo">
+      <div class="photo-banner">
+        <img
+          src="imagens/livorno-colchao-cena.png"
+          alt="Colchão Casal Molas Maxspring Livorno em quarto"
+        >
+      </div>
+      <h3>Colchão Casal Molas Maxspring Livorno</h3>
+      <ul class="text-list text-list--cols">
+        <li>Sistema de molejo contínuo Maxspring em aço temperado — sem rangidos, alta durabilidade.</li>
+        <li>Revestimento em tecido malha lasse com toque macio e acabamento bordado.</li>
+        <li>Lâminas de espuma de alta performance D20 e estofamento AG65.</li>
+        <li>Tratamento antiácaro que ajuda a eliminar bactérias, fungos e ácaros.</li>
+      </ul>
+    </section>
+
+    <!-- BASE BOX -->
+    <section class="section section--photo">
+      <div class="photo-banner">
+        <img
+          src="imagens/livorno-base-cena.png"
+          alt="Base Cama Box Casal Suede Café em quarto"
+        >
+      </div>
+      <h3>Base Cama Box Casal Suede Café</h3>
+      <ul class="text-list text-list--cols">
+        <li>Estrutura em madeira de reflorestamento (eucalipto) com reforços internos.</li>
+        <li>Revestimento lateral em suede café e tampo MDF antiderrapante.</li>
+        <li>7 pés de madeira com 12 cm de altura — 2 com rodízio para movimentação fácil.</li>
+        <li>Tratamento anticupim e antimofo integrado para mais durabilidade.</li>
+      </ul>
+    </section>
+
+    <!-- FICHA TECNICA -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Ficha técnica</h3>
+          <p>Dados completos do produto para você confirmar antes de finalizar o pedido.</p>
+        </div>
+      </div>
+
+      <div class="spec-grid">
+        <div class="spec"><span>Tipo</span><strong>Colchão de mola casal</strong></div>
+        <div class="spec"><span>Molas</span><strong>Maxspring</strong></div>
+        <div class="spec"><span>Conforto</span><strong>Firme</strong></div>
+        <div class="spec"><span>Densidade</span><strong>Estofamento AG65</strong></div>
+        <div class="spec"><span>Suporte</span><strong>130 kg por pessoa</strong></div>
+        <div class="spec"><span>Cor da base</span><strong>Suede Café</strong></div>
+        <div class="spec"><span>Pés</span><strong>7 unid. · 12 cm</strong></div>
+        <div class="spec"><span>Garantia</span><strong>12 meses</strong></div>
+        <div class="spec"><span>Conteúdo</span><strong>01 colchão + 01 base</strong></div>
+      </div>
+    </section>
+
+    <!-- MEDIDAS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h3>Medidas do conjunto</h3>
+          <p>Confira se o produto passa em portas, escadas, corredores e elevadores antes de comprar.</p>
+        </div>
+      </div>
+
+      <div class="measure-grid">
+        <article class="measure">
+          <div class="measure-img">
+            <img
+              src="imagens/livorno-colchao-cena.png"
+              alt="Medidas do colchão"
+            >
+          </div>
+          <div>
+            <h4>Colchão</h4>
+            <dl>
+              <div><dt>Altura</dt><dd>27 cm</dd></div>
+              <div><dt>Largura</dt><dd>138 cm</dd></div>
+              <div><dt>Comprimento</dt><dd>188 cm</dd></div>
+            </dl>
+          </div>
+        </article>
+
+        <article class="measure">
+          <div class="measure-img">
+            <img
+              src="imagens/livorno-base-cena.png"
+              alt="Medidas da base"
+            >
+          </div>
+          <div>
+            <h4>Base box</h4>
+            <dl>
+              <div><dt>Altura</dt><dd>40 cm</dd></div>
+              <div><dt>Largura</dt><dd>138 cm</dd></div>
+              <div><dt>Comprimento</dt><dd>188 cm</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+
+      <div class="notice">
+        <div class="notice-icon">!</div>
+        <div>
+          <strong>Antes de finalizar a compra</strong>
+          <p>
+            Confira as dimensões do produto e verifique se ele passa normalmente por elevadores, portas, escadas e corredores.
+            A loja não realiza desmontagens, montagens especiais ou içamento.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <div class="cta-block">
+      <p>Ficou com dúvida sobre tamanho, prazo de entrega ou condições de pagamento?<br>
+      <strong style="color:#f7cf00;">A gente resolve pelo WhatsApp em minutos.</strong></p>
+      <a href="https://wa.me/551733233694?text=Olá!%20Vi%20a%20Cama%20Box%20Livorno%20Casal%20no%20site%20e%20quero%20mais%20informações">
+        📲 Chamar no WhatsApp
+      </a>
+    </div>
+
+  </div><!-- /s7-product-desc -->
+</main>
+</body>
+</html>

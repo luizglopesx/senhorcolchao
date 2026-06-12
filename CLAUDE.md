@@ -58,6 +58,7 @@ Evitar: "vamos juntos!", "alavancar", "sinergia", "caro cliente", excesso de emo
 - Entregáveis pontuais (emails, textos avulsos) salvar em `saidas/`
 - Dados e planilhas a analisar colocar em `dados/`
 - Logo e arquivos visuais em `identidade/`
+- Páginas de produto (Simplo 7) salvar em `saidas/produtos/<produto>/` — pasta nomeada pelo produto, com o mockup, as imagens e o código de produção dentro
 
 ## Ferramentas conectadas
 
