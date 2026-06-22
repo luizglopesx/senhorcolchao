@@ -24,6 +24,19 @@ STORIES = {
 }
 
 
+def api_get(path: str, params: dict) -> dict:
+    query = urllib.parse.urlencode(params)
+    url = f"{BASE_URL}/{path}?{query}"
+    req = urllib.request.Request(url, method="GET")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"HTTP {e.code}: {body[:500]}")
+        sys.exit(1)
+
+
 def api_post(path: str, data: dict) -> dict:
     url = f"{BASE_URL}/{path}"
     payload = urllib.parse.urlencode(data).encode("utf-8")
@@ -38,6 +51,26 @@ def api_post(path: str, data: dict) -> dict:
         sys.exit(1)
 
 
+def wait_for_container(creation_id: str, max_attempts: int = 15, interval: int = 5) -> None:
+    """Aguarda o container ficar FINISHED antes de publicar."""
+    import time
+    for attempt in range(1, max_attempts + 1):
+        result = api_get(creation_id, {
+            "fields": "status_code,status",
+            "access_token": ACCESS_TOKEN,
+        })
+        status_code = result.get("status_code", "")
+        print(f"  [{attempt}/{max_attempts}] status_code: {status_code}")
+        if status_code == "FINISHED":
+            return
+        if status_code == "ERROR":
+            print(f"Erro no processamento do container: {result}")
+            sys.exit(1)
+        time.sleep(interval)
+    print(f"Timeout: container não ficou pronto após {max_attempts * interval}s.")
+    sys.exit(1)
+
+
 def publish_story(image_url: str) -> str:
     container = api_post(f"{ACCOUNT_ID}/media", {
         "image_url": image_url,
@@ -49,6 +82,9 @@ def publish_story(image_url: str) -> str:
         print(f"Erro ao criar container: {container}")
         sys.exit(1)
     print(f"Container criado: {creation_id}")
+
+    print("Aguardando container ficar pronto...")
+    wait_for_container(creation_id)
 
     result = api_post(f"{ACCOUNT_ID}/media_publish", {
         "creation_id": creation_id,
