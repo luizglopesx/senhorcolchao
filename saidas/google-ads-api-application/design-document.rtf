@@ -1,0 +1,56 @@
+{\rtf1\ansi\ansicpg1252\deff0
+{\fonttbl{\f0\fswiss Arial;}}
+\f0\fs28\b Google Ads API \endash  Tool Design Document\b0\fs20\par
+\b Company:\b0  Senhor Colchao Sleep Store\par
+\b Manager account (MCC):\b0  118-831-0582\par
+\b Website:\b0  https://www.senhorcolchao.com.br\par
+\b Access requested:\b0  Basic Access\par
+\b Access type:\b0  First-party (own advertising accounts only)\par
+\par
+\fs26\b 1. Overview\b0\fs20\par
+Senhor Colchao is a family-owned mattress and bedding retailer located in Barretos, Sao Paulo, Brazil. The company sells mattresses, box-spring beds, storage beds and headboards through a physical store and WhatsApp. Google Ads is used to run local Search and Performance Max campaigns that generate leads (phone calls, WhatsApp messages and store visits) within the company's region.\par
+\par
+This document describes an internal tool used to manage exclusively the company's own Google Ads accounts, which are linked under manager account 118-831-0582. The tool is not offered to any third party. It is used only by the business owner and internal staff to monitor and optimize the company's own advertising.\par
+\par
+\fs26\b 2. Users and Access\b0\fs20\par
+The tool is used by internal users only (the business owner and internal marketing staff). There is no external or public access. The tool operates on a small number of advertising accounts, all owned by Senhor Colchao and managed under the single manager account 118-831-0582.\par
+\par
+\fs26\b 3. System Architecture\b0\fs20\par
+The tool is a script-based application that authenticates to the Google Ads API using OAuth2 (installed-application flow) with a refresh token tied to the owner's Google account. The developer token from manager account 118-831-0582 is used for all requests. Credentials (developer token, OAuth client ID/secret, refresh token, customer IDs) are stored locally in a private environment file and are never exposed publicly.\par
+\par
+Flow:\par
+1. The script authenticates via OAuth2 and obtains an access token from the stored refresh token.\par
+2. It calls the Google Ads API for the company's own customer accounts.\par
+3. Reporting requests pull performance metrics; management requests apply changes (budgets, status, bids).\par
+4. Results are written to local Markdown reports for the owner to review each morning.\par
+\par
+\fs26\b 4. Google Ads API services and methods used\b0\fs20\par
+\b Reporting (read):\b0  GoogleAdsService.SearchStream / Search \endash  to retrieve campaign, ad group, ad and keyword performance (impressions, clicks, cost, conversions, CTR, CPC, CPA).\par
+\b Budget management:\b0  CampaignBudgetService.MutateCampaignBudgets \endash  to adjust daily budgets of the company's own campaigns.\par
+\b Campaign / ad group management:\b0  CampaignService.MutateCampaigns and AdGroupService.MutateAdGroups \endash  to pause or enable the company's own campaigns and ad groups.\par
+\b Bid adjustments:\b0  AdGroupService / AdGroupCriterionService \endash  to update bids on the company's own campaigns.\par
+\par
+\fs26\b 5. Features and Workflows\b0\fs20\par
+\b a) Daily performance report:\b0  every morning the tool pulls the previous day's and accumulated performance for active campaigns and produces an executive summary (spend, conversions, cost per conversion, CTR, frequency) compared to previous periods.\par
+\b b) Budget management:\b0  when a campaign performs below the target cost per result, the owner approves a budget increase/decrease that the tool applies through the API.\par
+\b c) Pause / enable:\b0  underperforming campaigns or ad groups are paused; recovering ones are re-enabled.\par
+\b d) Bid adjustments:\b0  bids are tuned to keep cost per result within the target.\par
+All changes are made only after the owner's review and approval, and only on the company's own accounts.\par
+\par
+\fs26\b 6. Data handling\b0\fs20\par
+Data retrieved from the API (performance metrics for the company's own campaigns) is stored locally in private files used solely for internal reporting and optimization. No data is shared with third parties or made public.\par
+\par
+\fs26\b 7. Scale\b0\fs20\par
+The tool operates on a single manager account (118-831-0582) and the small number of advertising accounts owned by Senhor Colchao. Expected API usage is low \endash  a handful of reporting and mutate requests per day.\par
+\par
+\fs26\b 8. Authentication\b0\fs20\par
+OAuth2 with an offline refresh token tied to the business owner's Google account, which has administrative access to the manager account 118-831-0582 and its linked advertising accounts. The developer token belongs to the same manager account.\par
+\par
+\fs26\b 9. Example output (mockup)\b0\fs20\par
+The tool currently produces, for the company's Meta Ads, a daily executive report of this form, which will be replicated for Google Ads:\par
+\endash  Investment (vs previous period)\par
+\endash  Conversions and cost per conversion\par
+\endash  Day-by-day breakdown with CTR and frequency\par
+\endash  Per-campaign and per-creative performance\par
+\endash  Recommended actions (raise/lower budget, pause, refresh creative)\par
+}
