@@ -67,6 +67,13 @@ Dia 25 fechou razoável depois do snapshot parcial. Sem as peças fracas pausada
 
 **Minha leitura:** 42 conversas em 11 dias a R$10,28 é um resultado sólido — melhor que o Namorados por real investido na janela. Se o objetivo é terminar a Copa com número limpo, encerrar agora faz sentido. Se ainda quer presença até o fim da fase de grupos (~30/jun), a opção B vale o teste com +60 km.
 
+## Ação tomada (26/06)
+
+- **Raio ampliado de 40 km para 60 km** no Conjunto 01 - Prospecção (via API, confirmado).
+- Criativos ativos sem alteração: C1 - Lançamento + C3 - D33.
+- Objetivo: injetar público fresco para esticar a campanha até o fim da fase de grupos (~30/jun).
+- Acompanhar custo/conversa nos próximos 2 dias — esperado ficar levemente mais caro enquanto o algoritmo aprende no novo público. Se passar de R$13-14, revisar.
+
 ## Métricas de qualidade de engajamento
 
 | Ação | Valor |
