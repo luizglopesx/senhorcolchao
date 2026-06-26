@@ -64,7 +64,7 @@ Evitar: "vamos juntos!", "alavancar", "sinergia", "caro cliente", excesso de emo
 
 - [ ] Gmail
 - [ ] Google Calendar
-- [ ] Google Ads
+- [x] Google Ads — leitura/edição/otimização via API (v21); credenciais GOOGLE_ADS_* no `.env`
 - [x] Meta / Instagram — postagem automatizada via GitHub Actions (`.github/workflows/`)
 
 *(Marcar conforme for instalando os MCPs)*
