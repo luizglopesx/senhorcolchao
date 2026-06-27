@@ -82,6 +82,26 @@ CTR 2,3% é bom para Display. CPC R$0,91 barato. Mas 540 dias (18 meses) é per�
 
 ---
 
+## Ações complementares (27/06)
+
+### Pagamento
+- Forma de pagamento exigida corrigida pelo usuário — campanhas sem interrupção.
+
+### Conversões nível de campanha (crítico)
+- Detectado que CP01C e CP02A tinham `PURCHASE/WEBSITE` como biddable no nível de campanha, sobrescrevendo a configuração de conta.
+- Corrigido via API: `PURCHASE/WEBSITE` → não biddable | `CONTACT/WEBSITE` → biddable nas duas campanhas.
+- Smart Bidding agora otimiza oficialmente para `whatsapp_click` em ambas as campanhas.
+
+### Conversões de site — nível de conta
+- `funil_de_vendas` rebaixado de Principal para Secundária pelo usuário.
+- Setup final: único Principal de site = `whatsapp_click`. Ligações e direções (Google Hosted) mantidas como Principal.
+
+### Verificação de domínio
+- Anúncios enviam tráfego para `senhorcolchao.com.br`.
+- GA4 stream configurado com label `srcolchao.com.br` (rótulo incorreto, não afeta coleta).
+- Confirmado: GA4 tag instalada e funcionando em `senhorcolchao.com.br` — `whatsapp_click` disparou no teste.
+- Cadeia completa validada: Anúncio → senhorcolchao.com.br → clique WhatsApp → GA4 → Google Ads ✅
+
 ## Próximos passos
 
 **Aguardar 14-21 dias** para `whatsapp_click` acumular dados nas campanhas ativas.
