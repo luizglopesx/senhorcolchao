@@ -20,9 +20,13 @@ Operação estabilizada — caixa controlado, equipe formada. Momento de atacar 
 
 ## Campanhas ativas (2026)
 
-- **Dia dos Namorados 2026** — peças, posts e stories produzidos em `marketing/campanhas/dia-dos-namorados-2026/`; workflows de postagem no Instagram criados em `.github/workflows/`
-- **Bota Fora Maio 2026** — campanha em `marketing/campanhas/bota-fora-maio-2026/`
-- **Copa 2026** — workflows de postagem criados em `.github/workflows/` (feed + story)
+- *(Nenhuma campanha de prospecção ativa em julho/2026 — Copa encerrou em 30/jun)*
+
+## Campanhas encerradas (referência)
+
+- **Copa 2026** ✅ encerrada 30/jun — 63 conversas, R$9,27/conversa. Relatório: `marketing/campanhas/relatorios/2026-06-30-aqui-da-jogo-copa-encerramento.md`
+- **Dia dos Namorados 2026** ✅ encerrada 13/jun — 50 conversas, R$10,82/conversa
+- **Bota Fora Maio 2026** ✅ encerrada — campanha em `marketing/campanhas/bota-fora-maio-2026/`
 
 ## Frentes em andamento
 
@@ -34,21 +38,46 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 
 | Métrica | Meta / referência | Origem |
 |---|---|---|
-| **Custo por conversa iniciada** | **≤ R$ 11** (bom) · acima de R$ 15 revisar | Namorados 2026 = R$ 10,82 |
-| CTR | ≥ 0,95% | Namorados 0,96% vs CP04 0,88% |
-| CPC (link) | ≤ R$ 3,00 | Namorados R$ 2,86 |
-| CPM | ≤ R$ 13 | Namorados R$ 12,82 |
-| Frequência | manter 1,5–3,0 · >3 trocar criativo · >4 pausar | CP04 saturou em 3,21+ |
+| **Custo por conversa iniciada** | **≤ R$ 10** (ótimo) · ≤ R$ 11 (bom) · acima de R$ 13 revisar | Copa 2026 = R$ 9,27 (melhor) · Namorados = R$ 10,82 |
+| CTR | ≥ 0,95% | Copa 1,31% · Namorados 0,96% · CP04 0,88% |
+| CPC (link) | ≤ R$ 2,00 | Copa R$ 1,07 · Namorados R$ 2,86 |
+| CPM | ≤ R$ 15 | Copa R$ 14,04 · Namorados R$ 12,82 |
+| Frequência | manter 1,5–3,0 · >3 trocar criativo ou abrir raio · >4 pausar | CP04 saturou em 3,21+ · Copa resolveu expandindo raio |
 
 **Resultado de referência = "conversa iniciada" (messaging_conversation_started_7d).** O pixel de compra do Meta quase não dispara, então conversa no zap é o melhor proxy de lead. Pra ROAS real, cruzar conversas com vendas fechadas.
 
-**Aprendizados (comparativo CP04 maio vs Dia dos Namorados jun/2026):**
-- Campanha **sazonal com data + criativo dedicado rende mais por real** que prospecção genérica sempre-ligada. Mesma verba (~R$ 520): Namorados fez 50 conversas, CP04 fez 32.
-- Renovar criativo a cada ~2–3 semanas em campanha contínua (a CP04 saturou rodando há muito tempo).
-- Priorizar próximas datas: **Dia dos Pais (ago), Black Friday (nov), Natal.**
-- Relatório completo: `marketing/campanhas/relatorios/2026-06-15-comparativo-cp04-vs-namorados.md`.
+**Aprendizados (comparativo CP04 × Namorados × Copa 2026):**
+- Campanha **sazonal com data + criativo dedicado rende mais por real** que prospecção genérica sempre-ligada. CP04: 62 conv/R$1k · Namorados: 92 · Copa: 108.
+- Expandir raio quando frequência cruzar 2,9 — Copa resolveu assim (40km → 60km em 26/jun) e os últimos 4 dias foram os mais baratos (R$7,04/conversa).
+- Renovar criativo a cada ~2–3 semanas em campanha contínua.
+- Relatório comparativo completo: `marketing/campanhas/relatorios/2026-07-01-comparativo-tres-campanhas.md`.
 
 **Como puxar dados do Meta:** script `meta_ads_client.py` (em `.claude/skills/social-post-scheduler/scripts/`) puxa insights direto da API — comando `campaigns` lista, `insights <campaign_id>` traz métricas. Conta: senhor_colchao (888195439518063).
+
+## Google Ads (2026)
+
+Setup completo e funcional desde 26/jun/2026. Histórico: tracking morto de maio/2026 — consertado com `whatsapp_click`.
+
+- **CP01C** (Search, R$15/dia): ATIVO — MAXIMIZE_CONVERSIONS otimizando para `whatsapp_click`
+- **CP02A** (Display RMKT, R$5/dia): ATIVO — apenas grupo `Rmkt Site 365D` ativo
+- Conversão principal: `whatsapp_click` (clique no WhatsApp do site) — GA4 → Google Ads
+- Aguardar 14-21 dias para dados acumularem e fazer revisão de keywords
+- Auditoria completa: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md`
+
+## Campaign Manager — atendimento WhatsApp
+
+- 193 conversas tratadas no período Copa (15–30/jun), 313 follow-ups automáticos enviados
+- Tempo médio de 1ª resposta: 4 minutos 🟢
+- **Alerta crítico: 32 leads sumiram após receber o preço** — script de atendimento precisa incluir parcelamento + CTA claro no momento do preço
+- Disparo "Copa 2026 — Pré-jogo" no CM falhou 100% (2.103 msgs, 0 entregues) — verificar limite de disparos em massa antes de novo broadcast
+
+## Próximas campanhas sugeridas
+
+| Campanha | Janela | Prioridade |
+|---|---|---|
+| Liquidação Inverno | Jul/2026 | Alta — estoque de inverno |
+| Dia dos Pais | Ago/2026 | Alta — modelo sazonal comprovado |
+| Black Friday | Nov/2026 | Planejar com antecedência |
 
 ## Candidata a skill
 
