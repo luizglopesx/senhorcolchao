@@ -2,11 +2,11 @@
 
 ## Fase
 
-Operação estabilizada — caixa controlado, equipe formada. Momento de atacar vendas para girar estoque alto.
+Operação estabilizada — caixa controlado, equipe formada. Faturamento batendo meta em junho (R$185.823 vs meta R$180.000), mas lucro líquido comprimido pelos custos fixos altos.
 
 ## Prioridade principal
 
-**Aumentar vendas para reduzir estoque.** Estoque cheio, fluxo de caixa ok, mas vendas abaixo do esperado. Qualquer ação deve ter como critério: vai ajudar a vender mais rápido?
+**Manter faturamento acima da meta e reduzir custos fixos proporcionais.** O gargalo em junho não foi venda — foi que os custos fixos (36,2% da receita, teto 25,2%) consumiram toda a margem. Pró-labore sozinho representa 14,3% da receita. Lucro líquido foi 0,77% (meta: 10%). DRE completo: `marketing/campanhas/relatorios/2026-07-01-dre-junho-2026.md`
 
 ## O que pode esperar
 
