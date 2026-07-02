@@ -206,5 +206,69 @@ Caso queira testar variações de nome no A/B do Meta Ads:
 
 ---
 
-*Arquivo: `workspace/social/julho-2026/[C]planejamento-campanha-julho-2026.md`*  
-*Próximo passo: briefing para o designer + configurar anúncios no Meta Ads Manager*
+---
+
+## Sessão de trabalho — 02/07/2026
+
+### Decisões tomadas
+
+- **Nome aprovado:** DURMA COMO CAMPEÃO
+- **Tagline:** "Enquanto o Brasil joga, a gente cuida do seu descanso."
+- **Budget Meta Ads:** R$ 800 (R$ 400 Fase 1 + R$ 400 Fase 2)
+- **Produtos chamariz definidos:**
+  - Cama Box Casal Orthoplus — R$ 1.890 em até 12x sem juros
+  - Cama Box Queen SmartFlex Molas Ensacadas — R$ 2.390 em até 12x sem juros
+- **Fluxo de produção de artes:** Pixel gera via Higgsfield → Luiz corrige logo e anima no Canva → Pixel agenda no feed
+- **Canais:** mesmas artes para todos — feed orgânico, patrocinado, stories e WhatsApp Status/Broadcast (formatos 1:1 e 9:16)
+
+### Risco Copa gerenciado
+
+Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam prontas sem Copa. Versões Copa ficam em standby — só ativam se Brasil passar.
+
+- Se **passar**: troca artes 01 e 02 pelas versões `standby-copa/` na segunda (07/07)
+- Se **perder**: artes base vão ao ar normalmente, zero retrabalho
+
+### Kit de artes gerado (Higgsfield AI — 02/07/2026)
+
+**12 artes produzidas no total:**
+
+| Arte | Feed 1:1 | Story 9:16 | Copa standby |
+|---|---|---|---|
+| 01 — Abertura "Durma como Campeão" | ✅ | ✅ | ✅ |
+| 02 — Orthoplus Casal R$1.890 | ✅ v2 fundo claro | ✅ | ✅ |
+| 03 — SmartFlex Queen R$2.390 | ✅ | ✅ | — |
+| 04 — Férias merece cama nova (c/ preço) | ✅ | ✅ | — |
+| 05 — Inverno "Tá frio lá fora" | ✅ | ✅ | — |
+
+**Localização local:** `workspace/social/julho-2026/artes/`
+**Localização GitHub:** `marketing/campanhas/julho-2026-durma-como-campeao/artes/`
+
+**Correções aplicadas durante a sessão:**
+- Arte 02: fundo preto removido → fundo claro (branco/cinza) para o box preto aparecer
+- Arte 04: adicionado preço "A partir de R$ 1.890 | 12x sem juros" como badge
+- Todas as artes têm par feed (1:1) + story (9:16)
+
+### Pendências abertas
+
+- [ ] Luiz adiciona logo no Canva e anima as artes
+- [ ] Após aprovação → Pixel agenda feed Facebook + Instagram
+- [ ] Pixel configura patrocinados Meta Ads (R$800 — Fase 1 07/07)
+- [ ] WhatsApp Status — agendar via Campaign Manager (3x/semana: seg/qua/sex)
+- [ ] Broadcast WhatsApp — definir público (leads Copa vs base geral) e data
+- [ ] Domingo 05/07: verificar resultado do Brasil e ativar ou descartar versões Copa
+
+### Cronograma atualizado
+
+| Data | Ação | Responsável |
+|---|---|---|
+| 02/07 ✅ | Artes geradas (12 peças) | Pixel |
+| 03–04/07 | Luiz adiciona logo + anima no Canva | Luiz |
+| 05/07 (dom) | Resultado Brasil → decidir overlay Copa | Luiz + Pixel |
+| 07/07 (seg) | Lançamento — Meta Ads Fase 1 + broadcast Copa + WhatsApp Status | Pixel + Luiz |
+| 19/07 | Final da Copa — encerrar Fase 1 | — |
+| 20/07 | Lançamento Fase 2 + broadcast base geral | Pixel + Luiz |
+| 31/07 | Encerramento + relatório de resultados | Pixel |
+
+---
+
+*Última atualização: 02/07/2026 — Pixel*
