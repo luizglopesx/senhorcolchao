@@ -1,0 +1,48 @@
+name: Instagram — Durma como Campeão (Julho 2026)
+
+on:
+  schedule:
+    # Feed posts — 11h00 BRT (14h00 UTC)
+    - cron: '0 14 7,9,11,14,16 7 *'
+    # Story posts — 11h05 BRT (14h05 UTC)
+    - cron: '5 14 7,9,11,14,16 7 *'
+  workflow_dispatch:
+    inputs:
+      force_post_id:
+        description: 'Forçar publicação de um post (ex: arte01-feed)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Publicar posts pendentes
+        env:
+          INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+          INSTAGRAM_PAGE_TOKEN: ${{ secrets.INSTAGRAM_PAGE_TOKEN }}
+        run: python instagram/publish.py
+
+      - name: Commit schedule.json atualizado
+        run: |
+          git config user.name "pixel-bot"
+          git config user.email "pixel@senhorcolchao.com"
+          git diff --quiet instagram/schedule.json || (
+            git add instagram/schedule.json &&
+            git commit -m "instagram: atualiza status do schedule [skip ci]" &&
+            git push
+          )
