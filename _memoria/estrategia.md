@@ -20,7 +20,7 @@ Operação estabilizada — caixa controlado, equipe formada. Faturamento batend
 
 ## Campanhas ativas (2026)
 
-- *(Nenhuma campanha de prospecção ativa em julho/2026 — Copa encerrou em 30/jun)*
+- **Durma como Campeão** (planejada, ainda não lançada) — 2 fases: Copa Mata-Mata (07–19/07, tema "a gente tá na mata-mata dos preços também") e Férias (20–31/07, com pivô automático se o Brasil cair antes). Meta de receita julho: R$200k (ideal R$215k). Produto prioritário: conjunto Colchão+Box+Cabeceira. Planejamento e artes em `marketing/campanhas/julho-2026-durma-como-campeao/`
 
 ## Campanhas encerradas (referência)
 
@@ -56,13 +56,13 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 
 ## Google Ads (2026)
 
-Setup completo e funcional desde 26/jun/2026. Histórico: tracking morto de maio/2026 — consertado com `whatsapp_click`.
-
-- **CP01C** (Search, R$15/dia): ATIVO — MAXIMIZE_CONVERSIONS otimizando para `whatsapp_click`
-- **CP02A** (Display RMKT, R$5/dia): ATIVO — apenas grupo `Rmkt Site 365D` ativo
-- Conversão principal: `whatsapp_click` (clique no WhatsApp do site) — GA4 → Google Ads
-- Aguardar 14-21 dias para dados acumularem e fazer revisão de keywords
-- Auditoria completa: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md`
+- **CP01C** (Search, R$25/dia desde 03/07 — antes R$15/dia estourava quase todo dia): ATIVO — MAXIMIZE_CONVERSIONS otimizando para categoria **Contato** (whatsapp_click + clique-pra-ligar + ligação). Compra/Carrinho/Checkout existem como conversão mas são **não-biddable** nessa campanha de propósito — protege o lance de ser diluído por carrinho (mais fácil de disparar que WhatsApp real)
+- **CP02A** (Display RMKT, R$5/dia): **PAUSADA manualmente em 03/07** (antes ativa com grupos Rmkt Site 540D e Rmkt Site 365D ambos habilitados)
+- Conversão principal pra CPL: `whatsapp_click` — coluna "Conversões" só conta Contato; "Todas as conv." inclui carrinho/compra e não deve ser usada pro cálculo de CPL
+- **Achado crítico 03/07: causa raiz de ~90 dias de zero conversão foi encontrada e corrigida.** O site tinha um redirect www→sem-www que descartava a query string inteira (gclid, utm, tudo) antes da página carregar. Corrigido: 9 anúncios + 25 sitelinks/promoção migrados pra URL sem www. Metas de conversão Compra/Carrinho/Checkout também estavam com "Configuração incorreta" — corrigido. **Pendente:** anúncios/assets entraram em revisão de política após a mudança de URL (normal, algumas horas); reconfirmar com um novo clique real que o gclid chega intacto antes de contar dado como limpo
+- **Relógio de "aguardar dados acumularem" reinicia em 03/07** (não em 26/06) — antes da correção de hoje, nenhum clique pago carregava atribuição corretamente, então dado anterior a essa data não serve pra calcular CPL
+- Decisão pendente: calcular CPL real do Google Ads (custo ÷ Conversões) depois de 2-4 semanas de dado limpo, e comparar com CPL do Meta Ads pra decidir alocação de verba entre os dois canais
+- Auditorias: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md` → `2026-07-02-google-ads-auditoria.md` → **`2026-07-03-google-ads-auditoria.md`** (mais recente, com a causa raiz do gclid)
 
 ## Campaign Manager — atendimento WhatsApp
 
