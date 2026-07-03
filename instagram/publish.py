@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Instagram publisher — GitHub Actions cron.
+"""Instagram publisher — GitHub Actions cron (Julho 2026 — Durma como Campeão).
 
-Flow por post:
+Fluxo por post de vídeo:
   1. POST /{ig_account_id}/media  → container_id
   2. GET  /{container_id}?fields=status_code  (poll até FINISHED, max 5 min)
   3. POST /{ig_account_id}/media_publish  → post_id
 
 Variáveis de ambiente (GitHub Secrets):
-  IG_ACCOUNT_ID    — Instagram Business Account ID
-  IG_ACCESS_TOKEN  — Page token com instagram_content_publish
+  INSTAGRAM_PAGE_TOKEN  — Page token com instagram_content_publish
+  INSTAGRAM_ACCOUNT_ID  — Instagram Business Account ID
 """
 
 import json
@@ -22,16 +22,16 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 GRAPH_URL = "https://graph.facebook.com/v25.0"
-REPO = "luizglopesx/senhorcolchao"
-BRANCH = "main"
+REPO      = "luizglopesx/senhorcolchao"
+BRANCH    = "main"
 ARTES_PATH = "marketing/campanhas/julho-2026-durma-como-campeao/artes"
-RAW_BASE = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{ARTES_PATH}"
+RAW_BASE  = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{ARTES_PATH}"
 
-IG_ACCOUNT_ID = os.environ.get("IG_ACCOUNT_ID", "")
-IG_ACCESS_TOKEN = os.environ.get("IG_ACCESS_TOKEN", "")
+IG_ACCOUNT_ID  = os.environ.get("INSTAGRAM_ACCOUNT_ID", "")
+IG_ACCESS_TOKEN = os.environ.get("INSTAGRAM_PAGE_TOKEN", "")
 
 if not IG_ACCOUNT_ID or not IG_ACCESS_TOKEN:
-    print("ERRO: IG_ACCOUNT_ID e IG_ACCESS_TOKEN são obrigatórios.")
+    print("ERRO: INSTAGRAM_ACCOUNT_ID e INSTAGRAM_PAGE_TOKEN são obrigatórios.")
     sys.exit(1)
 
 
@@ -63,7 +63,7 @@ def api_get(path: str, params: dict) -> dict:
 
 
 def create_container(post: dict) -> str | None:
-    """Cria container de mídia no Instagram. Retorna container_id."""
+    """Cria container de mídia. Retorna container_id ou None em caso de erro."""
     filename = post["video_filename"]
     video_url = f"{RAW_BASE}/{urllib.parse.quote(filename)}"
 
@@ -79,7 +79,8 @@ def create_container(post: dict) -> str | None:
     elif post["media_type"] == "STORIES":
         params["media_type"] = "STORIES"
 
-    print(f"  → Criando container | tipo={post['media_type']} | url={video_url}")
+    print(f"  → Criando container | tipo={post['media_type']}")
+    print(f"    url={video_url}")
     result = api_post(f"{IG_ACCOUNT_ID}/media", params)
 
     if "id" in result:
@@ -91,8 +92,8 @@ def create_container(post: dict) -> str | None:
 
 
 def poll_container(container_id: str, max_attempts: int = 30, interval: int = 10) -> bool:
-    """Poll até status_code=FINISHED. Timeout padrão 5 min (30 × 10s)."""
-    print(f"  → Aguardando processamento ({max_attempts * interval}s max) ...")
+    """Poll até status_code=FINISHED. Default: 30 × 10s = 5 min máximo."""
+    print(f"  → Aguardando processamento (até {max_attempts * interval}s) ...")
     for attempt in range(1, max_attempts + 1):
         result = api_get(container_id, {
             "fields": "status_code,status",
@@ -119,7 +120,7 @@ def poll_container(container_id: str, max_attempts: int = 30, interval: int = 10
 
 
 def publish_container(container_id: str) -> str | None:
-    """Publica container FINISHED. Retorna post_id."""
+    """Publica container FINISHED. Retorna post_id ou None."""
     result = api_post(f"{IG_ACCOUNT_ID}/media_publish", {
         "creation_id": container_id,
         "access_token": IG_ACCESS_TOKEN,
@@ -140,20 +141,23 @@ def main() -> int:
     errors = 0
     changed = False
 
-    print(f"\n=== Instagram Publisher — {now.strftime('%Y-%m-%d %H:%M UTC')} ===\n")
+    print(f"\n=== Instagram Publisher — {now.strftime('%Y-%m-%d %H:%M UTC')} ===")
+    print(f"    Conta: {IG_ACCOUNT_ID}\n")
 
     for post in data["posts"]:
         if post["status"] != "pending":
+            print(f"Ignorando [{post['id']}] — status={post['status']}")
             continue
 
         scheduled_at = datetime.fromisoformat(post["scheduled_at"])
         if now < scheduled_at:
-            delta = int((scheduled_at - now).total_seconds() / 60)
-            print(f"Aguardando [{post['id']}] — faltam ~{delta} min")
+            delta_min = int((scheduled_at - now).total_seconds() / 60)
+            print(f"Aguardando [{post['id']}] — faltam ~{delta_min} min")
             continue
 
         print(f"\n▶ Publicando: {post['label']}")
 
+        # Step 1 — criar container
         container_id = create_container(post)
         if not container_id:
             post["status"] = "error"
@@ -163,6 +167,7 @@ def main() -> int:
             changed = True
             continue
 
+        # Step 2 — aguardar processamento
         if not poll_container(container_id):
             post["status"] = "error"
             post["error"] = f"Container {container_id} não ficou FINISHED"
@@ -171,6 +176,7 @@ def main() -> int:
             changed = True
             continue
 
+        # Step 3 — publicar
         post_id = publish_container(container_id)
         if post_id:
             post["status"] = "published"
@@ -192,7 +198,7 @@ def main() -> int:
             json.dumps(data, indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
-        print(f"\nschedule.json atualizado.")
+        print("\nschedule.json atualizado.")
 
     print(f"\n=== Resultado: {published} publicado(s), {errors} erro(s) ===")
     return 1 if errors > 0 else 0
