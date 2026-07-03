@@ -2,7 +2,8 @@
 **Conta:** senhor_colchao (act_888195439518063)  
 **Objetivo:** Mensagens (CTWA → WhatsApp)  
 **Budget total:** R$ 800  
-**Gerado em:** 03/07/2026 — Pixel
+**Estrutura:** 1 campanha → 2 conjuntos → 2 criativos por fase  
+**Atualizado em:** 03/07/2026 — Pixel
 
 ---
 
@@ -12,9 +13,9 @@
 |---|---|
 | CP04 sem urgência → R$16/conversa | Copy com data de encerramento em todo criativo |
 | D33 morreu silencioso, continuou gastando | Pausar criativo se CTR < 0,80% em 3 dias consecutivos |
-| CP04 frequência 3,21 — incomodando | Alerta em 2,5 → reduz budget; 3,0 → pausa e troca criativo |
-| Copa: 3 conjuntos competindo entre si | 1 conjunto por fase, 1 objetivo |
-| Copa: frequência alta → aumentaram verba | Saturação = reduz budget, nunca aumenta |
+| CP04 frequência 3,21 — incomodando | Frequência ≥ 3,0 pausa criativo; não sobe budget |
+| Copa: 3 conjuntos competindo entre si | 1 campanha, 2 conjuntos, 1 objetivo |
+| Copa: frequência alta → aumentaram verba | Saturação = troca criativo, nunca aumenta verba por impulso |
 | Raio ampliado além da entrega | Fixo: Barretos + 40 km — saturou: troca criativo, não raio |
 | Copa: `end_time 29/06` passado sem perceber | `end_time` obrigatório e verificado antes de ativar |
 
@@ -24,16 +25,16 @@
 
 ```
 Campanha: "Durma como Campeão — Julho 2026"
-├── Conjunto 1 — Fase 1 | Copa | Lookalike | 07-19/07  (R$30/dia)
+├── Conjunto 1 — Fase 1 | 07-19/07 | R$30/dia | R$390
 │   ├── Anúncio A — Arte 01 (Abertura) — 9:16 + 4:5
 │   └── Anúncio B — Arte 02 (Orthoplus R$1.890) — 9:16 + 4:5
 │
-└── Conjunto 2 — Fase 2 | Férias | Retarg+LAL | 20-31/07  (R$33/dia)
+└── Conjunto 2 — Fase 2 | 20-31/07 | R$33/dia | R$396
     ├── Anúncio A — Arte 04 (Férias) — 9:16 + 4:5
     └── Anúncio B — Arte 05 (Inverno) — 9:16 + 4:5
 ```
 
-> Arte 03 (SmartFlex R$2.390) entra como anúncio C em qualquer fase se algum dos 2 principais saturar antes do previsto.
+> Arte 03 (SmartFlex R$2.390) fica como reserva. Ativar se algum criativo principal tiver CTR < 0,80% por 3 dias consecutivos ou saturar antes do previsto.
 
 ---
 
@@ -44,8 +45,9 @@ Campanha: "Durma como Campeão — Julho 2026"
 | Nome | `Fase 1 \| Copa \| Lookalike \| 07-19/07` |
 | Objetivo | Mensagens (WhatsApp) |
 | Budget diário | R$ 30/dia |
+| Total previsto | R$ 390 |
 | Início | 07/07/2026 às 08h00 |
-| **end_time** | **19/07/2026 às 23h59** ← obrigatório, verificar antes de ativar |
+| **end_time** | **19/07/2026 às 23h59** ← setar e verificar antes de ativar |
 | Público | Lookalike 1% base Copa + interesses: colchões, cama box, móveis, decoração |
 | Localização | Barretos SP + 40 km — **não ampliar** |
 | Faixa etária | 25–55 anos |
@@ -57,49 +59,61 @@ Campanha: "Durma como Campeão — Julho 2026"
 
 ### Criativos — Fase 1
 
-**Anúncio A — Arte 01 (Abertura)**  
-Arquivo: `arte01-abertura-feed.mp4` (4:5) + `arte01-abertura-story.mp4` (9:16)
+**Anúncio A — Arte 01 (Abertura da Campanha)**  
+Arquivo: `arte01-abertura-feed.mp4` (4:5) + `arte01-abertura-story.mp4` (9:16)  
+Ângulo curto: "Julho chegou. Cama Box com entrega e montagem grátis — só esse mês. ⚠️ Encerra 31/07"
 
 ```
-Texto primário:
+Texto principal:
 Julho chegou e a Senhor Colchão entrou em campo. 🏆
 
-Cama Box com entrega e montagem grátis — condições que só têm esse mês.
+Esse mês a gente preparou as melhores condições do ano pra você renovar o quarto de vez.
 
-✓ A partir de R$ 1.890 em até 12x sem juros
-✓ Entrega grátis
-✓ Montagem grátis
+🛏️ Cama Box a partir de R$ 1.890
+💳 Em até 12x sem juros
+🚚 Entrega grátis
+🔧 Montagem grátis — a gente instala no seu quarto
 
-⚠️ Promoção válida até 31/07. Depois os preços voltam ao normal.
+⚠️ Promoção válida só até 31/07. Depois os preços voltam ao normal.
 
-👉 Chama no WhatsApp e descobre o modelo certo pro seu bolso.
+👉 Chama no WhatsApp ou passa na loja — a gente encontra o modelo certo pro seu bolso!
+
+📍 Rua 20, Entre 13x15, 1050
+📍 Rua 22, Esq. Av. 9, 1274
 ```
 
 ```
-Headline: Durma como Campeão este Julho 🏆
-Descrição: Cama Box a partir de R$1.890 | 12x sem juros | Entrega + montagem grátis
+Título: Durma como Campeão este Julho 🏆
+Descrição: A partir de R$ 1.890 | 12x sem juros | Entrega + montagem grátis | Só até 31/07
 ```
 
 ---
 
-**Anúncio B — Arte 02 (Orthoplus R$1.890)**  
-Arquivo: `arte02-orthoplus-feed.mp4` (4:5) + `arte02-orthoplus-story.mp4` (9:16)
+**Anúncio B — Arte 02 (Orthoplus Casal R$ 1.890)**  
+Arquivo: `arte02-orthoplus-feed.mp4` (4:5) + `arte02-orthoplus-story.mp4` (9:16)  
+Ângulo curto: "Orthoplus Casal R$1.890 em 12x. Não vai deixar essa passar, né?"
 
 ```
-Texto primário:
-Cama Box Casal Orthoplus por R$ 1.890 em até 12x sem juros. 🛏️
+Texto principal:
+Cama Box Casal Orthoplus por R$ 1.890 em até 12x sem juros. 🛏️✨
 
-✓ Entrega grátis
-✓ Montagem grátis — a gente instala no seu quarto
+Não vai deixar essa passar, né?
 
-Não vai deixar essa passar, né? Essa condição especial encerra em 31/07.
+✅ Entrega grátis
+✅ Montagem grátis — do jeito que você quer, no cômodo que você escolher
+✅ Parcelas que cabem no bolso
 
-👉 Chama agora no WhatsApp — a gente resolve na hora!
+Essa condição especial existe só em julho. No dia 01/08 o preço muda. ⏳
+
+👉 Chama agora no WhatsApp que a gente resolve na hora!
+
+📍 Rua 20, Entre 13x15, 1050
+📍 Rua 22, Esq. Av. 9, 1274
 ```
 
 ```
-Headline: Cama Box Casal — R$ 1.890 em 12x Sem Juros
-Descrição: Orthoplus Casal | Entrega + montagem grátis | Só até 31/07
+Título: Cama Box Casal — R$ 1.890 em 12x Sem Juros 🛏️
+Descrição: Orthoplus Casal | Entrega + montagem grátis | Condição especial só até 31/07
 ```
 
 ---
@@ -111,9 +125,10 @@ Descrição: Orthoplus Casal | Entrega + montagem grátis | Só até 31/07
 | Nome | `Fase 2 \| Férias \| Retarg+LAL \| 20-31/07` |
 | Objetivo | Mensagens (WhatsApp) |
 | Budget diário | R$ 33/dia |
+| Total previsto | R$ 396 |
 | Início | 20/07/2026 às 08h00 |
-| **end_time** | **31/07/2026 às 23h59** ← obrigatório, verificar antes de ativar |
-| Público | Retargeting engajados Fase 1 (clicaram/interagiram 07–19/07) + Lookalike 1% base geral |
+| **end_time** | **31/07/2026 às 23h59** ← setar e verificar antes de ativar |
+| Público | Retargeting engajados Fase 1 + Lookalike 1% base geral |
 | Localização | Barretos SP + 40 km — **não ampliar** |
 | Faixa etária | 25–55 anos |
 | Dispositivos | Mobile prioritário |
@@ -124,79 +139,98 @@ Descrição: Orthoplus Casal | Entrega + montagem grátis | Só até 31/07
 
 ### Criativos — Fase 2
 
-**Anúncio A — Arte 04 (Férias)**  
-Arquivo: `arte04-ferias-feed.mp4` (4:5) + `arte04-ferias-story.mp4` (9:16)
+**Anúncio A — Arte 04 (Férias de Julho)**  
+Arquivo: `arte04-ferias-feed.mp4` (4:5) + `arte04-ferias-story.mp4` (9:16)  
+Ângulo curto: "Férias é pra descansar de verdade. Renova o quarto. ⚠️ Encerra 31/07"
 
 ```
-Texto primário:
-Férias é pra descansar de verdade. Não dá pra relaxar numa cama velha. 🏠
+Texto principal:
+Férias é pra descansar de verdade. 🏖️🛏️
 
-A família vai estar em casa — é o momento certo de renovar o quarto.
+A família vai estar em casa — e o quarto vai ser o coração da casa esse julho.
 
-Colchão + Box + Cabeceira com entrega e montagem grátis.
-A partir de R$ 1.890 em até 12x sem juros.
+É agora o momento certo pra renovar o que realmente importa.
 
-⚠️ Oferta de julho encerra em 31/07. Depois é preço cheio.
+🛏️ Cama Box + Cabeceira a partir de R$ 1.890
+💳 Em até 12x sem juros
+🚚 Entrega grátis
+🔧 Montagem grátis — você não precisa fazer nada
 
-👉 Chama no WhatsApp agora!
+⚠️ Oferta de férias encerra em 31/07. Não deixa pra última hora!
+
+👉 Chama no WhatsApp ou passa em uma das nossas lojas!
+
+📍 Rua 20, Entre 13x15, 1050
+📍 Rua 22, Esq. Av. 9, 1274
 ```
 
 ```
-Headline: Férias Merece Cama Nova 🛏️
-Descrição: A partir de R$1.890 | 12x sem juros | Entrega + montagem grátis | Encerra 31/07
+Título: Férias Merece Cama Nova — A partir de R$ 1.890 🏖️
+Descrição: Cama Box + Cabeceira | 12x sem juros | Entrega + montagem grátis | Encerra 31/07
 ```
 
 ---
 
 **Anúncio B — Arte 05 (Inverno)**  
-Arquivo: `arte05-inverno-feed.mp4` (4:5) + `arte05-inverno-story.mp4` (9:16)
+Arquivo: `arte05-inverno-feed.mp4` (4:5) + `arte05-inverno-story.mp4` (9:16)  
+Ângulo curto: "Tá frio lá fora. Quem tem colchão bom não reclama do inverno."
 
 ```
-Texto primário:
-Tá frio lá fora. ❄️
+Texto principal:
+Tá frio lá fora. ❄️🥶
 
 Mas quem tem um colchão bom não reclama do inverno.
 
-Troca agora e sente a diferença na primeira noite. Cama Box com entrega e montagem grátis — condições especiais só em julho.
+A cama certa faz toda a diferença — você sente na primeira noite.
 
-A partir de R$ 1.890 em até 12x sem juros.
+🛏️ Cama Box a partir de R$ 1.890
+💳 Em até 12x sem juros
+🚚 Entrega grátis
+🔧 Montagem grátis
 
-⚠️ Encerra 31/07.
+Não espera o inverno acabar pra trocar. Condição especial de julho encerra em 31/07. ⏳
 
-👉 Chama no WhatsApp!
+👉 Chama no WhatsApp ou passa pra ver pessoalmente!
+
+📍 Rua 20, Entre 13x15, 1050
+📍 Rua 22, Esq. Av. 9, 1274
 ```
 
 ```
-Headline: Inverno + Cama Nova = Sono Perfeito ❄️
-Descrição: A partir de R$1.890 | 12x sem juros | Entrega + montagem grátis | Só em julho
+Título: Inverno + Cama Nova = Sono Perfeito ❄️
+Descrição: A partir de R$ 1.890 | 12x sem juros | Entrega + montagem grátis | Só até 31/07
 ```
 
 ---
 
-**Anúncio C — Arte 03 (SmartFlex) — reserva**  
+## Criativo Reserva — Arte 03 | SmartFlex Queen R$ 2.390
+
 Arquivo: `arte03-smartflex-feed.mp4` (4:5) + `arte03-smartflex-story.mp4` (9:16)  
-*Ativar se A ou B tiver CTR < 0,80% por 3 dias consecutivos*
+Ativar como anúncio reserva se algum criativo principal tiver CTR < 0,80% por 3 dias consecutivos, frequência ≥ 3,0 ou queda clara de conversas.
 
 ```
-Texto primário:
-Sono de verdade começa numa cama de qualidade. 😴
+Texto principal:
+Sabe aquela sensação de afundar na cama e não querer sair? 😴💤
 
-Cama Box Queen SmartFlex — molas ensacadas que isolam o movimento do outro lado.
-30 cm de conforto real.
+É exatamente isso que a SmartFlex Queen entrega.
 
-R$ 2.390 em até 12x sem juros.
+🌀 Molas ensacadas — isola o movimento do outro lado da cama
+📏 30cm de conforto real
+💳 R$ 2.390 em até 12x sem juros
+🚚 Entrega grátis
+🔧 Montagem grátis
 
-✓ Entrega grátis
-✓ Montagem grátis
+Tecnologia que vale cada centavo — e em julho tá com condições especiais que não voltam tão cedo. ⚠️ Encerra 31/07.
 
-⚠️ Condição especial de julho — encerra 31/07.
+👉 Chama no WhatsApp ou passa pra sentir de perto!
 
-👉 Chama no WhatsApp!
+📍 Rua 20, Entre 13x15, 1050
+📍 Rua 22, Esq. Av. 9, 1274
 ```
 
 ```
-Headline: SmartFlex Queen — Molas Ensacadas R$ 2.390
-Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só julho
+Título: SmartFlex Queen — Molas Ensacadas por R$ 2.390 😴
+Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só até 31/07
 ```
 
 ---
@@ -204,7 +238,7 @@ Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só
 ## Resumo de Budget
 
 | Fase | Período | Dias | Budget/dia | Total |
-|---|---|---|---|---|
+|---|---|---:|---:|---:|
 | Fase 1 — Copa/Lançamento | 07–19/07 | 13 | R$ 30 | R$ 390 |
 | Fase 2 — Férias de Julho | 20–31/07 | 12 | R$ 33 | R$ 396 |
 | Buffer overdelivery | — | — | — | R$ 14 |
@@ -212,28 +246,38 @@ Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só
 
 ---
 
-## Regras de Gestão (obrigatórias)
+## Regras Inegociáveis
+
+### Setup
+- **end_time setado nos dois conjuntos antes de ativar**
+- Conferir `end_time` da Fase 1: **19/07/2026 às 23h59**
+- Conferir `end_time` da Fase 2: **31/07/2026 às 23h59**
+- Localização fixa: **Barretos SP + 40 km**
 
 ### Frequência
 | Frequência | Ação |
 |---|---|
-| ≥ 2,5 | Reduzir budget diário em 25% |
+| ≥ 2,5 | Reduzir budget diário em 25% e observar por 24h |
 | ≥ 3,0 | Pausar criativo atual e ativar próximo da fila |
 | ≥ 4,0 | Pausar conjunto — público esgotado |
 
 ### Criativos
 | Indicador | Ação |
 |---|---|
-| CTR < 0,80% por 3 dias | Pausar criativo, ativar reserva (Arte 03) |
+| CTR < 0,80% por 3 dias | Pausar criativo e ativar Arte 03 (SmartFlex) |
 | 0 conversas em 3 dias com gasto > R$ 30 | Pausar criativo |
 | Custo/conversa > R$ 15 por 2 dias | Revisar público + criativo |
 
-### Budget
-- **Nunca aumentar** budget quando frequência está subindo
-- **Nunca ampliar raio** geográfico — saturou: troca criativo
-- Se custo/dia < R$ 20 por 2 dias → checar se end_time não expirou
+### Budget e Público
+- **Frequência ≥ 3,0 → pausa criativo, não sobe budget**
+- **Saturou área → troca criativo, nunca amplia raio**
+- **Nunca aumentar budget quando frequência está subindo**
+- Se custo/dia < R$ 20 por 2 dias → checar se `end_time` não expirou
 
-### Checkpoints obrigatórios
+---
+
+## Checkpoints Obrigatórios
+
 | Data | O que verificar |
 |---|---|
 | 10/07 (3 dias de veiculação) | CTR, CPC, custo/conversa, frequência de cada criativo |
@@ -253,4 +297,4 @@ Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só
 
 ---
 
-*Gerado em: 03/07/2026 — Pixel*
+*Atualizado em: 03/07/2026 — Pixel*
