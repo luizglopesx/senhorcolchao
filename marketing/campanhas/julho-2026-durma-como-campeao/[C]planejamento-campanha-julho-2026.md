@@ -264,7 +264,7 @@ Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam pro
 | 02/07 ✅ | Artes geradas (12 peças) | Pixel |
 | 03–04/07 | Luiz adiciona logo + anima no Canva | Luiz |
 | 05/07 (dom) | Resultado Brasil → decidir overlay Copa | Luiz + Pixel |
-| 07/07 (seg) | Lançamento — Meta Ads Fase 1 + broadcast Copa + WhatsApp Status | Pixel + Luiz |
+| 06/07 (seg) | Lançamento — Meta Ads Fase 1 + broadcast Copa + WhatsApp Status | Pixel + Luiz |
 | 19/07 | Final da Copa — encerrar Fase 1 | — |
 | 20/07 | Lançamento Fase 2 + broadcast base geral | Pixel + Luiz |
 | 31/07 | Encerramento + relatório de resultados | Pixel |
@@ -323,8 +323,22 @@ Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam pro
 ### Pendências abertas
 
 - [ ] **05/07 (dom)** — verificar resultado do Brasil e ativar/descartar overlays Copa
-- [ ] **07/07** — lançar Meta Ads Fase 1 (R$ 400 de R$ 800 total)
-- [ ] **07/07** — Broadcast WhatsApp base Copa (definir público com Luiz)
+- [ ] **06/07** — lançar Meta Ads Fase 1 (R$ 30/dia; 06–19/07)
+- [ ] **06/07** — Broadcast WhatsApp base Copa (definir público com Luiz)
 - [ ] **20/07** — Broadcast WhatsApp base geral + lançar Meta Ads Fase 2 (R$ 400)
+
+### Setup Meta Ads — 03/07
+
+- Público personalizado criado por lista: `BASE | Leads Copa | Junho/Julho 2026`
+- Lista carregada no Meta: 306 linhas, convertida em hashes e disponível para uso
+- Público semelhante criado: `LAL 1% | Leads Copa | Brasil | Julho 2026`
+- Status observado: em preenchimento, mas disponível para usar
+- Conjunto Fase 1 configurado para mensagens no WhatsApp da Senhor Colchão
+- Localização: Barretos SP + 40 km
+- Idade: 25–55
+- Início ajustado para segunda-feira, **06/07/2026 às 08h00**
+- Término mantido em **19/07/2026 às 23h59**
+- Budget diário: **R$ 30/dia**; total operacional da Fase 1 passa a **R$ 420**
+- Observação: se o teto de R$800 precisar ser rígido, compensar o excedente da antecipação no checkpoint de 18/07.
 
 *Última atualização: 03/07/2026 — Pixel*

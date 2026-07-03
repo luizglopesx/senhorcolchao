@@ -1,7 +1,8 @@
 # Meta Ads — Durma como Campeão | Julho 2026
 **Conta:** senhor_colchao (act_888195439518063)  
 **Objetivo:** Mensagens (CTWA → WhatsApp)  
-**Budget total:** R$ 800  
+**Budget aprovado:** R$ 800
+**Budget operacional configurado:** até R$ 816 (Fase 1 antecipada para 06/07)
 **Estrutura:** 1 campanha → 2 conjuntos → 2 criativos por fase  
 **Atualizado em:** 03/07/2026 — Pixel
 
@@ -25,7 +26,7 @@
 
 ```
 Campanha: "Durma como Campeão — Julho 2026"
-├── Conjunto 1 — Fase 1 | 07-19/07 | R$30/dia | R$390
+├── Conjunto 1 — Fase 1 | 06-19/07 | R$30/dia | R$420
 │   ├── Anúncio A — Arte 01 (Abertura) — 9:16 + 4:5
 │   └── Anúncio B — Arte 02 (Orthoplus R$1.890) — 9:16 + 4:5
 │
@@ -35,20 +36,22 @@ Campanha: "Durma como Campeão — Julho 2026"
 ```
 
 > Arte 03 (SmartFlex R$2.390) fica como reserva. Ativar se algum criativo principal tiver CTR < 0,80% por 3 dias consecutivos ou saturar antes do previsto.
+> Como a Fase 1 foi antecipada para 06/07 mantendo R$30/dia, o plano operacional soma R$816 antes de ajustes. Se for necessário respeitar teto estrito de R$800, reduzir a Fase 2 no checkpoint de 18/07.
 
 ---
 
-## Conjunto 1 — Fase 1 | Copa/Lançamento (07–19/07)
+## Conjunto 1 — Fase 1 | Copa/Lançamento (06–19/07)
 
 | Campo | Valor |
 |---|---|
-| Nome | `Fase 1 \| Copa \| Lookalike \| 07-19/07` |
+| Nome | `Fase 1 \| Copa/Lançamento \| 06-19/07 \| R$30/dia` |
 | Objetivo | Mensagens (WhatsApp) |
 | Budget diário | R$ 30/dia |
-| Total previsto | R$ 390 |
-| Início | 07/07/2026 às 08h00 |
+| Total previsto | R$ 420 |
+| Início | 06/07/2026 às 08h00 |
 | **end_time** | **19/07/2026 às 23h59** ← setar e verificar antes de ativar |
-| Público | Lookalike 1% base Copa + interesses: colchões, cama box, móveis, decoração |
+| Público | `LAL 1% \| Leads Copa \| Brasil \| Julho 2026` + interesses: colchões, cama box, móveis, decoração |
+| Base de origem | `BASE \| Leads Copa \| Junho/Julho 2026` — 306 linhas carregadas |
 | Localização | Barretos SP + 40 km — **não ampliar** |
 | Faixa etária | 25–55 anos |
 | Dispositivos | Mobile prioritário |
@@ -56,6 +59,17 @@ Campanha: "Durma como Campeão — Julho 2026"
 | Meta CTR | ≥ 1,20% |
 | Meta CPC | ≤ R$ 1,10 |
 | Meta custo/conversa | ≤ R$ 12,00 |
+
+### Setup registrado — 03/07
+
+- Público personalizado criado por lista: `BASE | Leads Copa | Junho/Julho 2026`
+- Lista carregada no Meta: 306 linhas, convertida em hashes e disponível para uso
+- Público semelhante criado: `LAL 1% | Leads Copa | Brasil | Julho 2026`
+- Status observado: em preenchimento, mas disponível para usar
+- Campanha configurada para mensagens no WhatsApp da Senhor Colchão
+- Localização do conjunto: Barretos SP + 40 km
+- Idade: 25–55
+- Início ajustado para segunda-feira, 06/07/2026 às 08h00
 
 ### Criativos — Fase 1
 
@@ -239,10 +253,12 @@ Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só
 
 | Fase | Período | Dias | Budget/dia | Total |
 |---|---|---:|---:|---:|
-| Fase 1 — Copa/Lançamento | 07–19/07 | 13 | R$ 30 | R$ 390 |
+| Fase 1 — Copa/Lançamento | 06–19/07 | 14 | R$ 30 | R$ 420 |
 | Fase 2 — Férias de Julho | 20–31/07 | 12 | R$ 33 | R$ 396 |
-| Buffer overdelivery | — | — | — | R$ 14 |
-| **Total** | | | | **R$ 800** |
+| Buffer overdelivery planejado | — | — | — | R$ 0 |
+| **Total operacional** | | | | **R$ 816** |
+
+> Budget aprovado original: R$800. A antecipação para 06/07 adiciona R$30 na Fase 1; compensar na Fase 2 se o controle financeiro exigir teto estrito.
 
 ---
 
@@ -280,7 +296,7 @@ Descrição: 30cm de conforto | 12x sem juros | Entrega + montagem grátis | Só
 
 | Data | O que verificar |
 |---|---|
-| 10/07 (3 dias de veiculação) | CTR, CPC, custo/conversa, frequência de cada criativo |
+| 09/07 (3 dias de veiculação) | CTR, CPC, custo/conversa, frequência de cada criativo |
 | 18/07 (véspera da virada) | Decidir se mantém R$ 33/dia na Fase 2 ou ajusta |
 | 23/07 (3 dias da Fase 2) | Mesmas métricas + checar retargeting vs LAL separado |
 | 28/07 | Frequência — se ≥ 2,5 reduzir para R$ 20/dia até 31/07 |

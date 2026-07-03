@@ -28,3 +28,6 @@ node_modules/
 # Drop zone do usuário (só o README vai versionado)
 dados/*
 !dados/README.md
+
+# Saídas com dados pessoais de clientes
+saidas/clientes-campaign-manager-*.csv
