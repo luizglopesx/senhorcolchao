@@ -264,7 +264,7 @@ Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam pro
 | 02/07 ✅ | Artes geradas (12 peças) | Pixel |
 | 03–04/07 | Luiz adiciona logo + anima no Canva | Luiz |
 | 05/07 (dom) | Resultado Brasil → decidir overlay Copa | Luiz + Pixel |
-| 06/07 (seg) | Lançamento — Meta Ads Fase 1 + broadcast Copa + WhatsApp Status | Pixel + Luiz |
+| 07/07 (seg) | Lançamento — Meta Ads Fase 1 + broadcast Copa + WhatsApp Status | Pixel + Luiz |
 | 19/07 | Final da Copa — encerrar Fase 1 | — |
 | 20/07 | Lançamento Fase 2 + broadcast base geral | Pixel + Luiz |
 | 31/07 | Encerramento + relatório de resultados | Pixel |
@@ -323,22 +323,85 @@ Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam pro
 ### Pendências abertas
 
 - [ ] **05/07 (dom)** — verificar resultado do Brasil e ativar/descartar overlays Copa
-- [ ] **06/07** — lançar Meta Ads Fase 1 (R$ 30/dia; 06–19/07)
-- [ ] **06/07** — Broadcast WhatsApp base Copa (definir público com Luiz)
+- [ ] **07/07** — lançar Meta Ads Fase 1 (R$ 400 de R$ 800 total)
+- [ ] **07/07** — Broadcast WhatsApp (criar campanha + disparar — ver seção abaixo)
 - [ ] **20/07** — Broadcast WhatsApp base geral + lançar Meta Ads Fase 2 (R$ 400)
 
-### Setup Meta Ads — 03/07
-
-- Público personalizado criado por lista: `BASE | Leads Copa | Junho/Julho 2026`
-- Lista carregada no Meta: 306 linhas, convertida em hashes e disponível para uso
-- Público semelhante criado: `LAL 1% | Leads Copa | Brasil | Julho 2026`
-- Status observado: em preenchimento, mas disponível para usar
-- Conjunto Fase 1 configurado para mensagens no WhatsApp da Senhor Colchão
-- Localização: Barretos SP + 40 km
-- Idade: 25–55
-- Início ajustado para segunda-feira, **06/07/2026 às 08h00**
-- Término mantido em **19/07/2026 às 23h59**
-- Budget diário: **R$ 30/dia**; total operacional da Fase 1 passa a **R$ 420**
-- Observação: se o teto de R$800 precisar ser rígido, compensar o excedente da antecipação no checkpoint de 18/07.
-
 *Última atualização: 03/07/2026 — Pixel*
+
+---
+
+---
+
+## Sessão de trabalho — 04/07/2026
+
+### Público do Broadcast WhatsApp — decisão
+
+#### Análise da base (Campaign Manager)
+
+| Indicador | Valor |
+|---|---|
+| Total de contatos na base | 2.406 |
+| Conversas ativas | 71 |
+| Conversas arquivadas analisadas | 642 |
+| Campanha Copa anterior (24/06) | 2.103 enviados |
+
+#### Labels identificadas na base arquivada
+
+| Label | Qtd | Decisão |
+|---|---|---|
+| Perdido | 94 | ❌ Excluir |
+| ⛔ Inativo-Topo | 81 | ✅ Incluir |
+| Comprou | 71 | ❌ Excluir |
+| Topo | 62 | ✅ Incluir |
+| Precisa Resposta | 51 | ✅ Incluir |
+| ⛔ Inativo-Meio | 42 | ✅ Incluir |
+| Meio | 33 | ✅ Incluir |
+| Proposta Negada | 30 | ❌ Excluir |
+| Objeção Comercial | 22 | ✅ Incluir |
+| Pronto para Fechar | 5 | ✅ Incluir |
+
+#### Base final aprovada
+
+| | Qtd |
+|---|---|
+| Base total | 2.406 |
+| ❌ Comprou + Perdido + Proposta Negada | 195 (com sobreposições: 180 únicos) |
+| **Base final do broadcast** | **2.208** |
+
+#### Plano de execução do broadcast
+
+- **05/07 (dom)** — verificar resultado do Brasil
+  - Brasil **passa** → usar mensagem Copa (mata-mata)
+  - Brasil **cai** → usar mensagem Férias (sem referência à Copa)
+- **07/07 (seg)** — após resultado:
+  1. Criar campanha no Campaign Manager com os 2.208 contatos
+  2. Escolher mensagem conforme resultado do jogo
+  3. Disparar broadcast
+  4. Subir Meta Ads Fase 1 (R$ 400)
+
+#### Mensagem Broadcast — rascunhos (definir versão final em 07/07)
+
+**Versão Copa (se Brasil passar em 05/07):**
+```
+Oi, [nome]! 👋
+
+A Copa tá na mata-mata e a Senhor Colchão também entrou em campo.
+
+Quem aproveitar essa semana leva colchão com condições especiais — parcelado ou com desconto à vista.
+
+Quer saber qual o melhor modelo pro seu bolso?
+```
+
+**Versão Férias (se Brasil cair em 05/07):**
+```
+Oi, [nome]! 🛏️
+
+Julho chegou, as férias também. É o momento certo pra renovar o quarto.
+
+Colchão + box + cabeceira com entrega e montagem grátis. Parcelamos em até 12x.
+
+Me conta: tem algum cômodo que você quer renovar?
+```
+
+*Última atualização: 04/07/2026 — Pixel*
