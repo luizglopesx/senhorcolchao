@@ -9,6 +9,7 @@ Operação da Senhor Colchão Sleep Store. Empresa familiar de varejo de produto
 - `saidas/` — documentos e entregáveis pontuais
 - `dados/` — arquivos a analisar
 - `scripts/` — automações e scripts de apoio
+- `instagram/` — automação de publicação no Instagram via GitHub Actions (`.github/workflows/`)
 
 ---
 

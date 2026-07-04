@@ -55,7 +55,8 @@ Marca com personalidade forte e simpática — o mascote (Sr. Colchão, homem de
 
 ## Logo
 
-- **Arquivo:** `identidade/logo/logo-principal.jpg`
+- **Arquivo (preferencial, fundo transparente):** `identidade/logo/logo-completa-trim.png`
+- **Arquivo original (2019, sem transparência):** `identidade/logo/logo-principal.jpg`
 - **Manual:** `identidade/manual/MANUAL DE IDENTIDADE VISUAL SR COLCHAO NOVO.pdf`
 - **Agência criadora:** Get Up! Comunicação — atendimento@getupcomunicacao.com.br / (17) 98140-7757
 
