@@ -75,7 +75,7 @@ Campanha: "Durma como Campeão — Julho 2026"
 
 **Anúncio A — Arte 01 (Abertura da Campanha)**  
 Arquivo: `arte01-abertura-feed.mp4` (4:5) + `arte01-abertura-story.mp4` (9:16)  
-Ângulo curto: "Julho chegou. Cama Box com entrega e montagem grátis — só esse mês. ⚠️ Encerra 31/07"
+Ângulo curto: "Julho chegou. Cama Box Queen em molas a partir de R$2.390 — só esse mês. ⚠️ Encerra 31/07"
 
 ```
 Texto principal:
@@ -83,7 +83,7 @@ Julho chegou e a Senhor Colchão entrou em campo. 🏆
 
 Esse mês a gente preparou as melhores condições do ano pra você renovar o quarto de vez.
 
-🛏️ Cama Box a partir de R$ 1.890
+🛏️ Cama Box Queen em molas a partir de R$ 2.390
 💳 Em até 12x sem juros
 🚚 Entrega grátis
 🔧 Montagem grátis — a gente instala no seu quarto
