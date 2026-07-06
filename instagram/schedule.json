@@ -7,7 +7,7 @@
       "video_filename": "arte01-abertura-feed.mp4",
       "scheduled_at": "2026-07-07T11:00:00-03:00",
       "caption": "🏆 Julho chegou e a Senhor Colchão entrou em campo.\n\nMês de renovar o quarto com condições especiais que só têm nesse mês.\n\n✓ Entrega grátis\n✓ Montagem grátis\n✓ Parcelas que cabem no bolso\n\n👇 Chama no WhatsApp e descobre o modelo ideal pra você!\n\n#SenhorColchão #DormaCampeão #ColchãoDeQualidade #CamaBox #JulhoDeOfertas #OfertaDeJulho",
-      "status": "pending"
+      "status": "skipped"
     },
     {
       "id": "arte01-story",
@@ -16,7 +16,7 @@
       "video_filename": "arte01-abertura-story.mp4",
       "scheduled_at": "2026-07-07T11:05:00-03:00",
       "caption": "",
-      "status": "pending"
+      "status": "skipped"
     },
     {
       "id": "arte02-feed",
@@ -59,7 +59,7 @@
       "label": "Arte 04 — Férias de Julho (Feed Reels)",
       "media_type": "REELS",
       "video_filename": "arte04-ferias-feed.mp4",
-      "scheduled_at": "2026-07-14T11:00:00-03:00",
+      "scheduled_at": "2026-07-07T11:00:00-03:00",
       "caption": "Férias merece cama nova. 🛏️\n\nA família vai estar em casa — é o momento certo pra renovar o quarto e dormir de verdade.\n\nColchão + Box + Cabeceira com entrega e montagem grátis.\nA partir de R$ 1.890 em até 12x sem juros.\n\n👉 Chama no WhatsApp!\n\n#SenhorColchão #FériasDeJulho #CamaNova #DormaCampeão #OfertaDeJulho #JulhoDeConforto",
       "status": "pending"
     },
@@ -68,7 +68,7 @@
       "label": "Arte 04 — Férias de Julho (Story)",
       "media_type": "STORIES",
       "video_filename": "arte04-ferias-story.mp4",
-      "scheduled_at": "2026-07-14T11:05:00-03:00",
+      "scheduled_at": "2026-07-07T11:05:00-03:00",
       "caption": "",
       "status": "pending"
     },
@@ -77,7 +77,7 @@
       "label": "Arte 05 — Inverno (Feed Reels)",
       "media_type": "REELS",
       "video_filename": "arte05-inverno-feed.mp4",
-      "scheduled_at": "2026-07-16T11:00:00-03:00",
+      "scheduled_at": "2026-07-14T11:00:00-03:00",
       "caption": "Tá frio lá fora. ❄️\n\nMas quem tem uma cama boa não reclama do inverno.\n\nTroca o colchão velho por um que abraça de verdade. Condições especiais só em julho — com entrega e montagem grátis!\n\n👉 Chama no WhatsApp e vem conferir!\n\n#SenhorColchão #Inverno2026 #ColchãoDeQualidade #DormaCampeão #OfertaDeJulho #ConfortoNoInverno",
       "status": "pending"
     },
@@ -86,7 +86,7 @@
       "label": "Arte 05 — Inverno (Story)",
       "media_type": "STORIES",
       "video_filename": "arte05-inverno-story.mp4",
-      "scheduled_at": "2026-07-16T11:05:00-03:00",
+      "scheduled_at": "2026-07-14T11:05:00-03:00",
       "caption": "",
       "status": "pending"
     }
