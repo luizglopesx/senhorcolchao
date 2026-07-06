@@ -322,10 +322,12 @@ Brasil joga 05/07 (domingo). Estratégia: artes base (inverno/férias) ficam pro
 
 ### Pendências abertas
 
-- [ ] **05/07 (dom)** — verificar resultado do Brasil e ativar/descartar overlays Copa
-- [ ] **07/07** — lançar Meta Ads Fase 1 (R$ 400 de R$ 800 total)
-- [ ] **07/07** — Broadcast WhatsApp (criar campanha + disparar — ver seção abaixo)
-- [ ] **20/07** — Broadcast WhatsApp base geral + lançar Meta Ads Fase 2 (R$ 400)
+- [x] **05/07 (dom)** — Brasil perdeu 2x1 para Noruega → contingência ativada
+- [x] **07/07** — Meta Ads Fase 1 ajustada (ver sessão 06/07)
+- [x] **07/07** — Broadcast WhatsApp disparado (ver sessão 06/07)
+- [ ] **10/07** — Checkpoint Meta Ads (CTR, CPC, custo/conversa, frequência)
+- [ ] **18/07** — Verificar budget Fase 2 (manter R$33/dia ou ajustar)
+- [ ] **20/07** — Broadcast 2 base geral + lançar Meta Ads Fase 2 (R$ 400)
 
 *Última atualização: 03/07/2026 — Pixel*
 
@@ -405,3 +407,96 @@ Me conta: tem algum cômodo que você quer renovar?
 ```
 
 *Última atualização: 04/07/2026 — Pixel*
+
+---
+
+---
+
+## Sessão de trabalho — 06/07/2026
+
+### Resultado Copa e ativação de contingência
+
+**Brasil 1x2 Noruega (05/07)** — contingência ativada.
+
+---
+
+### Meta Ads — ajuste de criativos (Fase 1)
+
+| Anúncio | Arte | Ação |
+|---|---|---|
+| A | Arte 01 — Abertura Copa | ❌ Pausado (referência Copa explícita) |
+| B | Arte 02 — Orthoplus R$1.890 | ✅ Mantido (sem referência Copa) |
+| C | Arte 04 — Férias | ▶️ Ativado |
+| D | Arte 05 — Inverno | ▶️ Ativado |
+| Reserva | Arte 03 — SmartFlex | 🟡 Standby (CTR < 0,80% por 3 dias) |
+
+Budget Fase 1 mantido: R$ 30/dia até 19/07.
+
+---
+
+### Broadcast WhatsApp — execução
+
+#### Segmentação refinada
+
+Labels excluídas (decisão final):
+
+| Label | Qtd excluída |
+|---|---|
+| Perdido | 99 |
+| Comprou | 82 |
+| Precisa Resposta | 56 |
+| Proposta Negada | 30 |
+| Objeção Comercial | 23 |
+| Assistência Técnica | 5 |
+| **Total excluídos** | **260 únicos** |
+
+| | |
+|---|---|
+| Base total | 2.409 |
+| Excluídos | 260 |
+| Canal utilizado | Loja 02 |
+| **Destinatários finais** | **1.955** |
+
+#### Disparo criado
+
+| Campo | Valor |
+|---|---|
+| **ID** | `51e82760-5f0a-4171-a3a1-dcfe3b18d04f` |
+| **Endpoint** | `POST /api/broadcast` |
+| **Canal** | Loja 02 (`3ee9cdc6-d808-44a0-ae9e-2f416b498ce0`) |
+| **Mídia** | Arte 04 — Férias (`arte04-ferias-feed.mp4`) |
+| **Agendamento** | 06/07/2026 às 13h00 BRT (16h UTC) |
+| **Status** | DRAFT → dispara às 13h |
+
+#### Mensagem final aprovada
+
+```
+Oi! 🛏️
+
+Julho chegou, as férias também — e a gente preparou uma condição especial pra você renovar o quarto.
+
+Cama Box Casal Orthoplus 138x188:
+✅ 25cm de altura — conforto de verdade
+✅ 100% espuma com tecido em malha
+✅ Suporta até 150kg por pessoa
+✅ Pode usar os dois lados — dura muito mais!
+
+💳 R$ 1.890 em até 12x sem juros
+🚚 Entrega grátis
+🔧 Montagem grátis
+
+⚠️ Condição especial só até 31/07.
+
+Me chama aqui que a gente resolve! 👇
+```
+
+> **Nota:** removido `{nome}` pois muitos contatos têm nomes incorretos na base.
+
+#### Aprendizados técnicos
+
+- Endpoint correto para disparo em massa: `POST /api/broadcast` (não `/api/campaigns`)
+- `source: "manual"` + `recipients: [{phone, name}]` para lista filtrada
+- `scheduledFor` em UTC (BRT = UTC-3)
+- Broadcasts sem `scheduledFor` disparam **imediatamente** — sempre informar o campo ao criar
+
+*Última atualização: 06/07/2026 — Pixel*
