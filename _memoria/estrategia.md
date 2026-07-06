@@ -65,7 +65,10 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 - **Achado 04/07: gtag duplicado no Simplo7, corrigido.** Integração nativa (Integrações → Google Analytics) já cobria GA4 + Ads; havia um bloco redundante colado manualmente em Aparência → Scripts → Cabeçalho, repetindo só o GA4. Usuário removeu o bloco manual — confirmado sem duplicação.
 - **Relógio de "aguardar dados acumularem" reinicia em 03/07** (não em 26/06) — antes da correção, nenhum clique pago carregava atribuição corretamente, então dado anterior a essa data não serve pra calcular CPL
 - Decisão pendente: calcular CPL real do Google Ads (custo ÷ Conversões) depois de 2-4 semanas de dado limpo, e comparar com CPL do Meta Ads pra decidir alocação de verba entre os dois canais
-- Auditorias: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md` → `2026-07-02-google-ads-auditoria.md` → `2026-07-03-google-ads-auditoria.md` → **`2026-07-04-google-ads-teste-gclid.md`** (mais recente, com a confirmação final do gclid)
+- **Primeira conversão real confirmada em 05/07: 1 `whatsapp_click` na CP01C**, contabilizada certinho no Google Ads — fecha o ciclo gclid→atribuição→conversão iniciado em 03-04/07. Relógio de "dado limpo" segue contando a partir de 03/07.
+- **Achado 06/07: keyword "Comprar colchão de espuma" (BROAD, grupo Colchões De Espuma) consumia 52% do orçamento da CP01C (R$141,97/14 dias) com zero conversão** — mesmo padrão de vazamento já visto em 03/07 no grupo Branding. Corrigido via API: migrada pra PHRASE match. Também adicionadas "pikolin" e "vitorian" (concorrentes) à lista de negativas.
+- **Decisão 06/07: não criar campanha nova ainda** — só 1 conversão registrada, cedo demais pra avaliar. CP01C tem orçamento sobrando (R$19,34/dia gasto de R$25 de teto) — prioridade é aproveitar esse espaço com o vazamento corrigido antes de expandir.
+- Auditorias: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md` → `2026-07-02-google-ads-auditoria.md` → `2026-07-03-google-ads-auditoria.md` → `2026-07-04-google-ads-teste-gclid.md` → **`2026-07-06-google-ads-auditoria.md`** (mais recente, primeira conversão + correção de keyword)
 
 ## Campaign Manager — atendimento WhatsApp
 
