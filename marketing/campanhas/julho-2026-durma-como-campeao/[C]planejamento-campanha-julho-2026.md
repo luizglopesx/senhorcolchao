@@ -500,3 +500,24 @@ Me chama aqui que a gente resolve! 👇
 - Broadcasts sem `scheduledFor` disparam **imediatamente** — sempre informar o campo ao criar
 
 *Última atualização: 06/07/2026 — Pixel*
+
+---
+
+---
+
+## Sessão de trabalho — 07/07/2026
+
+### Banner do site — pivô do tema Copa pro tema Frio
+
+O banner `[C]banner-site-2560x800.jpg` (produzido 04/07, headline "DURMA COMO CAMPEÃO") perdeu sentido depois da eliminação do Brasil (05/07, ver contingência ativada na sessão de 06/07).
+
+**Novo banner criado:** `artes/[C]banner-site-2560x800-frio.jpg` (2560×800px, JPEG, 0,29 MB — dentro do limite de 2MB)
+
+- **Produto:** Cama Box Casal Orthoplus — foto `fotos/cama-box-orthoplus-casal.png` com fundo removido (recorte automático) pra compor sobre o layout
+- **Headline:** "Tá frio lá fora" (selo) + "Hora de trocar de cama." — mesma linha emocional da Arte 05 (Inverno), já validada no kit de artes da campanha
+- **Oferta:** R$ 1.890 em até 12x sem juros + Entrega grátis + Montagem grátis + CTA "Chama no WhatsApp e garanta o seu!"
+- **Layout:** produto à esquerda sobre fundo claro (gelo/azul claro), painel azul marinho à direita com o texto — mesma estrutura do banner anterior, só trocando o ângulo Copa pelo ângulo Frio
+- **Fonte:** HTML próprio (`artes/banner-site-2560x800-frio.html`), renderizado via Playwright — segue a paleta oficial (`identidade/design-guide.md`), sem cores fora do manual
+- Banner antigo (Copa) mantido no histórico, não usar mais
+
+**Pendente:** subir o novo banner no site (Simplo7) no lugar do antigo
