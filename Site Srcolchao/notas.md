@@ -14,9 +14,9 @@ Criar um site novo, com layout próprio, sem ficar preso às regras/templates da
 ## Decisões já tomadas
 
 - **Escopo:** e-commerce completo — carrinho, pagamento online e gestão de estoque integrada. Cliente compra direto pelo site (não é só vitrine pro WhatsApp).
-- **Simplo 7:** sair totalmente. Migrar pra outra stack/plataforma, sem depender mais deles (nem backend, nem front-end).
+- **Simplo 7:** sair totalmente. Migrar pra outra stack/plataforma, sem depender mais deles (nem backend, nem front-end). ⚠️ **Em revisão em 2026-07-08** — ver seção "Descoberta: Simplo 7 = wBuy (HostGator)" abaixo, pode não ser mais necessário trocar de empresa.
 - **Abordagem:** começar do zero — "migrar" aqui não significa carregar dados/histórico da Simplo 7 pra plataforma nova. É construir o site novo do zero (catálogo, estrutura, conteúdo), não transportar o que já existe lá.
-- **Plataforma escolhida (recomendação, 2026-07-08): Nuvemshop Impulso (R$164/mês).** Só R$49 a mais que os R$115 pagos hoje; resolve o problema de layout engessado (libera código do tema); carrinho/checkout/pagamento Pix/estoque já inclusos; plataforma brasileira (sem risco cambial, suporte em português); zero manutenção de servidor — se encaixa em não ter ninguém dedicado a infra técnica no time. Descartadas: Shopify (cobra em dólar + taxa extra de gateway no Brasil, sem vantagem clara sobre Nuvemshop aqui), VTEX (enterprise, caro demais), WooCommerce/VPS própria (exige manutenção técnica contínua que não tem quem faça).
+- **Plataforma escolhida (recomendação, 2026-07-08): Nuvemshop Impulso (R$164/mês).** ⚠️ **Em revisão** — ver descoberta do wBuy abaixo, que pode ser opção melhor (mais barata e sem trocar de empresa). Motivos originais da escolha: só R$49 a mais que os R$115 pagos hoje; resolve o problema de layout engessado (libera código do tema); carrinho/checkout/pagamento Pix/estoque já inclusos; plataforma brasileira (sem risco cambial, suporte em português); zero manutenção de servidor. Descartadas: Shopify (cobra em dólar + taxa extra de gateway no Brasil), VTEX (enterprise, caro demais), WooCommerce/VPS própria (exige manutenção técnica contínua que não tem quem faça).
 - **Quem constrói o tema (2026-07-08): sem freelancer.** Luiz + Claude Code constroem o tema juntos — Claude escreve o código (HTML/CSS/JS na estrutura Nuvemshop) e roda o Nuvemshop CLI direto no terminal do projeto pra sincronizar com a loja; Luiz entra com referências visuais, conteúdo e feedback de cada tela.
 
 ### Pré-requisitos pra começar a construção
@@ -39,6 +39,55 @@ Criar um site novo, com layout próprio, sem ficar preso às regras/templates da
 - [ ] Referências de sites concorrentes/inspiração de layout?
 - [ ] Prazo e orçamento (plataforma, hospedagem, ferramentas, eventual dev)?
 - [ ] Precisa rodar em paralelo com o site atual durante a transição, ou pode trocar de uma vez?
+
+## Descoberta: Simplo 7 = wBuy (HostGator) (2026-07-08)
+
+Luiz encontrou: a Simplo 7 foi comprada pela HostGator em 2023, e a solução de e-commerce deles hoje é a **wBuy** — mesma empresa, plataforma evoluída/rebatizada. Isso reabre a pergunta: talvez não precise trocar de empresa/provedor, só de plano/plataforma dentro da própria HostGator.
+
+### Planos wBuy
+
+Hoje: Simplo 7 (HostGator) = **R$ 115/mês**.
+
+| Plano wBuy | Preço mensal | Catálogo | Customização de layout |
+|---|---|---|---|
+| Iniciante | R$ 59 | até 200 produtos | Só temas grátis prontos, sem HTML/CSS |
+| **Turbo** | **R$ 149** | até 500 produtos | **CSS adicional + editar HTML + criar tema do zero** |
+| Expansão | R$ 299 | até 1.000 produtos | Idem Turbo + mais recursos |
+| Elite | R$ 499 | até 5.000 produtos | Idem + recursos avançados |
+
+**Por que isso é relevante:** o plano **wBuy Turbo (R$149/mês)** já libera edição de HTML/CSS e criação de tema do zero — mesmo nível de liberdade de layout que o Nuvemshop Impulso, só que R$15 mais barato **e dentro da mesma empresa que já hospeda a loja hoje**. Isso tende a facilitar a transição (possível upgrade de plano em vez de trocar de provedor/negociar com empresa nova, reapontar DNS, etc.).
+
+### Como funciona a edição de tema na wBuy (confirmado 2026-07-08)
+
+- Temas feitos em **HTML + CSS + JavaScript** usando o motor de templates **Twig** (tecnologia estabelecida, parecida com o Liquid do Shopify).
+- Personalização básica: tela "Temas" → "Personalizar tema" (cores, tamanhos, fontes, preview em tempo real, sem código).
+- Edição avançada: **direto no painel web** (Opções → Editar código) — diferente da Nuvemshop, que usa CLI local. Existe documentação própria de temas (doc-templates.wbuy.com.br) e uma loja de templates prontos (temas.wbuy.com.br), ecossistema parecido com o Shopify Theme Store.
+
+### Migração Simplo 7 → wBuy (confirmado 2026-07-08)
+
+**Não é automática** — precisa falar com um especialista da wBuy (serviço de migração dedicado, inclusive pra quem já é cliente HostGator/Simplo7). O serviço inclui:
+- Mapeamento completo da loja atual (produtos, clientes, regras)
+- Importação do histórico de pedidos e base de clientes (se optarem por aproveitar)
+- **Planejamento de redirecionamentos 301 pra preservar o SEO** — resolve de fábrica a parte mais delicada do roteiro de migração original
+- Domínio atual (senhorcolchao.com.br) pode ser mantido
+
+**Leitura:** isso fortalece a wBuy como opção — mesma empresa que já hospeda hoje, plano mais barato que Nuvemshop Impulso (R$149 vs R$164), customização de tema real, e caminho de migração testado (mesmo que decidam não aproveitar o catálogo antigo, reduz risco da transição, principalmente no SEO).
+
+Fontes: [Loja Virtual HostGator agora é wBuy](https://www.wbuy.com.br/hostgator), [wBuy planos e preços](https://www.wbuy.com.br/planos/), [wBuy — migrar loja](https://www.wbuy.com.br/migrar-loja/), [wBuy — documentação de templates](https://doc-templates.wbuy.com.br/)
+
+### Reputação — wBuy vs. Nuvemshop (levantado 2026-07-08, Reclame Aqui)
+
+| | wBuy | Nuvemshop |
+|---|---|---|
+| Nota recente (6 meses) | 9,0 (amostra pequena — só 10 reclamações avaliadas) | 7,8/10 ("BOM") |
+| Nota histórica (2022–2025) | **5,3/10 — "Ruim"**, 38 reclamações, só 50% resolvidas, 44,4% voltariam a negociar | 6,27 médio geral, 71,5% voltariam a negociar, 83,6% resolvidas |
+| Queixa mais comum | **Qualidade do suporte** — atendentes descritos como rudes, pouco empáticos, respostas genéricas | Bloqueio de saldo em transações (retenção por suspeita de fraude — risco comum a qualquer gateway BR), problemas com serviço de "especialistas" pago à parte |
+
+**Comparativo direto wBuy vs Nuvemshop:** Nuvemshop é a maior plataforma de e-commerce da América Latina, tem plano gratuito, +150 integrações nativas (ERPs, frete, marketing), não cobra por quantidade de produto. wBuy tem como diferencial integração nativa com Mercado Livre e Shopee, e recursos de omnichannel/fidelidade — mas sem desconto em plano anual e ecossistema/comunidade menor.
+
+**Recomendação (2026-07-08):** apesar de custar R$15 a menos e ser da mesma empresa, a reputação de suporte da wBuy é historicamente mais fraca (5,3/10 "Ruim"), o que pesa bastante pro caso de vocês — sem time técnico próprio, a dependência do suporte da plataforma é maior. **Leve inclinação por manter Nuvemshop Impulso**, pela reputação de suporte mais consistente e ecossistema/comunidade maior (mais tutoriais, freelancers, documentação em caso de precisar de ajuda pontual). Decisão ainda não fechada — pendente de confirmação do usuário.
+
+Fontes: [wBuy — Reclame Aqui](https://www.reclameaqui.com.br/empresa/wbuy-lojas-virtuais/), [Nuvemshop — Reclame Aqui](https://www.reclameaqui.com.br/empresa/nuvem-shop/), [WBUY ou Nuvemshop: qual a melhor plataforma](https://plataformasdeecommerce.com.br/wbuy-ou-nuvemshop-qual-a-melhor-plataforma-em-2024/)
 
 ## Hospedagem: VPS própria vs. infra de terceiros
 
