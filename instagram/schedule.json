@@ -25,7 +25,10 @@
       "video_filename": "arte02-orthoplus-feed.mp4",
       "scheduled_at": "2026-07-09T11:00:00-03:00",
       "caption": "Cama Box Casal Orthoplus — R$ 1.890 em até 12x sem juros. 🛏️\n\n✓ Entrega grátis\n✓ Montagem grátis\n\nNão vai deixar essa passar, né? Oferta de julho tem data pra acabar!\n\n👉 Clica no link da bio ou chama direto no WhatsApp!\n\n#SenhorColchão #CamaBox #Orthoplus #OfertaDeJulho #ColchãoCasal #DormaCampeão",
-      "status": "pending"
+      "status": "published",
+      "post_id": "18144522313483329",
+      "container_id": "18385126039202200",
+      "published_at": "2026-07-09T16:31:22.988023+00:00"
     },
     {
       "id": "arte02-story",
@@ -34,7 +37,10 @@
       "video_filename": "arte02-orthoplus-story.mp4",
       "scheduled_at": "2026-07-09T11:05:00-03:00",
       "caption": "",
-      "status": "pending"
+      "status": "published",
+      "post_id": "18117830104873475",
+      "container_id": "18385126282202200",
+      "published_at": "2026-07-09T16:31:22.988023+00:00"
     },
     {
       "id": "arte03-feed",
