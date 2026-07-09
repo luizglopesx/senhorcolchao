@@ -75,6 +75,25 @@ Hoje: Simplo 7 (HostGator) = **R$ 115/mês**.
 
 Fontes: [Loja Virtual HostGator agora é wBuy](https://www.wbuy.com.br/hostgator), [wBuy planos e preços](https://www.wbuy.com.br/planos/), [wBuy — migrar loja](https://www.wbuy.com.br/migrar-loja/), [wBuy — documentação de templates](https://doc-templates.wbuy.com.br/)
 
+### ⚠️ Contradição encontrada — resposta do suporte HostGator (ticket Z6JYDW-47X11, 2026-07-09)
+
+Abriu chamado com o suporte HostGator (loja `dlojavirtual.com`) perguntando sobre migração. A resposta trata **"Loja HostGator" e "WBuy" como plataformas/times separados** — inclusive diz que pra migrar pra WBuy é preciso falar com a equipe deles à parte. Isso contradiz a suposição registrada acima (08/07) de que Simplo 7 = wBuy = mesma plataforma.
+
+**Planos informados pela HostGator (Loja Virtual / dlojavirtual.com), pra quem já é cliente:**
+
+| Plano | Mensal | Anual | Parcelado (12x) | Comissão sobre pedidos pagos |
+|---|---|---|---|---|
+| Básico | R$ 49,00 | R$ 346,92 | R$ 28,91 | 1,5% |
+| Essencial | R$ 99,00 | R$ 653,40 | R$ 54,45 | 1,0% |
+| Completo | R$ 199,00 | R$ 1.791,00 | R$ 149,25 | 0,5% |
+
+Esses valores **não batem** com a tabela de planos WBuy pesquisada em 08/07 (Iniciante R$59 / Turbo R$149 / Expansão R$299 / Elite R$499, sem comissão mencionada). Indício de que são dois produtos diferentes dentro do grupo HostGator: a "Loja Virtual HostGator" (cobra comissão por venda) e a "WBuy" propriamente dita (sem comissão, mas plataforma separada, exige contato próprio).
+
+**Pendências antes de decidir:**
+- Confirmar com a WBuy (contato direto, conforme orientado) se as condições e o processo de migração são os mesmos, e se o plano recomendado (Turbo, R$149) é o comparável certo — sem comissão por venda muda bastante a conta vs. o plano "Completo" da tabela acima (R$199 + 0,5%).
+- Nenhum dos planos "Loja HostGator" acima (Básico/Essencial/Completo) menciona liberação de HTML/CSS — só o plano Completo (R$199) tem chance de ser o equivalente a customização real; precisa confirmar.
+- Manter a recomendação provisória de Nuvemshop Impulso em standby até esclarecer isso — decisão segue em aberto.
+
 ### Reputação — wBuy vs. Nuvemshop (levantado 2026-07-08, Reclame Aqui)
 
 | | wBuy | Nuvemshop |
