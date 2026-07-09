@@ -14,7 +14,7 @@ Criar um site novo, com layout próprio, sem ficar preso às regras/templates da
 ## Decisões já tomadas
 
 - **Escopo:** e-commerce completo — carrinho, pagamento online e gestão de estoque integrada. Cliente compra direto pelo site (não é só vitrine pro WhatsApp).
-- **Simplo 7:** sair totalmente. Migrar pra outra stack/plataforma, sem depender mais deles (nem backend, nem front-end). ⚠️ **Em revisão em 2026-07-08** — ver seção "Descoberta: Simplo 7 = wBuy (HostGator)" abaixo, pode não ser mais necessário trocar de empresa.
+- **Simplo 7:** sair totalmente. Migrar pra outra stack/plataforma, sem depender mais deles (nem backend, nem front-end). Confirmado em 2026-07-09: suporte da HostGator confirmou que nenhum plano deles (nem o mais caro) libera HTML — só CSS via painel. Ficar na HostGator não resolve o problema de layout, então sair continua sendo necessário. Decisão agora é só **entre WBuy (contato direto) e Nuvemshop Impulso** — ver "Contradição resolvida" abaixo.
 - **Abordagem:** começar do zero — "migrar" aqui não significa carregar dados/histórico da Simplo 7 pra plataforma nova. É construir o site novo do zero (catálogo, estrutura, conteúdo), não transportar o que já existe lá.
 - **Plataforma escolhida (recomendação, 2026-07-08): Nuvemshop Impulso (R$164/mês).** ⚠️ **Em revisão** — ver descoberta do wBuy abaixo, que pode ser opção melhor (mais barata e sem trocar de empresa). Motivos originais da escolha: só R$49 a mais que os R$115 pagos hoje; resolve o problema de layout engessado (libera código do tema); carrinho/checkout/pagamento Pix/estoque já inclusos; plataforma brasileira (sem risco cambial, suporte em português); zero manutenção de servidor. Descartadas: Shopify (cobra em dólar + taxa extra de gateway no Brasil), VTEX (enterprise, caro demais), WooCommerce/VPS própria (exige manutenção técnica contínua que não tem quem faça).
 - **Quem constrói o tema (2026-07-08): sem freelancer.** Luiz + Claude Code constroem o tema juntos — Claude escreve o código (HTML/CSS/JS na estrutura Nuvemshop) e roda o Nuvemshop CLI direto no terminal do projeto pra sincronizar com a loja; Luiz entra com referências visuais, conteúdo e feedback de cada tela.
@@ -75,9 +75,9 @@ Hoje: Simplo 7 (HostGator) = **R$ 115/mês**.
 
 Fontes: [Loja Virtual HostGator agora é wBuy](https://www.wbuy.com.br/hostgator), [wBuy planos e preços](https://www.wbuy.com.br/planos/), [wBuy — migrar loja](https://www.wbuy.com.br/migrar-loja/), [wBuy — documentação de templates](https://doc-templates.wbuy.com.br/)
 
-### ⚠️ Contradição encontrada — resposta do suporte HostGator (ticket Z6JYDW-47X11, 2026-07-09)
+### ✅ Contradição resolvida — suporte HostGator confirma: Loja HostGator ≠ WBuy (ticket Z6JYDW-47X11, 2026-07-09)
 
-Abriu chamado com o suporte HostGator (loja `dlojavirtual.com`) perguntando sobre migração. A resposta trata **"Loja HostGator" e "WBuy" como plataformas/times separados** — inclusive diz que pra migrar pra WBuy é preciso falar com a equipe deles à parte. Isso contradiz a suposição registrada acima (08/07) de que Simplo 7 = wBuy = mesma plataforma.
+Abriu chamado com o suporte HostGator (loja `dlojavirtual.com`) perguntando sobre migração. Primeira resposta tratava "Loja HostGator" e "WBuy" como coisas separadas — perguntamos diretamente e a HostGator confirmou por escrito:
 
 **Planos informados pela HostGator (Loja Virtual / dlojavirtual.com), pra quem já é cliente:**
 
@@ -87,12 +87,12 @@ Abriu chamado com o suporte HostGator (loja `dlojavirtual.com`) perguntando sobr
 | Essencial | R$ 99,00 | R$ 653,40 | R$ 54,45 | 1,0% |
 | Completo | R$ 199,00 | R$ 1.791,00 | R$ 149,25 | 0,5% |
 
-Esses valores **não batem** com a tabela de planos WBuy pesquisada em 08/07 (Iniciante R$59 / Turbo R$149 / Expansão R$299 / Elite R$499, sem comissão mencionada). Indício de que são dois produtos diferentes dentro do grupo HostGator: a "Loja Virtual HostGator" (cobra comissão por venda) e a "WBuy" propriamente dita (sem comissão, mas plataforma separada, exige contato próprio).
+**Confirmado pelo suporte (2ª resposta):**
+- **Nenhum plano da HostGator (nem o Completo) dá acesso a HTML.** Só liberam ajustes de **CSS** via painel (Aplicativos → Aparência → Aparência (Visual) → CSS) — dá pra mudar estilo, mas não remodelar a estrutura da página nem criar layout diferente do padrão da plataforma. **Ou seja: nenhum plano HostGator resolve o problema de layout engessado**, mesmo o mais caro.
+- **HostGator e WBuy são empresas diferentes, com parceria** — não é a mesma plataforma rebatizada como a pesquisa de 08/07 supôs. Lojas novas hoje já nascem direto na WBuy (suporte e infra da WBuy). Lojas antigas como a nossa (ex-Simplo 7) continuam no sistema/servidor próprio da HostGator, suporte pela equipe deles.
+- Pra ter liberdade real de customização, a própria HostGator recomenda: **falar direto com a WBuy** — migração, condições comerciais e recursos da WBuy são tratados só pela equipe deles, a HostGator não intermedia.
 
-**Pendências antes de decidir:**
-- Confirmar com a WBuy (contato direto, conforme orientado) se as condições e o processo de migração são os mesmos, e se o plano recomendado (Turbo, R$149) é o comparável certo — sem comissão por venda muda bastante a conta vs. o plano "Completo" da tabela acima (R$199 + 0,5%).
-- Nenhum dos planos "Loja HostGator" acima (Básico/Essencial/Completo) menciona liberação de HTML/CSS — só o plano Completo (R$199) tem chance de ser o equivalente a customização real; precisa confirmar.
-- Manter a recomendação provisória de Nuvemshop Impulso em standby até esclarecer isso — decisão segue em aberto.
+**Conclusão prática:** ficar na HostGator (qualquer plano, inclusive Completo R$199) **não resolve** o motivo original da troca. As duas opções que restam de fato são: **(1) migrar pra WBuy** (contato direto necessário — plano Turbo R$149 pesquisado antes, a confirmar se ainda vale e se o processo de migração preserva SEO) ou **(2) Nuvemshop Impulso** (R$164, já pesquisado, CLI local, reputação de suporte mais forte). Nuvemshop volta a ser a recomendação mais segura por não depender de mais uma rodada de esclarecimento; WBuy seguiria como opção mais barata se o contato direto confirmar boas condições de migração.
 
 ### Reputação — wBuy vs. Nuvemshop (levantado 2026-07-08, Reclame Aqui)
 
