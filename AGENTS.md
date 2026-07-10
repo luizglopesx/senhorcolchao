@@ -63,6 +63,7 @@ Quando houver oferta, valorizar:
 - Scripts e automacoes: `scripts/`
 - Publicacao Instagram/GitHub Actions: `instagram/` e `.github/workflows/`
 - Paginas de produto Simplo 7: `saidas/produtos/<produto>/`
+- Templates reutilizaveis (skills, perfis, ferramentas, identidade): `templates/`
 
 Nao salvar dados sensiveis de clientes, telefones, tokens, credenciais ou exports com PII em arquivos versionados. CSVs de clientes devem ficar fora do Git.
 
@@ -188,6 +189,9 @@ O projeto usa ou referencia:
 - Google Ads API
 - Campaign Manager para atendimento WhatsApp
 - Simplo 7 para e-commerce
+- Gmail, Google Calendar e Google Drive via MCP (conectores claude.ai)
+- Receitas Manager para financeiro (fluxo de caixa, contas, DRE)
+- Supabase (bucket `catalogo`) para imagens de produto
 
 Credenciais ficam no `.env`, que nao deve ser versionado nem exibido em respostas.
 

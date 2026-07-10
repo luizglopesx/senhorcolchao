@@ -10,6 +10,7 @@ Operação da Senhor Colchão Sleep Store. Empresa familiar de varejo de produto
 - `dados/` — arquivos a analisar
 - `scripts/` — automações e scripts de apoio
 - `instagram/` — automação de publicação no Instagram via GitHub Actions (`.github/workflows/`)
+- `templates/` — templates reutilizáveis (skills, perfis, ferramentas, identidade)
 
 ---
 
@@ -63,12 +64,15 @@ Evitar: "vamos juntos!", "alavancar", "sinergia", "caro cliente", excesso de emo
 
 ## Ferramentas conectadas
 
-- [ ] Gmail
-- [ ] Google Calendar
+- [x] Gmail — via MCP (conector claude.ai)
+- [x] Google Calendar — via MCP (conector claude.ai)
+- [x] Google Drive — via MCP (conector claude.ai)
 - [x] Google Ads — leitura/edição/otimização via API (v21); credenciais GOOGLE_ADS_* no `.env`
 - [x] Meta Ads API — insights e edição de campanhas via `meta_ads_client.py` (`.claude/skills/social-post-scheduler/scripts/`)
 - [x] Meta / Instagram — postagem automatizada via GitHub Actions (`.github/workflows/`)
 - [x] Campaign Manager — atendimento WhatsApp via API; credenciais CAMPAIGN_MANAGER_* no `.env`
+- [x] Receitas Manager — financeiro (fluxo de caixa, contas, DRE); credenciais RECEITAS_MANAGER_* no `.env`
+- [x] Supabase — bucket `catalogo` com imagens de produto (colchão, cama box montada, base/box por cor); credenciais SUPABASE_* no `.env`
 
 *(Marcar conforme for instalando os MCPs)*
 

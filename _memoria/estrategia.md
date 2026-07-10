@@ -30,7 +30,9 @@ Operação estabilizada — caixa controlado, equipe formada. Faturamento batend
 
 ## Frentes em andamento
 
-- **Redesign de páginas de produto no Simplo 7** — layout HTML padronizado definido e aprovado. Páginas organizadas por produto em `saidas/produtos/<produto>/`. Primeiro produto (**Livorno**) finalizado: mockup com fotos fotorrealistas (hero/colchão/base) em `saidas/produtos/livorno/mockup-livorno.html`, código pronto pra colar no Simplo 7 em `descricao-simplo7.html` e imagens otimizadas em `web/`. Pendente: hospedar as imagens no Simplo 7 e colar o código no catálogo
+- **Redesign de páginas de produto no Simplo 7** — layout HTML padronizado definido e aprovado (8 seções, cores da marca — ver memória `pagina-produto-simplo7`). Páginas organizadas por produto em `saidas/produtos/<categoria>/<produto>/`. Já feitos: Livorno, Livorno Solteiro, Tower, Madrid, Dakota, Lancaster, Cloud, D20 Comfortopedic (colchão + cama box), D28 Comfortopedic, Box e Box Baú (por cor). Skill dedicada `/pagina-cama-box` gera a versão cama box de um produto a partir do colchão avulso já cadastrado, puxando as fotos certas do bucket Supabase. Pendente: hospedar as imagens no Simplo 7 e colar o código no catálogo — e reavaliar prioridade conforme a decisão da frente "Site novo" abaixo.
+
+- **Site novo — saída do Simplo 7** — decisão em andamento sobre trocar de plataforma de e-commerce (motivo: Simplo 7/HostGator não libera edição de HTML em nenhum plano, só CSS). Escolha reduzida a **wBuy** (R$149/mês, mesma empresa que já hospeda hoje, mas suporte com reputação historicamente fraca) vs **Nuvemshop Impulso** (R$164/mês, leve inclinação atual, suporte e ecossistema mais fortes). Decisão ainda não fechada. Roteiro de migração, comparativos e perguntas em aberto em `Site Srcolchao/notas.md`. **Relevante pra prioridade:** se migrar, o catálogo é reconstruído do zero na plataforma nova (não é import automático da Simplo 7) — vale pesar isso antes de investir mais tempo formatando páginas de produto no Simplo 7 atual.
 
 ## Benchmarks de mídia paga — Meta Ads
 
