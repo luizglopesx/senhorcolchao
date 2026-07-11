@@ -49,7 +49,10 @@
       "video_filename": "arte03-smartflex-feed.mp4",
       "scheduled_at": "2026-07-11T11:00:00-03:00",
       "caption": "Sono de verdade começa numa cama de qualidade.\n\nCama Box Queen SmartFlex — Molas Ensacadas\n30cm de conforto real. R$ 2.390 em até 12x sem juros.\n\n✓ Entrega grátis\n✓ Montagem grátis\n\nQuer dormir melhor todo dia? Esse é o modelo.\n\n👉 Chama no WhatsApp ou clica no link da bio!\n\n#SenhorColchão #MolasEnsacadas #SmartFlex #CamaBoxQueen #ConfortoDeVerdade #DormaCampeão",
-      "status": "pending"
+      "status": "published",
+      "post_id": "18060650921756371",
+      "container_id": "18385424374202200",
+      "published_at": "2026-07-11T15:03:29.742412+00:00"
     },
     {
       "id": "arte03-story",
@@ -58,7 +61,10 @@
       "video_filename": "arte03-smartflex-story.mp4",
       "scheduled_at": "2026-07-11T11:05:00-03:00",
       "caption": "",
-      "status": "pending"
+      "status": "published",
+      "post_id": "18417666964195697",
+      "container_id": "18385424578202200",
+      "published_at": "2026-07-11T15:03:29.742412+00:00"
     },
     {
       "id": "arte04-feed",
