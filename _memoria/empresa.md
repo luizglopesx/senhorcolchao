@@ -22,4 +22,6 @@
 
 ## Contexto adicional
 
-Empresa familiar com operação enxuta. O estoque está alto e as vendas estão abaixo do esperado — foco atual é em girar estoque com ações de marketing e promoções.
+Empresa familiar com operação enxuta. Julho/2026 está projetando R$225-237k (acima da meta de R$200k) — o risco atual não é estoque alto, é o oposto: produtos campeões de venda com estoque crítico (1-3 unidades), risco real de perder venda por falta de produto.
+
+**Festa do Peão de Boiadeiro de Barretos (agosto):** maior festa do gênero no país, sediada na cidade. É o principal motor da alta demanda de colchões **Solteiro** em agosto — casas cheias de visitantes, repúblicas, pousadas — não o Dia dos Pais. Em 2026 acontece de 20 a 30/08. Confirmado em dados de vendas de agosto/2025: 64% das vendas de Solteiro do mês concentradas nessa janela de 11 dias.

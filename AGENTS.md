@@ -191,6 +191,7 @@ O projeto usa ou referencia:
 - Simplo 7 para e-commerce
 - Gmail, Google Calendar e Google Drive via MCP (conectores claude.ai)
 - Receitas Manager para financeiro (fluxo de caixa, contas, DRE)
+- Bling ERP (somente leitura: produtos, estoque, pedidos de venda; NF-e pendente de escopo) via `nexus-manager.js` do Receitas Manager
 - Supabase (bucket `catalogo`) para imagens de produto
 
 Credenciais ficam no `.env`, que nao deve ser versionado nem exibido em respostas.

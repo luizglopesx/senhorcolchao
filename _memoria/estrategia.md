@@ -20,7 +20,7 @@ Operação estabilizada — caixa controlado, equipe formada. Faturamento batend
 
 ## Campanhas ativas (2026)
 
-- **Durma como Campeão** (planejada, ainda não lançada) — 2 fases: Copa Mata-Mata (07–19/07, tema "a gente tá na mata-mata dos preços também") e Férias (20–31/07, com pivô automático se o Brasil cair antes). Meta de receita julho: R$200k (ideal R$215k). Produto prioritário: conjunto Colchão+Box+Cabeceira. Planejamento e artes em `marketing/campanhas/julho-2026-durma-como-campeao/`
+- **Durma como Campeão** — ATIVA desde 06/07 (fase 1, 06-19/07, R$30/dia, otimizada pra CONVERSATIONS). Meta de receita julho: R$200k (ideal R$215k) — ritmo de vendas real de julho já projeta R$225-237k. **Achado e corrigido em 07/07:** conjunto estava com público lookalike (1% sobre base de só ~300 contatos) travando o alcance — removido, e desde então CTR/CPC/CPM melhoraram e as conversas passaram a aparecer (0 nos 2 primeiros dias → 6 acumuladas até 11/07, custo por conversa caindo de R$17,47 pra R$8 no dia isolado mais recente). Fase 2 (Férias, 20-31/07) ainda não avaliada — decidir conforme performance da fase 1. Planejamento e artes em `marketing/campanhas/julho-2026-durma-como-campeao/`. Relatórios diários em `marketing/campanhas/relatorios/AAAA-MM-DD-durma-como-campeao-snapshot.md`
 
 ## Campanhas encerradas (referência)
 
@@ -69,8 +69,10 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 - Decisão pendente: calcular CPL real do Google Ads (custo ÷ Conversões) depois de 2-4 semanas de dado limpo, e comparar com CPL do Meta Ads pra decidir alocação de verba entre os dois canais
 - **Primeira conversão real confirmada em 05/07: 1 `whatsapp_click` na CP01C**, contabilizada certinho no Google Ads — fecha o ciclo gclid→atribuição→conversão iniciado em 03-04/07. Relógio de "dado limpo" segue contando a partir de 03/07.
 - **Achado 06/07: keyword "Comprar colchão de espuma" (BROAD, grupo Colchões De Espuma) consumia 52% do orçamento da CP01C (R$141,97/14 dias) com zero conversão** — mesmo padrão de vazamento já visto em 03/07 no grupo Branding. Corrigido via API: migrada pra PHRASE match. Também adicionadas "pikolin" e "vitorian" (concorrentes) à lista de negativas.
-- **Decisão 06/07: não criar campanha nova ainda** — só 1 conversão registrada, cedo demais pra avaliar. CP01C tem orçamento sobrando (R$19,34/dia gasto de R$25 de teto) — prioridade é aproveitar esse espaço com o vazamento corrigido antes de expandir.
-- Auditorias: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md` → `2026-07-02-google-ads-auditoria.md` → `2026-07-03-google-ads-auditoria.md` → `2026-07-04-google-ads-teste-gclid.md` → **`2026-07-06-google-ads-auditoria.md`** (mais recente, primeira conversão + correção de keyword)
+- **Correção de 06/07 confirmada funcionando (checado em 08 e 11/07):** termos de busca reais da keyword migrada agora são só sobre colchão (ex: "colchão casal espuma"), nada de vazamento tipo OLX/concorrente. Negativas "pikolin"/"vitorian" seguem bloqueando, sem reincidência.
+- **Estado em 11/07: 3 conversões `whatsapp_click` acumuladas em 14 dias** (05, 06 e 09/07). Dias sem conversão nova (07, 08, 10/07) são variação normal do volume da conta, não vazamento — investigado e descartado.
+- **Decisão seguindo: não criar campanha nova ainda** — volume de conversão ainda baixo pra decidir alocação de verba. CP01C segue com orçamento sobrando a maior parte dos dias.
+- Auditorias: `marketing/campanhas/relatorios/2026-06-26-google-ads-auditoria.md` → ... → `2026-07-06-google-ads-auditoria.md` (primeira conversão + correção de keyword) → **`2026-07-11-google-ads-auditoria.md`** (mais recente — confirmação de keywords/negativas saudáveis)
 
 ## Campaign Manager — atendimento WhatsApp
 
@@ -84,7 +86,7 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 | Campanha | Janela | Prioridade |
 |---|---|---|
 | Liquidação Inverno | Jul/2026 | Alta — estoque de inverno |
-| Dia dos Pais | Ago/2026 | Alta — modelo sazonal comprovado |
+| **Festa do Peão de Barretos** (20-30/08) | Ago/2026 | **Alta — motor real da demanda de Solteiro em agosto** (dados de 2025: 64% da venda de Solteiro do mês concentrada nessa janela; não é o Dia dos Pais) |
 | Black Friday | Nov/2026 | Planejar com antecedência |
 
 ## Candidata a skill

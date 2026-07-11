@@ -72,6 +72,7 @@ Evitar: "vamos juntos!", "alavancar", "sinergia", "caro cliente", excesso de emo
 - [x] Meta / Instagram — postagem automatizada via GitHub Actions (`.github/workflows/`)
 - [x] Campaign Manager — atendimento WhatsApp via API; credenciais CAMPAIGN_MANAGER_* no `.env`
 - [x] Receitas Manager — financeiro (fluxo de caixa, contas, DRE); credenciais RECEITAS_MANAGER_* no `.env`
+- [x] Bling ERP — consulta somente-leitura (produtos, estoque, pedidos de venda; NF-e pendente de escopo) via `nexus-manager.js` do Receitas Manager, mesmas credenciais RECEITAS_MANAGER_*
 - [x] Supabase — bucket `catalogo` com imagens de produto (colchão, cama box montada, base/box por cor); credenciais SUPABASE_* no `.env`
 
 *(Marcar conforme for instalando os MCPs)*
