@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "out=$(git pull --ff-only 2>&1); printf '{\"systemMessage\": %s}' \"$(printf '%s' \"$out\" | jq -Rs .)\"",
+            "timeout": 30,
+            "statusMessage": "Sincronizando com o GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}
