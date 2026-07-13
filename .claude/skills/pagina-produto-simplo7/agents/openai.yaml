@@ -1,0 +1,4 @@
+interface:
+  display_name: "Página de Produto Simplo7"
+  short_description: "Cria páginas de produto com HTML e SEO"
+  default_prompt: "Use $pagina-produto-simplo7 para criar o HTML e os campos de SEO de um produto."
