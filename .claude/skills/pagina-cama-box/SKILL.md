@@ -9,7 +9,7 @@ Gera a versão "cama box" (colchão + base) de um produto que já tem página de
 
 ## Dependências
 
-- **Fluxo geral, organização e SEO:** ler `../pagina-produto-simplo7/SKILL.md` e aplicar todas as regras, inclusive a entrega obrigatória de Meta Title, Meta Description, H1, Meta Keywords e atributos técnicos.
+- **Fluxo geral, organização e SEO:** ler `../pagina-produto-simplo7/SKILL.md` e aplicar todas as regras, inclusive a entrega obrigatória de Meta Title, Meta Description, H1 e Meta Keywords.
 - **Estrutura do layout:** seguir o padrão do arquivo de referência `saidas/mockup-produto-livorno-v2.html` e de qualquer `descricao-simplo7-*-conjunto.html` já existente (ex: `saidas/produtos/tower/queen/conjunto/`).
 - **Dados do colchão:** a página de colchão avulso do mesmo produto, se existir (`saidas/produtos/**/colchao/descricao-simplo7-*.html`) — é a fonte mais confiável pra espuma/densidade, conforto, suporte de peso, tecido e medidas
 - **Credenciais do bucket:** `.env` → `SUPABASE_URL`, `SUPABASE_ANON_KEY` (ou `SUPABASE_SERVICE_KEY`), `SUPABASE_BUCKET`, `SUPABASE_BUCKET_FOLDER`, `SUPABASE_STORAGE_URL`
@@ -111,6 +111,6 @@ Manter genérico — **não citar o nome de uma linha/tecnologia específica** (
    - Aplicar o padrão de box (blindado, pés, garantia) e a marca confirmada.
 5. **Salvar em** `saidas/produtos/<categoria>/<produto>/<tamanho>/cama-box/descricao-simplo7-<produto>-<tamanho>-cama-box.html`
 6. **Validar as imagens** com `curl` antes de entregar.
-7. **Gerar o bloco de SEO obrigatório** conforme `../pagina-produto-simplo7/SKILL.md`, adaptado para cama box: Meta Title, Meta Description, Tag H1, Meta Keywords em branco e atributos técnicos de colchão + base.
+7. **Gerar o bloco de SEO obrigatório** conforme `../pagina-produto-simplo7/SKILL.md`, adaptado para cama box: Meta Title, Meta Description, Tag H1 e Meta Keywords em branco.
 8. **Alinhar com Google Ads** quando houver termos de busca reais relevantes, sem repetir keywords artificialmente e usando URL final sem `www`.
 9. Avisar qualquer fallback usado (ex: foto de cena de outro tamanho, ausência de foto isolada da base) pra o usuário saber que pode trocar depois se tiver material melhor.
