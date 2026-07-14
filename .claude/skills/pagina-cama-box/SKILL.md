@@ -84,7 +84,7 @@ https://supabase.senhorcolchao.com/storage/v1/object/public/catalogo/products/<p
 - **Estrutura:** madeira de eucalipto (reflorestamento), com reforços internos.
 - **Revestimento:** suede na cor escolhida + tampo antiderrapante.
 - **Tratamento:** anticupim e antimofo na base; antiácaro/antibactéria no colchão (se a linha do colchão já mencionar isso).
-- **Pés:** solteiro leva **6 pés em madeira**; casal e queen levam **7 pés em madeira (2 com rodízio)** — se for um tamanho ainda não confirmado (king, queen conjugada etc.), perguntar antes de assumir.
+- **Pés:** todos são fixos, sem rodízios. Solteiro e viúva levam **6 pés fixos em madeira**; casal leva **7 pés fixos em madeira**; queen e king levam **12 pés fixos em madeira**. Para tamanhos fora desses padrões, confirmar antes de assumir.
 - **Altura da base:** 40 cm é o padrão observado no catálogo (pés de 12 cm inclusos). Altura final do conjunto = altura do colchão + 40 cm.
 - **Garantia:** 90 dias, salvo o usuário informar outro valor pro produto específico.
 
