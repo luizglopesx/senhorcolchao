@@ -1,5 +1,5 @@
 # Campanhas Meta Ads — Histórico de Performance
-*Senhor Colchão | act_888195439518063 | Atualizado: 13/07/2026*
+*Senhor Colchão | act_888195439518063 | Atualizado: 14/07/2026*
 
 Referência de benchmarks internos para planejamento e comparação de campanhas futuras.
 
@@ -12,7 +12,7 @@ Referência de benchmarks internos para planejamento e comparação de campanhas
 | CP04 — Prospect Geral | 02/05–31/05/2026 | R$ 516,79 | 0,88% | R$ 1,66 | 32 | R$ 16,15 | 15 (46,9%) | R$ 34,45 |
 | Dia dos Namorados 2026 | 03/06–13/06/2026 | R$ 540,90 | 0,96% | R$ 1,33 | 50 | R$ 10,82 | 33 (66,0%) | R$ 16,39 |
 | Aqui da Jogo — Copa 2026 | 15/06–30/06/2026 | R$ 584,18 | 1,31% | R$ 1,07 | 63 | R$ 9,27 | 30 (47,6%) | R$ 19,47 |
-| Durma como Campeão — Julho 2026 (CTWA) *em andamento* | 06/07–19/07/2026 | R$ 191,03 (parcial, até 12/07) | 0,56% | R$ 2,20 | 8 | R$ 23,88 | — | — |
+| Durma como Campeão — Julho 2026 (CTWA) *em andamento* | 06/07–19/07/2026 | R$ 228,02 (parcial, até 14/07) | 0,55% | R$ 2,38 | 9 | R$ 25,34 | — | — |
 
 > **Durma como Campeão** ainda está rodando (encerra 19/07) — números acima são parciais e serão fechados após o fim da campanha. CTR e custo/conversa estão abaixo do padrão das 3 campanhas anteriores.
 
@@ -23,7 +23,8 @@ Referência de benchmarks internos para planejamento e comparação de campanhas
 - **Checagem em 13/07/2026:** CTR (0,56%) e custo/conversa (R$23,88) piores que as 3 campanhas anteriores registradas abaixo. Frequência (2,84) dentro do ideal — não é fadiga de público.
 - **Causa identificada:** performance fraca distribuída entre as 3 artes ativas, não um outlier isolado. Pior caso: **Arte 05 "Férias"** gastou R$15,57 com zero cliques no link e zero conversas.
 - **Ação tomada em 13/07/2026:** pausadas **Arte 05 \| Férias** (zero conversão) e **Arte 04 \| Orthoplus** (CPC R$3,40, só 1 conversa). Verba do conjunto concentrada em **Arte 02 \| Orthoplus R$1.890**, que já respondia por 85% do gasto e 7 das 8 conversas.
-- **Pendente:** reavaliar CTR/custo por conversa depois de alguns dias só com a Arte 02, e fechar os números finais em 19/07 pra registrar no histórico definitivo.
+- **Checagem em 14/07/2026:** pausa de Arte 04/05 confirmada em vigor (ambas `PAUSED`, zero gasto novo desde 13/07). Verba 100% concentrada na Arte 02. Acumulado geral segue fraco (CTR 0,55%, frequência saudável 2,94x, custo/conversa R$25,34 — pior que as 3 campanhas anteriores). Primeiro dia limpo só com Arte 02 (14/07, parcial): CTR subiu pra 0,74% — sinal inicial positivo, mas amostra pequena (1 dia, 4 cliques) pra confirmar tendência.
+- **Pendente:** acompanhar se o CTR de 0,74% se sustenta nos próximos dias e fechar os números finais em 19/07 pra registrar no histórico definitivo.
 
 ---
 
