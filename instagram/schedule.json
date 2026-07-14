@@ -97,7 +97,10 @@
       "video_filename": "arte05-inverno-feed.mp4",
       "scheduled_at": "2026-07-14T11:00:00-03:00",
       "caption": "Tá frio lá fora. ❄️\n\nMas quem tem uma cama boa não reclama do inverno.\n\nTroca o colchão velho por um que abraça de verdade. Condições especiais só em julho — com entrega e montagem grátis!\n\n👉 Chama no WhatsApp e vem conferir!\n\n#SenhorColchão #Inverno2026 #ColchãoDeQualidade #DormaCampeão #OfertaDeJulho #ConfortoNoInverno",
-      "status": "pending"
+      "status": "published",
+      "post_id": "18550004533077949",
+      "container_id": "18385888297202200",
+      "published_at": "2026-07-14T15:36:31.141007+00:00"
     },
     {
       "id": "arte05-story",
@@ -106,7 +109,10 @@
       "video_filename": "arte05-inverno-story.mp4",
       "scheduled_at": "2026-07-14T11:05:00-03:00",
       "caption": "",
-      "status": "pending"
+      "status": "published",
+      "post_id": "17902526940466237",
+      "container_id": "18385888576202200",
+      "published_at": "2026-07-14T15:36:31.141007+00:00"
     }
   ]
 }
