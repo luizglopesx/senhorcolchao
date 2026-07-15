@@ -47,6 +47,11 @@ Consultar `identidade/design-guide.md`, `_memoria/preferencias.md` e o HTML apro
 - Codificar acentos como entidades HTML quando o padrao do arquivo exigir.
 - Codificar integralmente a mensagem do link do WhatsApp.
 
+### Ficha tecnica
+
+- No campo `Revestimento`, informar somente o tecido ou material de revestimento. Nao incluir `base antiderrapante` nesse campo.
+- No campo `Suporte`, informar somente o limite de peso por pessoa, por exemplo: `Ate 150 kg por pessoa`. Nao acrescentar condicionais de altura ou outros detalhes nesse campo.
+
 ## SEO obrigatorio para cada produto
 
 Entregar sempre, mesmo que o usuario tenha pedido apenas o HTML:
