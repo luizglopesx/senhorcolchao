@@ -21,3 +21,7 @@ Frases curtas. Parágrafos de no máximo 3 linhas. CTA direto e sem rodeios ("ch
 - Usar "a gente" em vez de "nós" em comunicações externas
 - Confirmar entrega e montagem grátis quando for o caso (é diferencial forte)
 - Mencionar as marcas quando relevante — isso transmite credibilidade
+
+## Páginas de produto (Simplo7)
+
+- Ao descrever colchões de conforto firme, não repetir sempre "Base firme com toque adaptável" — variar o texto de produto pra produto, mesmo quando o conforto é igual. Vale pro card de destaque, benefícios e ficha técnica. Página que já foi aprovada com esse texto (ex: Vivere C1885) não precisa ser retrabalhada — a regra vale só pra páginas novas daqui pra frente.
