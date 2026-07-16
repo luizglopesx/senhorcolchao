@@ -11,6 +11,8 @@ Operação da Senhor Colchão Sleep Store. Empresa familiar de varejo de produto
 - `scripts/` — automações e scripts de apoio
 - `instagram/` — automação de publicação no Instagram via GitHub Actions (`.github/workflows/`)
 - `templates/` — templates reutilizáveis (skills, perfis, ferramentas, identidade)
+- `Site Srcolchao/` — planejamento do site novo (saída do Simplo 7), notas e decisões em `notas.md`
+- `Agente Senhor Colchao/` — planejamento do agente de IA via WhatsApp pra consulta de estoque/Bling, registro em `conversa.md`
 
 ---
 
@@ -74,6 +76,7 @@ Evitar: "vamos juntos!", "alavancar", "sinergia", "caro cliente", excesso de emo
 - [x] Receitas Manager — financeiro (fluxo de caixa, contas, DRE); credenciais RECEITAS_MANAGER_* no `.env`
 - [x] Bling ERP — consulta somente-leitura (produtos, estoque, pedidos de venda; NF-e pendente de escopo) via `nexus-manager.js` do Receitas Manager, mesmas credenciais RECEITAS_MANAGER_*
 - [x] Supabase — bucket `catalogo` com imagens de produto (colchão, cama box montada, base/box por cor); credenciais SUPABASE_* no `.env`
+- [x] Higgsfield — geração de peças visuais de campanha (imagem/vídeo) via MCP; ferramenta padrão pra produzir artes de feed/story — não usar card de texto HTML/Playwright puro pra peças comerciais
 
 *(Marcar conforme for instalando os MCPs)*
 
