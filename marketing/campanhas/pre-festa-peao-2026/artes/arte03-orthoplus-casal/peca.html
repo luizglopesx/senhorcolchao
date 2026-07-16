@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; }
+  .slide {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+  }
+  #feed  { width: 1080px; height: 1350px; background-image: url('base-feed.png'); }
+  #story { width: 1080px; height: 1920px; background-image: url('base-story.png'); }
+  .topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 170px;
+    background: #020a28;
+  }
+  .logo {
+    position: absolute;
+    top: 40px; left: 48px;
+    height: 90px;
+    width: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="slide" id="feed">
+    <div class="topbar"></div>
+    <img class="logo" src="logo.png" alt="Senhor Colchão">
+  </div>
+  <div class="slide" id="story">
+    <div class="topbar"></div>
+    <img class="logo" src="logo.png" alt="Senhor Colchão">
+  </div>
+</body>
+</html>

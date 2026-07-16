@@ -20,7 +20,10 @@ Operação estabilizada — caixa controlado, equipe formada. Faturamento batend
 
 ## Campanhas ativas (2026)
 
-- **Durma como Campeão** — ATIVA desde 06/07 (fase 1, 06-19/07, R$30/dia, otimizada pra CONVERSATIONS). Meta de receita julho: R$200k (ideal R$215k) — ritmo de vendas real de julho já projeta R$225-237k. **Achado e corrigido em 07/07:** conjunto estava com público lookalike (1% sobre base de só ~300 contatos) travando o alcance — removido, e desde então CTR/CPC/CPM melhoraram e as conversas passaram a aparecer (0 nos 2 primeiros dias → 6 acumuladas até 11/07, custo por conversa caindo de R$17,47 pra R$8 no dia isolado mais recente). Fase 2 (Férias, 20-31/07) ainda não avaliada — decidir conforme performance da fase 1. Planejamento e artes em `marketing/campanhas/julho-2026-durma-como-campeao/`. Relatórios diários em `marketing/campanhas/relatorios/AAAA-MM-DD-durma-como-campeao-snapshot.md`
+- **Durma como Campeão — Fase 1** — ATIVA desde 06/07, encerra 19/07 (R$30/dia, otimizada pra CONVERSATIONS). **Quinzena fraca:** travou em 13/07 — 4 dias seguidos sem conversa nova (13-16/07), CTR (0,57% acumulado) abaixo do benchmark (0,90-1,20%), R$295,27 investidos em 11 dias, projeção de fechar em ~R$381,77 até 19/07 (dentro do R$400 aprovado, mas sem gerar retorno proporcional). Decisão em 16/07: deixar rodar sem trocar criativo (só 3 dias restantes) e não repetir o padrão na campanha seguinte. Relatórios diários em `marketing/campanhas/relatorios/AAAA-MM-DD-durma-como-campeao-snapshot.md`.
+- **Fase 2 (Férias) CANCELADA em 16/07** — substituída pela Pré-Festa do Peão (ver abaixo) antes de rodar; os R$400 aprovados e nunca usados foram realocados.
+- **Pré-Festa do Peão 2026** — LANÇAMENTO 20/07, roda até 09/08 (21 dias, R$600 total / ~R$28,57 dia — verba subiu de R$400 pra R$600 em 16/07, R$200 além do que estava realocado da Fase 2). Esquenta antecipando a Festa do Peão de Barretos (evento 20-30/08) — mix geral de produto com Solteiro em destaque (motivo real da demanda de agosto, ver `empresa.md`). Planejamento completo em `marketing/campanhas/pre-festa-peao-2026/planejamento-campanha.md`. Pendente: briefing e produção de artes.
+- **Festa do Peão 2026 (campanha dedicada ao evento)** — janela reagendada em 16/07 pra **10-31/08** (assume logo após a Pré-Festa encerrar, cobre o evento 20-30/08 + rescaldo). Verba e criativo ainda não definidos.
 
 ## Campanhas encerradas (referência)
 
@@ -85,8 +88,8 @@ Referências pra avaliar campanhas novas (objetivo engajamento → conversa no W
 
 | Campanha | Janela | Prioridade |
 |---|---|---|
-| Liquidação Inverno | Jul/2026 | Alta — estoque de inverno |
-| **Festa do Peão de Barretos** (20-30/08) | Ago/2026 | **Alta — motor real da demanda de Solteiro em agosto** (dados de 2025: 64% da venda de Solteiro do mês concentrada nessa janela; não é o Dia dos Pais) |
+| Pré-Festa do Peão (esquenta) | 20/07-09/08/2026 | **Em andamento** — ver campanha ativa acima |
+| **Festa do Peão de Barretos** (campanha dedicada, 10-31/08 — evento em 20-30/08) | Ago/2026 | **Alta — motor real da demanda de Solteiro em agosto** (dados de 2025: 64% da venda de Solteiro do mês concentrada nessa janela; não é o Dia dos Pais). Verba e criativo ainda a definir. |
 | Black Friday | Nov/2026 | Planejar com antecedência |
 
 ## Candidata a skill
