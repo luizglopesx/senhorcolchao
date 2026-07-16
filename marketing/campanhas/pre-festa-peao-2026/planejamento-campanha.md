@@ -51,15 +51,38 @@ Solteiro é o ângulo narrativo (por causa do público que hospeda visita), mas 
 
 ## Peças e formatos
 
+**Peças fixas (orgânico — Instagram + Facebook, sem Arte 01/Abertura, cancelada):**
+
 | Arte | Formato | Tema | Prioridade |
 |---|---|---|---|
-| Arte 01 — Abertura | Feed 1:1 + Story 9:16 | "A Festa do Peão tá chegando. Sua casa também vai encher." | Alta |
-| Arte 02 — Solteiro/Visita | Feed 1:1 | "Cama de visita boa é a que aguenta a Festa do Peão inteira" — foco Solteiro | Alta |
-| Arte 03 — Contagem regressiva | Story 9:16 | "Faltam X dias pra Festa do Peão" (atualizar semanalmente) | Média |
-| Arte 04 — Combo geral | Carrossel 1:1 (3 slides) | Colchão + Box + entrega/montagem — mix geral | Média |
-| Motion 01 | Reels/Stories 9:16 | Abertura com estética país/rodeio (sem clichê exagerado) | Alta — CTR historicamente melhor em motion |
+| SmartFlex Casal | Feed 1:1 + Story 9:16 | Cama Box SmartFlex Casal R$1.690 | Média |
+| Orthoplus Casal | Feed 1:1 + Story 9:16 | Colchão Orthoplus Casal R$1.390 | Média |
+| D28 Comfortopedic Solteiro | Feed 1:1 + Story 9:16 | Colchão Solteiro R$479 — cama de visita | **Alta — é o ângulo que os dados confirmam** |
+
+**Motion — exclusivo Patrocinado (Meta Ads), não entra no orgânico:**
+
+| Peça | Formato | Tema |
+|---|---|---|
+| Motion 01 | Reels/Stories 9:16 | Abertura com estética país/rodeio (sem clichê exagerado) |
 
 > **Cuidado de tom:** aproveitar o gancho da festa sem virar tema "chapéu de cowboy" forçado — o produto é a cama, a festa é só o motivo de comprar agora.
+
+## Calendário orgânico — Instagram + Facebook (20/07–09/08)
+
+Mix de conteúdo — não é só venda toda hora. Horários baseados no heatmap real de mensagens do Campaign Manager (`relatorio-campaign-manager-15-30jun.md`): pico às **11h–12h**, segundo pico **15h–16h**, segunda e quinta são os dias de maior movimento. É dado de WhatsApp (não de Instagram/Facebook nativo — não temos Insights conectado), mas é a melhor referência real que temos do horário em que essa audiência está no celular.
+
+| Data | Dia | Horário | Tipo | Peça/tema |
+|---|---|---|---|---|
+| 20/07 | seg | 11h | Venda | D28 Solteiro (abre a campanha, ângulo prioritário) |
+| 23/07 | qui | 15h | Dica | "3 sinais de que a cama de visita não aguenta a Festa do Peão" |
+| 25/07 | sáb | 11h | Institucional | Bastidores da loja / história da família |
+| 28/07 | ter | 11h | Venda | Orthoplus Casal |
+| 30/07 | qui | 15h | Conteúdo | Curiosidade sobre a Festa do Peão / Barretos |
+| 02/08 | dom | 15h | Dica | Checklist pra hospedar bem (cama, roupa de cama, organização) |
+| 04/08 | ter | 11h | Venda | SmartFlex Casal |
+| 06/08 | qui | 15h | Conteúdo | Contagem regressiva (texto, sem arte dedicada) |
+
+Pendente: confirmar horários com o usuário antes de agendar.
 
 ---
 
