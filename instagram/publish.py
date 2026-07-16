@@ -24,8 +24,13 @@ from pathlib import Path
 GRAPH_URL = "https://graph.facebook.com/v25.0"
 REPO      = "luizglopesx/senhorcolchao"
 BRANCH    = "main"
-ARTES_PATH = "marketing/campanhas/julho-2026-durma-como-campeao/artes"
-RAW_BASE  = f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{ARTES_PATH}"
+DEFAULT_ARTES_PATH = "marketing/campanhas/julho-2026-durma-como-campeao/artes"
+
+
+def raw_base(post: dict) -> str:
+    """Pasta de artes do post — cada post pode apontar pra uma campanha diferente."""
+    artes_path = post.get("artes_path", DEFAULT_ARTES_PATH)
+    return f"https://raw.githubusercontent.com/{REPO}/{BRANCH}/{artes_path}"
 
 IG_ACCOUNT_ID  = os.environ.get("INSTAGRAM_ACCOUNT_ID", "")
 IG_ACCESS_TOKEN = os.environ.get("INSTAGRAM_PAGE_TOKEN", "")
@@ -63,13 +68,14 @@ def api_get(path: str, params: dict) -> dict:
 
 
 def create_container(post: dict) -> str | None:
-    """Cria container de mídia. Retorna container_id ou None em caso de erro."""
-    filename = post["video_filename"]
-    video_url = f"{RAW_BASE}/{urllib.parse.quote(filename)}"
+    """Cria container de mídia (foto ou vídeo). Retorna container_id ou None em caso de erro."""
+    is_video = "video_filename" in post
+    filename = post["video_filename"] if is_video else post["image_filename"]
+    media_url = f"{raw_base(post)}/{urllib.parse.quote(filename)}"
 
     params = {
         "access_token": IG_ACCESS_TOKEN,
-        "video_url": video_url,
+        "video_url" if is_video else "image_url": media_url,
     }
 
     if post["media_type"] == "REELS":
@@ -78,9 +84,12 @@ def create_container(post: dict) -> str | None:
         params["share_to_feed"] = "true"
     elif post["media_type"] == "STORIES":
         params["media_type"] = "STORIES"
+    elif post["media_type"] == "FEED":
+        # Foto simples de feed: sem media_type — é o padrão da API pra image_url isolado
+        params["caption"] = post.get("caption", "")
 
-    print(f"  → Criando container | tipo={post['media_type']}")
-    print(f"    url={video_url}")
+    print(f"  → Criando container | tipo={post['media_type']} | midia={'video' if is_video else 'imagem'}")
+    print(f"    url={media_url}")
     result = api_post(f"{IG_ACCOUNT_ID}/media", params)
 
     if "id" in result:
