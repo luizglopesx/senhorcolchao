@@ -57,6 +57,30 @@ disponíveis (contas a pagar/receber, categorias, vendedores, contratos, NFe/NFC
 Vale checar antes de expor `contas/receber`/`contas/pagar` do Bling se isso não duplica
 o que o Receitas Manager já trata como fonte de verdade.
 
+## Decisão de arquitetura: Bling direto no Campaign Manager (não via Receitas Manager)
+
+Pergunta levantada: response ficaria mais rápida se a integração com o Bling morasse
+dentro do próprio Campaign Manager, em vez de passar pelo Receitas Manager?
+
+**Sim — decidido por essa razão:** `nexus-manager.js` roda como função serverless na
+Vercel (confirmado via `vercel.json` + pasta `.vercel/` no projeto `Projeto Receitas 2`).
+Funções serverless têm cold start — se ficam um tempo sem ser chamadas, a primeira
+invocação sobe um container novo antes de responder (pode adicionar 200ms a mais de 1s).
+O Campaign Manager é um serviço Docker/Swarm sempre rodando, sem esse problema.
+
+- **Caminho hoje (mais lento):** WhatsApp → Campaign Manager → Receitas Manager
+  (Vercel, talvez frio) → Bling → volta tudo.
+- **Caminho decidido (mais rápido):** WhatsApp → Campaign Manager → Bling, direto.
+  Cache do token do Bling em memória também fica mais confiável (sobrevive entre
+  chamadas, não é resetado por cold start de container).
+
+**Custo aceito:** duplicar ~100 linhas do cliente Bling (busca de token na planilha
+Google, throttle de 700ms, retry em 429) dentro do Campaign Manager — só pros endpoints
+que o agente de WhatsApp usa (produtos, estoque, pedidos de vendas, produto-fornecedor
+pra custo), não o `nexus-manager.js` inteiro. GET-only, igual ao original. O Receitas
+Manager mantém a cópia dele pro uso financeiro normal (DRE, fluxo de caixa etc.) —
+não é substituído, só deixa de ser o caminho pro agente de WhatsApp.
+
 ## Segunda hipótese (a que ficou decidida)
 
 Existe hoje um número de WhatsApp **já cadastrado numa API**, usado só pra consulta de
@@ -84,6 +108,9 @@ que o agente novo estiver de pé.
    custo/margem), sem restrição.
 4. **Dados a disponibilizar:** estoque, vendas (diária/por período) e custo de produto —
    não só estoque como é hoje no n8n.
+5. **Onde mora a integração com o Bling:** direto no Campaign Manager (cliente Bling
+   próprio, GET-only), não via proxy do Receitas Manager — pra evitar cold start de
+   função serverless no caminho de uma resposta de chat.
 
 ## Desenho final do fluxo
 
@@ -92,8 +119,9 @@ que o agente novo estiver de pé.
 3. Ação nova (a construir) checa se o remetente está na lista dos 2 números autorizados.
    - Se não estiver: segue fluxo normal (esse canal hoje não atende cliente, mas a trava
      fica no código por segurança/clareza).
-4. Se estiver: consulta o Bling via Receitas Manager (`bling-produtos`, `bling-estoque`,
-   `bling-pedidos-vendas`, e o novo `bling-produto-fornecedor` pra custo).
+4. Se estiver: consulta o Bling diretamente (cliente Bling próprio dentro do Campaign
+   Manager — produtos, estoque, pedidos de vendas, e produto-fornecedor pra custo —
+   sem passar pelo Receitas Manager).
 5. Gera resposta em linguagem natural com IA (reaproveitando o padrão já usado em
    `follow-up-ai-message-service.ts`).
 6. Envia de volta na mesma conversa via `POST /api/conversations/:id/send` (endpoint
@@ -105,8 +133,10 @@ que o agente novo estiver de pé.
       passos, o que testar antes de desligar o n8n) antes de mexer no código, ou já
       começar a implementar direto.
 - [ ] Migrar o número do n8n pro Campaign Manager (conectar como `ConversationChannel` novo).
-- [ ] Implementar o resource `bling-produto-fornecedor` no `nexus-manager.js`.
-- [ ] Implementar a agregação de vendas (diária/período) a partir de `bling-pedidos-vendas`.
+- [ ] Implementar cliente Bling próprio dentro do Campaign Manager (token via planilha
+      Google, throttle, GET-only), cobrindo produtos, estoque, pedidos de vendas e
+      produto-fornecedor (custo) — não usar o `nexus-manager.js` nesse caminho.
+- [ ] Implementar a agregação de vendas (diária/período) a partir de `pedidos/vendas`.
 - [ ] Implementar a ação nova de automação no Campaign Manager (filtro de telefone +
       busca no Bling + geração de resposta + envio).
 - [ ] Testar de ponta a ponta antes de desligar o fluxo n8n atual.
