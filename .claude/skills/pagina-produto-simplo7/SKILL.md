@@ -51,6 +51,7 @@ Consultar `identidade/design-guide.md`, `_memoria/preferencias.md` e o HTML apro
 
 - No campo `Revestimento`, informar somente o tecido ou material de revestimento. Nao incluir `base antiderrapante` nesse campo.
 - No campo `Suporte`, informar somente o limite de peso por pessoa, por exemplo: `Ate 150 kg por pessoa`. Nao acrescentar condicionais de altura ou outros detalhes nesse campo.
+- Para colchao ou cama box de molas (ensacadas ou continuas), nao incluir o campo `Espuma` na ficha tecnica logo apos `Pillow top` — a camada de conforto ja descreve a espuma usada, o campo separado e redundante nesse tipo de produto.
 
 ## SEO obrigatorio para cada produto
 
