@@ -93,6 +93,41 @@ python3 {project-root}/.claude/skills/social-post-scheduler/scripts/meta_ads_cli
 python3 {project-root}/.claude/skills/social-post-scheduler/scripts/meta_ads_client.py create_campaign "<nome>" OUTCOME_TRAFFIC <budget_centavos> <start_iso> <end_iso>
 ```
 
+### Campanha CTWA completa (WhatsApp) — pausada, pronta pra revisão
+
+Fluxo padrão de 6 comandos pra montar campanha → ad set → criativo → anúncio via API. Comprovado em 17/07/2026 com a campanha Pré-Festa do Peão. Ver memória `meta-ads-ctwa-workflow` pro histórico completo.
+
+```bash
+SCRIPT={project-root}/.claude/skills/social-post-scheduler/scripts/meta_ads_client.py
+
+# 1. Campanha CTWA (sem orçamento no nível campanha — orçamento fica no ad set)
+python3 $SCRIPT create_campaign_ctwa "<nome>" <start_iso-0300> <end_iso-0300>
+
+# 2. Ad set — targeting_json_file tem geo_locations.cities (raio) + flexible_spec.interests
+python3 $SCRIPT create_ad_set_full <campaign_id> "<nome>" <budget_centavos> <start> <end> <targeting_json_file>
+
+# 3. Upload do vídeo (só formato feed — o Meta corta sozinho pra Stories/Reels, ver ressalva abaixo)
+python3 $SCRIPT upload_video <file_path.mp4> "<nome>"   # retorna video_id
+
+# 4. Upload da thumbnail (obrigatória)
+python3 $SCRIPT upload_image <file_path.png>             # retorna image_hash
+
+# 5. Criativo — CTA WHATSAPP_MESSAGE + mensagem de boas-vindas pré-preenchida
+python3 $SCRIPT create_video_creative <video_id> "<nome>" "<title>" "<message>" "<link_description>" "<intro_text>" "<autofill_message>" <image_hash>
+
+# 6. Anúncio (vincula criativo ao ad set)
+python3 $SCRIPT create_ad "<nome>" <ad_set_id> <creative_id>
+```
+
+**Só precisa do motion em formato feed** — o Meta gera sozinho a versão cortada pra Stories/Reels (confirmado pela campanha ativa de melhor CTR da conta, que usa esse exato padrão). Formato story continua necessário pro orgânico, mas ali usa imagem estática, não motion.
+
+**Nomeação de arquivo:** ao subir vídeos manualmente na Biblioteca de Mídia, nomear com o produto (ex: `d28-solteiro-feed.mp4`) — nomes genéricos tipo `motion-feed.mp4` repetidos em várias pastas impedem identificar o `video_id` certo depois.
+
+**Armadilhas já resolvidas:**
+- Campanha CTWA sem orçamento próprio precisa de `is_adset_budget_sharing_enabled` explícito
+- `bid_strategy: LOWEST_COST_WITHOUT_CAP` vai no **ad set**, não na campanha (senão a Meta exige `bid_amount`)
+- `create_video_creative` exige `image_hash` (thumbnail) — sem isso a Meta rejeita o criativo
+
 ## Output esperado
 
 Após agendar, confirme com:
