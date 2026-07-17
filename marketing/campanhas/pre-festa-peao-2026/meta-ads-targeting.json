@@ -1,0 +1,32 @@
+{
+  "age_min": 25,
+  "age_max": 55,
+  "flexible_spec": [
+    {
+      "interests": [
+        { "id": "6003132926214", "name": "Móveis (mobiliário doméstico)" },
+        { "id": "6003311653599", "name": "Decoração" },
+        { "id": "6004055064548", "name": "Colchão (mobiliário doméstico)" },
+        { "id": "6003215377524", "name": "Rodeio" },
+        { "id": "6002898157162", "name": "Agronegócio" }
+      ]
+    }
+  ],
+  "geo_locations": {
+    "cities": [
+      {
+        "key": "244254",
+        "name": "Barretos",
+        "region": "São Paulo (state)",
+        "region_id": "460",
+        "country": "BR",
+        "distance_unit": "kilometer",
+        "radius": 40
+      }
+    ],
+    "location_types": ["home", "recent"]
+  },
+  "targeting_automation": {
+    "advantage_audience": 0
+  }
+}

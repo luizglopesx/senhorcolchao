@@ -89,6 +89,41 @@ def _api_post(path: str, data: dict) -> dict:
         return {"error": str(e)}
 
 
+def _api_post_multipart(path: str, fields: dict, file_field: str, file_path: str) -> dict:
+    """POST with a file (multipart/form-data) — used for video/image uploads."""
+    url = f"{BASE_URL}/{path}"
+    boundary = "----MazyOSBoundary7f3c9a2e"
+    body = bytearray()
+
+    for key, value in fields.items():
+        body.extend(f"--{boundary}\r\n".encode())
+        body.extend(f'Content-Disposition: form-data; name="{key}"\r\n\r\n'.encode())
+        body.extend(f"{value}\r\n".encode())
+
+    filename = os.path.basename(file_path)
+    content_type = "video/mp4" if filename.lower().endswith(".mp4") else "application/octet-stream"
+    with open(file_path, "rb") as f:
+        file_bytes = f.read()
+
+    body.extend(f"--{boundary}\r\n".encode())
+    body.extend(f'Content-Disposition: form-data; name="{file_field}"; filename="{filename}"\r\n'.encode())
+    body.extend(f"Content-Type: {content_type}\r\n\r\n".encode())
+    body.extend(file_bytes)
+    body.extend(b"\r\n")
+    body.extend(f"--{boundary}--\r\n".encode())
+
+    req = urllib.request.Request(url, data=bytes(body), method="POST")
+    req.add_header("Content-Type", f"multipart/form-data; boundary={boundary}")
+    try:
+        with urllib.request.urlopen(req, timeout=180) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        body_txt = e.read().decode("utf-8", errors="replace")
+        return {"error": f"HTTP {e.code}", "detail": body_txt[:500]}
+    except Exception as e:
+        return {"error": str(e)}
+
+
 def _api_get(path: str, params: dict = None) -> dict:
     params = params or {}
     query = urllib.parse.urlencode(params)
@@ -165,6 +200,38 @@ def create_campaign(
     }
 
 
+def create_campaign_ctwa(ads_account: dict, name: str, start_time: str, end_time: str) -> dict:
+    """Campanha CTWA (Click-to-WhatsApp) — sem orçamento no nível da campanha
+    (o orçamento vive no ad set, igual ao padrão já usado na conta). Objetivo
+    fixo OUTCOME_ENGAGEMENT + bid_strategy LOWEST_COST_WITHOUT_CAP, confirmados
+    via API na campanha ativa 'Durma como Campeão' em 17/07/2026."""
+    account_id = ads_account.get("account_id", "")
+    token = _get_token()
+    if not account_id or not token:
+        return {"error": "No account_id or token configured"}
+
+    result = _api_post(f"act_{account_id}/campaigns", {
+        "name": name,
+        "objective": "OUTCOME_ENGAGEMENT",
+        "is_adset_budget_sharing_enabled": "false",
+        "start_time": start_time,
+        "stop_time": end_time,
+        "status": "PAUSED",
+        "special_ad_categories": "[]",
+        "access_token": token,
+    })
+    if "error" in result:
+        return result
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "campaign_id": result.get("id", ""),
+        "name": name,
+        "objective": "OUTCOME_ENGAGEMENT",
+        "status": "PAUSED",
+    }
+
+
 def create_ad_set(
     ads_account: dict,
     campaign_id: str,
@@ -208,6 +275,192 @@ def create_ad_set(
         "daily_budget_cents": daily_budget_cents,
         "targeting": targeting_spec,
         "status": "PAUSED",
+    }
+
+
+# Constantes da conta senhor_colchao — vindas do ad set real e ativo
+# "Fase 1 | Copa/Lançamento" (Durma como Campeão), confirmadas via API em 17/07/2026
+DEFAULT_PAGE_ID = "142661446468130"
+DEFAULT_IG_USER_ID = "17841406065994132"
+DEFAULT_WHATSAPP_PHONE = "551733233694"
+
+
+def create_ad_set_full(
+    ads_account: dict,
+    campaign_id: str,
+    name: str,
+    daily_budget_cents: int,
+    targeting: dict,
+    start_time: str,
+    end_time: str,
+    page_id: str = DEFAULT_PAGE_ID,
+    whatsapp_phone_number: str = DEFAULT_WHATSAPP_PHONE,
+) -> dict:
+    """Cria ad set CTWA (Click-to-WhatsApp) — optimization_goal CONVERSATIONS,
+    destination_type WHATSAPP. Espera 'targeting' já pronto (raio + interesses)."""
+    account_id = ads_account.get("account_id", "")
+    token = _get_token()
+    if not account_id or not token:
+        return {"error": "No account_id or token configured"}
+
+    promoted_object = {"page_id": page_id, "whatsapp_phone_number": whatsapp_phone_number}
+
+    result = _api_post(f"act_{account_id}/adsets", {
+        "name": name,
+        "campaign_id": campaign_id,
+        "daily_budget": str(daily_budget_cents),
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "CONVERSATIONS",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "destination_type": "WHATSAPP",
+        "promoted_object": json.dumps(promoted_object),
+        "targeting": json.dumps(targeting),
+        "start_time": start_time,
+        "end_time": end_time,
+        "status": "PAUSED",
+        "access_token": token,
+    })
+    if "error" in result:
+        return result
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "ad_set_id": result.get("id", ""),
+        "campaign_id": campaign_id,
+        "name": name,
+        "daily_budget_cents": daily_budget_cents,
+        "targeting": targeting,
+        "status": "PAUSED",
+    }
+
+
+def upload_image(ads_account: dict, file_path: str) -> dict:
+    account_id = ads_account.get("account_id", "")
+    token = _get_token()
+    if not account_id or not token:
+        return {"error": "No account_id or token configured"}
+    if not os.path.exists(file_path):
+        return {"error": f"Arquivo não encontrado: {file_path}"}
+
+    result = _api_post_multipart(
+        f"act_{account_id}/adimages",
+        {"access_token": token},
+        "source",
+        file_path,
+    )
+    if "error" in result:
+        return result
+
+    images = result.get("images", {})
+    first = next(iter(images.values()), {})
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "image_hash": first.get("hash", ""),
+        "file_path": file_path,
+    }
+
+
+def upload_video(ads_account: dict, file_path: str, name: str) -> dict:
+    account_id = ads_account.get("account_id", "")
+    token = _get_token()
+    if not account_id or not token:
+        return {"error": "No account_id or token configured"}
+    if not os.path.exists(file_path):
+        return {"error": f"Arquivo não encontrado: {file_path}"}
+
+    result = _api_post_multipart(
+        f"act_{account_id}/advideos",
+        {"name": name, "access_token": token},
+        "source",
+        file_path,
+    )
+    if "error" in result:
+        return result
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "video_id": result.get("id", ""),
+        "name": name,
+        "file_path": file_path,
+    }
+
+
+def _build_welcome_message(intro_text: str, autofill_message: str) -> str:
+    """Monta o page_welcome_message no mesmo formato usado pela conta hoje
+    (template VISUAL_EDITOR com autofill_message + quick reply)."""
+    payload = {
+        "type": "VISUAL_EDITOR",
+        "version": 2,
+        "landing_screen_type": "welcome_message",
+        "media_type": "text",
+        "text_format": {
+            "customer_action_type": "autofill_message",
+            "message": {
+                "autofill_message": {"content": autofill_message},
+                "text": intro_text,
+            },
+        },
+        "ai_generated_icebreaker_toggle_enabled": True,
+        "user_edit": True,
+        "surface": "visual_editor_new",
+        "welcome_message_edited": True,
+        "autofill_message_edited": True,
+    }
+    return json.dumps(payload, ensure_ascii=False)
+
+
+def create_video_creative(
+    ads_account: dict,
+    video_id: str,
+    name: str,
+    title: str,
+    message: str,
+    link_description: str,
+    intro_text: str,
+    autofill_message: str,
+    image_hash: str,
+    page_id: str = DEFAULT_PAGE_ID,
+    ig_user_id: str = DEFAULT_IG_USER_ID,
+) -> dict:
+    """Cria o ad creative de vídeo com CTA WHATSAPP_MESSAGE — mesma estrutura
+    do criativo ativo da Orthoplus (confirmada via API em 17/07/2026).
+    image_hash é obrigatório — usado como thumbnail do vídeo no anúncio."""
+    account_id = ads_account.get("account_id", "")
+    token = _get_token()
+    if not account_id or not token:
+        return {"error": "No account_id or token configured"}
+
+    video_data = {
+        "video_id": video_id,
+        "title": title,
+        "message": message,
+        "link_description": link_description,
+        "image_hash": image_hash,
+        "call_to_action": {
+            "type": "WHATSAPP_MESSAGE",
+            "value": {"app_destination": "WHATSAPP", "link": "https://api.whatsapp.com/send"},
+        },
+        "page_welcome_message": _build_welcome_message(intro_text, autofill_message),
+    }
+    object_story_spec = {
+        "page_id": page_id,
+        "instagram_user_id": ig_user_id,
+        "video_data": video_data,
+    }
+
+    result = _api_post(f"act_{account_id}/adcreatives", {
+        "name": name,
+        "object_story_spec": json.dumps(object_story_spec),
+        "access_token": token,
+    })
+    if "error" in result:
+        return result
+
+    return {
+        "ads_account": ads_account.get("label", ""),
+        "creative_id": result.get("id", ""),
+        "name": name,
+        "video_id": video_id,
     }
 
 
@@ -406,7 +659,15 @@ if __name__ == "__main__":
         print("  create_campaign <name> <objective> <daily_budget_cents> <start_time> <end_time> [account]")
         print("    objectives: OUTCOME_TRAFFIC | OUTCOME_ENGAGEMENT | OUTCOME_LEADS | OUTCOME_SALES")
         print("    times: ISO 8601 e.g. 2026-06-01T00:00:00+0000")
+        print("  create_campaign_ctwa <name> <start_time> <end_time> [account]")
+        print("    Campanha CTWA sem orçamento no nível campanha (orçamento fica no ad set) — usar com create_ad_set_full")
         print("  create_ad_set <campaign_id> <name> <daily_budget_cents> <start_time> <end_time> [account]")
+        print("  create_ad_set_full <campaign_id> <name> <daily_budget_cents> <start_time> <end_time> <targeting_json_file> [account]")
+        print("    CTWA (WhatsApp) — CONVERSATIONS + destination WHATSAPP. targeting_json_file tem geo_locations/age/flexible_spec")
+        print("  upload_video <file_path> <name> [account]                      # Sobe vídeo, retorna video_id")
+        print("  upload_image <file_path> [account]                             # Sobe imagem, retorna image_hash (thumbnail)")
+        print("  create_video_creative <video_id> <name> <title> <message> <link_description> <intro_text> <autofill_message> <image_hash> [account]")
+        print("    Criativo CTWA de vídeo (mesma estrutura do criativo ativo da conta)")
         print("  create_creative <page_id> <name> <message> <image_url> <link_url> [account]")
         print("  create_ad <name> <ad_set_id> <creative_id> [account]           # Create ad (starts PAUSED)")
         print("  insights <campaign_id> [account]                                # Campaign metrics (30d)")
@@ -436,6 +697,12 @@ if __name__ == "__main__":
             end = args[4] if len(args) > 4 else ""
             acc = _get_ads_account(args[5] if len(args) > 5 else None)
             result = create_campaign(acc, name, objective, budget, start, end)
+        elif cmd == "create_campaign_ctwa":
+            name = args[0] if len(args) > 0 else ""
+            start = args[1] if len(args) > 1 else ""
+            end = args[2] if len(args) > 2 else ""
+            acc = _get_ads_account(args[3] if len(args) > 3 else None)
+            result = create_campaign_ctwa(acc, name, start, end)
         elif cmd == "create_ad_set":
             campaign_id = args[0] if len(args) > 0 else ""
             name = args[1] if len(args) > 1 else ""
@@ -444,6 +711,39 @@ if __name__ == "__main__":
             end = args[4] if len(args) > 4 else ""
             acc = _get_ads_account(args[5] if len(args) > 5 else None)
             result = create_ad_set(acc, campaign_id, name, budget, {}, start, end)
+        elif cmd == "create_ad_set_full":
+            campaign_id = args[0] if len(args) > 0 else ""
+            name = args[1] if len(args) > 1 else ""
+            budget = int(args[2]) if len(args) > 2 else 0
+            start = args[3] if len(args) > 3 else ""
+            end = args[4] if len(args) > 4 else ""
+            targeting_path = args[5] if len(args) > 5 else ""
+            acc = _get_ads_account(args[6] if len(args) > 6 else None)
+            with open(targeting_path, encoding="utf-8") as f:
+                targeting = json.load(f)
+            result = create_ad_set_full(acc, campaign_id, name, budget, targeting, start, end)
+        elif cmd == "upload_video":
+            file_path = args[0] if len(args) > 0 else ""
+            name = args[1] if len(args) > 1 else ""
+            acc = _get_ads_account(args[2] if len(args) > 2 else None)
+            result = upload_video(acc, file_path, name)
+        elif cmd == "upload_image":
+            file_path = args[0] if len(args) > 0 else ""
+            acc = _get_ads_account(args[1] if len(args) > 1 else None)
+            result = upload_image(acc, file_path)
+        elif cmd == "create_video_creative":
+            video_id = args[0] if len(args) > 0 else ""
+            name = args[1] if len(args) > 1 else ""
+            title = args[2] if len(args) > 2 else ""
+            message = args[3] if len(args) > 3 else ""
+            link_description = args[4] if len(args) > 4 else ""
+            intro_text = args[5] if len(args) > 5 else ""
+            autofill_message = args[6] if len(args) > 6 else ""
+            image_hash = args[7] if len(args) > 7 else ""
+            acc = _get_ads_account(args[8] if len(args) > 8 else None)
+            result = create_video_creative(
+                acc, video_id, name, title, message, link_description, intro_text, autofill_message, image_hash
+            )
         elif cmd == "create_creative":
             page_id = args[0] if len(args) > 0 else ""
             name = args[1] if len(args) > 1 else ""
