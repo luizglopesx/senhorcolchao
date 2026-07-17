@@ -53,6 +53,14 @@ Marca com personalidade forte e simpática — o mascote (Sr. Colchão, homem de
 
 ---
 
+## Banner do site
+
+- **Tamanho:** 2560 x 800 px
+- **Peso máximo:** 2MB
+- **Formato:** PNG ou JPEG
+
+---
+
 ## Logo
 
 - **Arquivo (preferencial, fundo transparente):** `identidade/logo/logo-completa-trim.png`
@@ -80,3 +88,6 @@ Marca com personalidade forte e simpática — o mascote (Sr. Colchão, homem de
 - Não trocar cores fora das versões aprovadas
 - Não usar fontes cursivas no lugar da Imaki Oblique
 - Redução máxima: manter legibilidade do mascote e texto
+
+### ⚠️ Pendente: falta o arquivo pra fundo azul marinho/escuro
+Nenhum arquivo em `identidade/logo/` tem o texto em amarelo (versão correta pra fundo azul marinho ou cinza escuro, conforme tabela acima) — todos os arquivos existentes (`logo-completa-trim.png`, `logo-completa.png`, `logo-mascote.png`, `logo-slide5.png`) têm o texto "Sr. Colchão" em azul marinho, que fica ilegível sobre fundo azul. Descoberto em 17/07/2026 fazendo o banner da Pré-Festa do Peão — precisou recolorir o texto na hora (separar ícone do texto, trocar azul por #F7CF00 via ImageMagick). Se for gerar peça com fundo azul marinho, ou pedir pro Canva/agência criadora (Get Up! Comunicação) a versão oficial "mascote em círculo branco + texto amarelo", ou repetir o recorte manual.
