@@ -85,6 +85,7 @@ https://supabase.senhorcolchao.com/storage/v1/object/public/catalogo/products/<p
 - **Revestimento:** suede na cor escolhida + tampo antiderrapante.
 - **Tratamento:** anticupim e antimofo na base; antiácaro/antibactéria no colchão (se a linha do colchão já mencionar isso).
 - **Pés:** todos são fixos, sem rodízios. Solteiro e viúva levam **6 pés fixos em madeira**; casal leva **7 pés fixos em madeira**; queen e king levam **12 pés fixos em madeira**. Para tamanhos fora desses padrões, confirmar antes de assumir.
+- **Base bipartida a partir de queen:** as bases do bucket `box-suede-<cor>/` são **bipartidas (2 módulos)** a partir do tamanho queen (queen, king, super king) — confirmado visualmente nas fotos `-cena` (linha de divisão central visível). Casal e solteiro são base única. No campo `Conteúdo` da ficha técnica, usar `01 colchão + 02 base bipartida` para queen/king/super king, e `01 colchão + 01 base` para casal/solteiro/viúva.
 - **Altura da base:** 40 cm é o padrão observado no catálogo (pés de 12 cm inclusos). Altura final do conjunto = altura do colchão + 40 cm.
 - **Garantia:** 90 dias, salvo o usuário informar outro valor pro produto específico.
 
