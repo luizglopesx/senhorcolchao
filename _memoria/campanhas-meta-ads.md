@@ -1,5 +1,5 @@
 # Campanhas Meta Ads — Histórico de Performance
-*Senhor Colchão | act_888195439518063 | Atualizado: 15/07/2026*
+*Senhor Colchão | act_888195439518063 | Atualizado: 20/07/2026*
 
 Referência de benchmarks internos para planejamento e comparação de campanhas futuras.
 
@@ -12,9 +12,9 @@ Referência de benchmarks internos para planejamento e comparação de campanhas
 | CP04 — Prospect Geral | 02/05–31/05/2026 | R$ 516,79 | 0,88% | R$ 1,66 | 32 | R$ 16,15 | 15 (46,9%) | R$ 34,45 |
 | Dia dos Namorados 2026 | 03/06–13/06/2026 | R$ 540,90 | 0,96% | R$ 1,33 | 50 | R$ 10,82 | 33 (66,0%) | R$ 16,39 |
 | Aqui da Jogo — Copa 2026 | 15/06–30/06/2026 | R$ 584,18 | 1,31% | R$ 1,07 | 63 | R$ 9,27 | 30 (47,6%) | R$ 19,47 |
-| Durma como Campeão — Julho 2026 (CTWA) *em andamento* | 06/07–19/07/2026 | R$ 258,77 (parcial, até 15/07) | 0,56% | R$ 2,33 | 9 | R$ 28,75 | — | — |
+| Durma como Campeão — Julho 2026 (CTWA) ✅ encerrada | 06/07–19/07/2026 | R$ 405,82 | 0,62% | R$ 2,11 | 16 | R$ 25,36 | — | — |
 
-> **Durma como Campeão** ainda está rodando (encerra 19/07) — números acima são parciais e serão fechados após o fim da campanha. CTR e custo/conversa estão abaixo do padrão das 3 campanhas anteriores.
+> **Durma como Campeão encerrada em 19/07,** conforme `end_time` — confirmado em 20/07 que parou de gastar de verdade (zero impressão no dia 20/07). Fechou pior que as 3 campanhas anteriores em todos os indicadores (custo/conversa R$25,36 vs R$9,27–16,15), mas recuperou nos últimos dias: CTR subiu de 0,56% pra 0,92-1,18% nos dias 17-18/07, puxado pela poda de criativos fracos em 13/07. Frequência final 3,30 — passou do limite de 3,0 nos últimos dias, mas como a campanha já estava terminando não gerou ação.
 
 ---
 
@@ -28,6 +28,7 @@ Referência de benchmarks internos para planejamento e comparação de campanhas
 - **Pendente:** se não voltar a puxar conversa até 16/07, considerar trocar a copy/CTA da Arte 02 (frequência subindo pode indicar início de fadiga) ou encerrar a campanha antes do previsto. Fechar os números finais em 19/07 pra registrar no histórico definitivo.
 - **Checkpoint em 16/07/2026 (gatilho cumprido):** confirmado — nenhuma conversa nova desde 12/07, 4 dias seguidos (13-16/07) com ~R$104 gastos e zero conversa. Frequência caiu pra 2,15 (saudável, não é fadiga de público — problema é criativo/copy). Decisão apresentada ao usuário: trocar pra Arte 03 (SmartFlex, reserva) nos 3 dias finais da Fase 1, ou deixar rodar até 19/07 já que a Fase 2 entra em 20/07 com criativos novos. Aguardando resposta — ver `2026-07-16-durma-como-campeao-snapshot.md`.
 - **Correção em 17/07/2026:** a "estagnação" do checkpoint de 16/07 era atraso de atribuição do Meta, não dado real — 15/07 teve 2 conversas novas e 16/07 teve 1, que não tinham aparecido ainda na checagem do dia anterior. Decisão de deixar rodar até 19/07 sem trocar criativo segue válida (e mais confortável agora). **Lição:** dado de 1-2 dias mais recentes no Meta Ads é provisório — evitar decisão definitiva (trocar criativo, encerrar campanha) só com base nele; esperar fechar. Ver `2026-07-17-durma-como-campeao-snapshot.md`.
+- **Fechamento em 20/07/2026:** campanha confirmada parada (zero impressão em 20/07). Números finais: R$405,82 gasto, 16 conversas, R$25,36/conversa, frequência 3,30. 18 e 19/07 mantiveram o CTR alto (0,92-1,18%) mas 19/07 (último dia) teve zero conversa nova apesar do gasto — mesmo assim, não valia a pena agir no último dia. Ver `2026-07-18-durma-como-campeao-snapshot.md` e histórico da tabela acima.
 
 ---
 
