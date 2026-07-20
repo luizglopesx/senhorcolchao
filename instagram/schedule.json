@@ -122,7 +122,10 @@
       "image_filename": "feed.png",
       "scheduled_at": "2026-07-20T11:00:00-03:00",
       "caption": "Vem gente pra Festa do Peão? A cama de visita tem que estar pronta. 🤠\n\nColchão D28 Comfortopedic Solteiro por R$ 479 em até 12x sem juros — entrega e montagem grátis.\n\nNão deixa pra resolver em cima da hora. Chama no WhatsApp e garante o seu. 👇\n\n#SenhorColchão #FestaDoPeão #FestaDoPeãoDeBarretos #Barretos #ColchãoSolteiro #Comfortopedic #EsquentaDoPeão",
-      "status": "pending"
+      "status": "published",
+      "post_id": "17980028535066053",
+      "container_id": "18386873713202200",
+      "published_at": "2026-07-20T15:48:18.597339+00:00"
     },
     {
       "id": "peao-d28-solteiro-story",
@@ -132,7 +135,10 @@
       "image_filename": "story.png",
       "scheduled_at": "2026-07-20T11:05:00-03:00",
       "caption": "",
-      "status": "pending"
+      "status": "published",
+      "post_id": "17888660382604834",
+      "container_id": "18386873737202200",
+      "published_at": "2026-07-20T15:48:18.597339+00:00"
     },
     {
       "id": "peao-orthoplus-casal-feed",
