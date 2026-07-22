@@ -54,6 +54,23 @@ Guardar de cada resultado: `customerName`, `customerPhone`, `lastActivity`, `lab
 **Filtrar por data:** descartar resultados com `lastActivity` anterior ao lançamento da
 campanha — busca por texto pode achar conversas antigas não relacionadas (ver Regras).
 
+**Importante — a busca só olha a última mensagem (`preview`), não o histórico todo.**
+Assim que o atendente responde e o lead é classificado (ex: label "Meio"), a conversa sai
+da busca por texto — o `preview` vira a resposta do atendente/cliente, não mais a mensagem
+automática de origem. Isso NÃO significa que o lead sumiu: ele normalmente é movido pro
+motor de follow-up. Sempre checar também:
+
+```bash
+BASE_URL="${CAMPAIGN_MANAGER_URL%/}"
+curl -s -H "Authorization: Bearer $CAMPAIGN_MANAGER_TOKEN" \
+  "$BASE_URL/api/follow-up/executions"
+```
+
+Cada execução traz `conversation.customerName`, `conversation.customerPhone` e
+`conversation.labels` — cruzar por `conversationId` com o que já foi achado na busca de
+texto pra não contar duas vezes, e usar isso pra recuperar leads que "sumiram" da busca
+principal.
+
 ### Passo 2 — Listar pedidos de venda no Bling no período da campanha
 
 ```bash
