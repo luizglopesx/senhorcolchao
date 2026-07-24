@@ -5,9 +5,16 @@ description: "Cadastra ou corrige produto ao vivo na Simplo7 via API: busca SKU,
 
 # Cadastro de Produto na Simplo7
 
-Cobre o fluxo operacional de colocar um produto ao vivo na Simplo7: de onde vêm os dados comerciais (SKU/custo/preço), e como montar o JSON de `WsprodutoEstoque` com a combinação (variação) certa. Para o conteúdo do HTML de descrição e o bloco de SEO, ver `../pagina-produto-simplo7/SKILL.md` (e `../pagina-cama-box/SKILL.md` quando for conjunto colchão + base).
+Cobre o fluxo operacional de colocar um produto ao vivo na Simplo7: de onde vêm os dados comerciais (SKU/custo/preço), como montar o HTML de descrição na skill certa pro tipo de produto, e como montar o JSON de `WsprodutoEstoque` com a combinação (variação) certa.
 
-**Atenção específica pra conjunto (cama box):** `pagina-cama-box` já define que a foto de cena aparece em **3 lugares diferentes** — Hero (cena do conjunto montado), seção Colchão (cena do colchão isolado) e seção Base Box (cena da base isolada na cor certa) — e só a seção Medidas usa foto de estúdio. Isso **não é foto repetida**, são 3 arquivos diferentes. Só existe duplicata de verdade quando falta a versão "-cena" de um tamanho específico e sobra usar o mesmo arquivo de estúdio duas vezes (Hero/seção + Medidas) — nesse caso é inevitável, avisar o usuário. Não confundir com o ajuste "1 foto só no Hero" que vale pra página de produto único (box avulso, colchão avulso) — lá sim a foto do Hero e da seção de composição eram o mesmo arquivo, por isso saiu.
+## Passo 0 — Escolher a skill certa pra montar o HTML antes de criar
+
+**Nunca escrever o HTML de descrição direto nesta skill.** Ela cuida só do cadastro (dados comerciais + JSON da API); quem manda no conteúdo/estrutura da página é:
+
+- **Produto único** (colchão avulso, box avulso, box baú, bicama — sem colchão+base juntos): seguir `../pagina-produto-simplo7/SKILL.md`. Layout de 6 seções (Hero → Benefícios → Composição → Ficha técnica → Medidas → CTA), **1 foto só no Hero** (a mesma foto não repete na seção de composição).
+- **Conjunto cama box** (colchão + base juntos, um produto só): seguir `../pagina-cama-box/SKILL.md`. Layout de 8 seções, com **3 fotos de cena diferentes** — Hero (conjunto montado), seção Colchão (colchão isolado) e seção Base Box (base isolada na cor certa) — mais fotos de estúdio na seção Medidas. **Isso não é foto repetida**, são arquivos diferentes; não aplicar aqui o ajuste "1 foto só no Hero" do produto único — foi minha confusão de uma vez (ver Passo 5).
+
+Se não tiver certeza se o produto é "único" ou "conjunto", perguntar antes de montar o HTML — a estrutura de seções e a contagem de fotos esperada são diferentes.
 
 ## Passo 1 — Buscar SKU, custo e preço no Campaign Manager (nunca direto no Bling)
 
@@ -178,13 +185,14 @@ Regras críticas:
 curl -s -H "appKey: $SIMPLO7_APP_KEY" "https://senhorcolchao.com.br/ws/wsprodutos/<id>.json"
 ```
 
-Conferir: `sku`, `marca_id`, `tipo_cadastro`, categoria (folha + pai + avô auto-derivados), as 3 (ou 2) combinações certas pro tipo de produto, `valor_venda`, e que a `descricao` só tem as imagens esperadas (sem foto repetida — ver `../pagina-produto-simplo7/SKILL.md`).
+Conferir: `sku`, `marca_id`, `tipo_cadastro`, categoria (folha + pai + avô auto-derivados), as 3 (ou 2) combinações certas pro tipo de produto, `valor_venda`, e a contagem de imagens na `descricao` — **conferir contra a skill certa do Passo 0**: produto único espera 2 fotos (Hero + Medidas, mesmo arquivo); conjunto cama box espera normalmente 5 fotos diferentes (Hero + Colchão + Base Box + 2 miniaturas de Medidas), só repetindo se faltar alguma versão "-cena" no bucket.
 
 ## Checklist final
 
-1. Busquei SKU/custo/preço no `/api/products/admin` do Campaign Manager, não no Bling.
-2. Confirmei `marca_id` certo.
-3. Escolhi a árvore de categoria certa (Colchões avulso / Cama Box+Colchão / Cama Box sem colchão) e a categoria-folha.
-4. Montei a combinação certa pro tipo (colchão = altura+larg.compr+peso; cama box com colchão = larg.compr+conforto+peso; cama box sem colchão = larg.compr+tamanho).
-5. Criei com `tipo_cadastro:1` e combinação já no POST inicial.
-6. Verifiquei via GET antes de reportar como pronto.
+1. Escolhi a skill certa pra montar o HTML (`pagina-produto-simplo7` pra produto único, `pagina-cama-box` pra conjunto) antes de escrever qualquer seção.
+2. Busquei SKU/custo/preço no `/api/products/admin` do Campaign Manager, não no Bling.
+3. Confirmei `marca_id` certo.
+4. Escolhi a árvore de categoria certa (Colchões avulso / Cama Box+Colchão / Cama Box sem colchão) e a categoria-folha.
+5. Montei a combinação certa pro tipo (colchão = altura+larg.compr+peso; cama box com colchão = larg.compr+conforto+peso; cama box sem colchão = larg.compr+tamanho).
+6. Criei com `tipo_cadastro:1` e combinação já no POST inicial.
+7. Verifiquei via GET antes de reportar como pronto, incluindo a contagem de fotos certa pro tipo de página (Passo 0).
