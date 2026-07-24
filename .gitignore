@@ -31,3 +31,6 @@ dados/*
 
 # Saídas com dados pessoais de clientes
 saidas/clientes-campaign-manager-*.csv
+
+# Espelho local do bucket Supabase (regenerar com scripts/sync-catalogo-fotos.js)
+catalogo-fotos/

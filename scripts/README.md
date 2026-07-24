@@ -16,6 +16,7 @@ Conforme você for ativando skills, isso aqui vai sendo populado. Lista do que c
 | `/aprovar-post` | `postar-facebook.js` | Publica carrossel no Facebook via Meta Graph API |
 | `/anuncio-google` | (nenhum — gera CSV direto) | — |
 | `/relatorio-ads` | (lê CSV exportado das plataformas) | — |
+| — | `sync-catalogo-fotos.js` | Sincroniza nos dois sentidos a pasta `catalogo-fotos/` (fora do git) com o bucket Supabase `catalogo`: envia foto local nova/alterada pro bucket e baixa o que mudou lá. Incremental (só mexe no que mudou) e nunca deleta nada. `node scripts/sync-catalogo-fotos.js` |
 
 ## Pré-requisitos comuns
 

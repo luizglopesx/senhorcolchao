@@ -13,6 +13,7 @@ Operação da Senhor Colchão Sleep Store. Empresa familiar de varejo de produto
 - `templates/` — templates reutilizáveis (skills, perfis, ferramentas, identidade)
 - `Site Srcolchao/` — planejamento do site novo (saída do Simplo 7), notas e decisões em `notas.md`
 - `Agente Senhor Colchao/` — planejamento do agente de IA via WhatsApp pra consulta de estoque/Bling, registro em `conversa.md`
+- `catalogo-fotos/` — espelho local (fora do git) das fotos do bucket Supabase `catalogo`; sincronizar com `scripts/sync-catalogo-fotos.js`
 
 ---
 
