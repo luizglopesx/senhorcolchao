@@ -3,7 +3,7 @@
 Gera o GOOGLE_ADS_REFRESH_TOKEN da Senhor Colchao.
 
 Como rodar (no Terminal):
-    cd "/Users/luizgustavo/Projetos_Automacao/Senhor Colchao/senhor-colchao"
+    cd "/Users/luizgustavo/Projetos/Senhor Colchao/senhor-colchao"
     python3 scripts/google-ads-refresh-token.py
 
 O script abre o navegador, voce faz login com a conta que administra a MCC

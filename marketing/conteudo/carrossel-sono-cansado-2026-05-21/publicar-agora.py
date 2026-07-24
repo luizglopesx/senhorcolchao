@@ -10,7 +10,7 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(message)s"
 )
 
-sys.path.insert(0, "/Users/luizgustavo/Projetos_Automacao/Senhor Colchao/senhor-colchao/.claude/skills/social-post-scheduler/scripts")
+sys.path.insert(0, "/Users/luizgustavo/Projetos/Senhor Colchao/senhor-colchao/.claude/skills/social-post-scheduler/scripts")
 import instagram_publisher as ig
 
 URLS = [
