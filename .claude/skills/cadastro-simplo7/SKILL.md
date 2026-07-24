@@ -7,6 +7,8 @@ description: "Cadastra ou corrige produto ao vivo na Simplo7 via API: busca SKU,
 
 Cobre o fluxo operacional de colocar um produto ao vivo na Simplo7: de onde vêm os dados comerciais (SKU/custo/preço), e como montar o JSON de `WsprodutoEstoque` com a combinação (variação) certa. Para o conteúdo do HTML de descrição e o bloco de SEO, ver `../pagina-produto-simplo7/SKILL.md` (e `../pagina-cama-box/SKILL.md` quando for conjunto colchão + base).
 
+**Atenção específica pra conjunto (cama box):** `pagina-cama-box` já define que a foto de cena aparece em **3 lugares diferentes** — Hero (cena do conjunto montado), seção Colchão (cena do colchão isolado) e seção Base Box (cena da base isolada na cor certa) — e só a seção Medidas usa foto de estúdio. Isso **não é foto repetida**, são 3 arquivos diferentes. Só existe duplicata de verdade quando falta a versão "-cena" de um tamanho específico e sobra usar o mesmo arquivo de estúdio duas vezes (Hero/seção + Medidas) — nesse caso é inevitável, avisar o usuário. Não confundir com o ajuste "1 foto só no Hero" que vale pra página de produto único (box avulso, colchão avulso) — lá sim a foto do Hero e da seção de composição eram o mesmo arquivo, por isso saiu.
+
 ## Passo 1 — Buscar SKU, custo e preço no Campaign Manager (nunca direto no Bling)
 
 O Campaign Manager (`https://messenger.senhorcolchao.com`) é o catálogo comercial de referência. É lá que o usuário sincroniza SKU/preço/estoque de verdade — usar essa fonte evita que a Simplo7 fique com números diferentes do Bling.
